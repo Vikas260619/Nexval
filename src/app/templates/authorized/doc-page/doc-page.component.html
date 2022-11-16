@@ -1,0 +1,238 @@
+<div class="pb-4" [ngClass]="user ? 'user-height-audio' : 'height-audio'">
+    <div class="row pt-4 mt-1 ps-5 pe-4 m_mid">
+
+        <div *ngFor="let doc of filterDocs;" class="play-vdo col-md-12 mb-4">
+           <!-- <img class="me-3" [nexaeiImageSrc]="'media/file1.png'" />-->
+            <img style="cursor: pointer;" data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop2"
+            (click)="getModelfile(doc)" 
+            class="me-3 special-doc-img" [nexaeiImageSrc]="doc.type === 'text/plain' ? 'txt 1.png' : doc.type === 'application/pdf' ? 'pdf 1.png' : doc.type === 'application/x-zip-compressed' ? 'zip 2.png' :
+            doc.type === 'application/msword' ? 'word.png' : doc.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || doc.type === 'application/vnd.ms-excel' ? 'excel 1.png' : doc.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation' || doc.type === 'application/vnd.ms-powerpoint' ? 'ppt 1.png' : doc.type === 'text/csv' ? 'Group 1977.png' : 
+            doc.type === 'audio/mpeg'
+           ? 'audio-file 1.png' : doc.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ? 'word.png' : 'other icon.png'" />
+            
+            <div class="video-text">
+                <span>
+                    <label class="me-2" *ngIf="doc.userPic === '' && doc.sender != '' && doc.sender != null && doc.sender != undefined" 
+                    >{{ getShortName(doc.sender) }}</label>
+                    <img class="me-2 m-img" *ngIf="doc.userPic !== ''" src="{{doc.userPic.uri}}" /> 
+                    <p class="pb-0 mb-0 pt-1">{{doc.sender === nickName ? 'You' : doc.sender}}</p>
+                </span>
+                <div>
+                    <h5>{{doc.name}}</h5>
+                    <small class="text-white">{{doc.createdAt | date: "dd MMM, YY 'at' hh:mm a"}}</small>
+                </div>
+            </div>
+           
+        </div>
+        <div
+        class="modal fade modal-fullscreen footer-to-bottom"
+        id="staticBackdrop2"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel1"
+        aria-hidden="true"
+        *ngIf="modelFileData"
+      >
+        <div class="modal-dialog animated fadeInDown">
+          <div class="modal-content">
+            <div
+              class="d-flex justify-content-between pt-3 ps-3 ps-3"
+            >
+              <h5
+                class="modal-title h6 fw-light"
+                id="staticBackdropLabel1"
+              >
+                Design Team
+              </h5>
+    
+              <h5
+                class="modal-title h6 fw-light"
+                id="staticBackdropLabel1"
+              >
+                {{ modelFileData.name }}
+              </h5>
+    
+              <div class="d-flex justify-content-end">
+                <!-- <div class="me-3">
+                  <img
+                    width="20px"
+                    [nexaeiImageSrc]="'zoomin.png'"
+                  />
+                </div>
+    
+                <div class="me-3">
+                  <img
+                    width="20px"
+                    [nexaeiImageSrc]="'zoomout.png'"
+                  />
+                </div> -->
+    
+                <div class="me-3">
+                  <!-- <a href="/images/myw3schoolsimage.jpg" download>
+                <img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
+              </a> -->
+                  <a
+                    [href]="modelFileData.plainUrl"
+                    [download]="modelFileData.name"
+                  >
+                    <img
+                      width="20px"
+                      [nexaeiImageSrc]="'down.png'"
+                      data-bs-dismiss="modal"
+                      style="cursor: pointer;"
+                    />
+                  </a>
+                </div>
+                <div class="me-2">
+                  <img width="1px" [nexaeiImageSrc]="'lin2.png'" />
+                </div>
+    
+                <button
+                  type="button"
+                  class="btn-close2 pe-3"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <img
+                    width="22px"
+                    [nexaeiImageSrc]="'close_n.png'"
+                  />
+                </button>
+              </div>
+            </div>
+            <hr />
+            <div
+              class="modal-body d-flex justify-content-center align-items-center"
+            >
+              <img
+                width="100px"
+                height="100px"
+                [nexaeiImageSrc]="
+                  modelFileData.type === 'text/plain'
+                    ? 'txt 1.png'
+                    : modelFileData.type === 'application/pdf'
+                    ? 'pdf 1.png'
+                    : modelFileData.type ===
+                      'application/x-zip-compressed'
+                    ? 'zip 2.png'
+                    : modelFileData.type === 'application/msword'
+                    ? 'word.png'
+                    : modelFileData.type ===
+                      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                    ? 'excel 1.png'
+                    : modelFileData.type === 'application/vnd.ms-excel'
+                    ? 'excel 1.png'
+                    : modelFileData.type ===
+                      'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                    ? 'ppt 1.png'
+                    : modelFileData.type ===
+                      'application/vnd.ms-powerpoint'
+                    ? 'ppt 1.png'
+                    : modelFileData.type === 'text/csv'
+                    ? 'Group 1977.png'
+                    : modelFileData.type === 'audio/mpeg'
+                    ? 'audio-file 1.png'
+                    : modelFileData.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ? 'word.png' :'other icon.png'
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <!-- <div class="play-vdo col-md-12 mb-4">
+            <img class="me-3" [nexaeiImageSrc]="'media/file1.png'" />
+            <div class="video-text">
+                <span>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                    <p class="pb-0 mb-0 pt-1">Ramesh Gupta</p>
+                </span>
+                <div>
+                    <h5>Nexaei Design process documnent.pdf</h5>
+                    <small class="text-white">10 Page | 1.2 MB . 11 Jan, 22 | 2:30 PM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-12 mb-4">
+            <img class="me-3" [nexaeiImageSrc]="'media/file1.png'" />
+            <div class="video-text">
+                <span>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                    <p class="pb-0 mb-0 pt-1">Ramesh Gupta</p>
+                </span>
+                <div>
+                    <h5>Nexaei Design process documnent.pdf</h5>
+                    <small class="text-white">10 Page | 1.2 MB . 11 Jan, 22 | 2:30 PM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-12 mb-4">
+            <img class="me-3" [nexaeiImageSrc]="'media/file1.png'" />
+            <div class="video-text">
+                <span>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                    <p class="pb-0 mb-0 pt-1">Ramesh Gupta</p>
+                </span>
+                <div>
+                    <h5>Nexaei Design process documnent.pdf</h5>
+                    <small class="text-white">10 Page | 1.2 MB . 11 Jan, 22 | 2:30 PM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-12 mb-4">
+            <img class="me-3" [nexaeiImageSrc]="'media/file1.png'" />
+            <div class="video-text">
+                <span>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                    <p class="pb-0 mb-0 pt-1">Ramesh Gupta</p>
+                </span>
+                <div>
+                    <h5>Nexaei Design process documnent.pdf</h5>
+                    <small class="text-white">10 Page | 1.2 MB . 11 Jan, 22 | 2:30 PM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-12 mb-4">
+            <img class="me-3" [nexaeiImageSrc]="'media/file1.png'" />
+            <div class="video-text">
+                <span>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                    <p class="pb-0 mb-0 pt-1">Ramesh Gupta</p>
+                </span>
+                <div>
+                    <h5>Nexaei Design process documnent.pdf</h5>
+                    <small class="text-white">10 Page | 1.2 MB . 11 Jan, 22 | 2:30 PM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-12 mb-4">
+            <img class="me-3" [nexaeiImageSrc]="'media/file1.png'" />
+            <div class="video-text">
+                <span>
+                    <img style="display:none;" class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                    <label class="me-2">A</label>
+                    <p class="pb-0 mb-0 pt-1">Ramesh Gupta</p>
+                </span>
+                <div>
+                    <h5>Nexaei Design process documnent.pdf</h5>
+                    <small class="text-white">10 Page | 1.2 MB . 11 Jan, 22 | 2:30 PM</small>
+                </div>
+            </div>
+        </div>   -->
+
+        <!--Empty doc-->
+        <div *ngIf="filterDocs.length == 0" class="media-file-link text-center">
+            <img class="mb-4 mt-5" [nexaeiImageSrc]="'media/empty-file.png'" />
+
+            <p>You don't have any document files</p>
+        </div>
+
+    </div>
+</div>

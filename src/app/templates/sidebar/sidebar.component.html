@@ -1,0 +1,878 @@
+<div id="wrapper">
+  <div class="navbar-header">
+    <a class="navbar-brand" (click)="muteStream()" id="sidebar-toggle"
+      ><img [nexaeiImageSrc]="'sidebar/left-arrow.svg'"
+    /></a>
+  </div>
+  <div id="fixscroll">
+    <div id="sidebar-wrapper-main">
+      <div class="sidebar-brand">
+        <ul class="padding-adjust">
+          <li class="list-unstyled user-status">
+            <h4>S</h4>
+            <span>
+              <h5>Shelly Holt</h5>
+              <label
+                >9:30 AM In
+                <img [nexaeiImageSrc]="'header/location.svg'" /></label
+            ></span>
+            <a data-bs-toggle="dropdown" data-bs-auto-close="true" id="#more"
+              ><img [nexaeiImageSrc]="'sidebar/more.png'"
+            /></a>
+            <ul class="list-unstyled dropdown-menu" aria-labelledby="more">
+              <li>
+                <h3>Settings</h3>
+                <p>NexAei Settings</p>
+                <label>
+                  <a>
+                    <img [nexaeiImageSrc]="'header/billing.svg'" />Billing</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img [nexaeiImageSrc]="'header/user-management.svg'" />User
+                    Management</a
+                  ></label
+                >
+              </li>
+
+              <li>
+                <p>Modules Settings</p>
+                <label>
+                  <a>
+                    <img [nexaeiImageSrc]="'header/time-attendance.svg'" />Time
+                    & Attendance</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img
+                      [nexaeiImageSrc]="'header/desktop-activity.svg'"
+                    />Desktop Activity</a
+                  ></label
+                >
+              </li>
+              <li>
+                <p>Add-ons Settings</p>
+                <label>
+                  <a>
+                    <img [nexaeiImageSrc]="'header/leave.svg'" />Leave</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img
+                      [nexaeiImageSrc]="'header/shift-management.svg'"
+                    />Shift Management Activity</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img [nexaeiImageSrc]="'header/workflows.svg'" />Profile
+                    Management Activity</a
+                  ></label
+                >
+              </li>
+              <li>
+                <p>Feature Settings</p>
+                <label>
+                  <a>
+                    <img
+                      [nexaeiImageSrc]="'header/permission.svg'"
+                    />Permission</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img
+                      [nexaeiImageSrc]="'header/notification.svg'"
+                    />Notification</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img
+                      [nexaeiImageSrc]="'header/workflows.svg'"
+                    />Workflows</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img [nexaeiImageSrc]="'header/features.svg'" />Features</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img
+                      [nexaeiImageSrc]="'header/automation.svg'"
+                    />Automation</a
+                  ></label
+                >
+                <label>
+                  <a>
+                    <img
+                      [nexaeiImageSrc]="'header/integration.svg'"
+                    />Integration</a
+                  ></label
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="sidebar-search w-100 float-start">
+          <input
+            type="text"
+            placeholder="Search here ..."
+            [nexaeiBackgroundImage]="'header/search.svg'"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="tab-pane fade show active"
+      id="nav-home"
+      role="tabpanel"
+      aria-labelledby="nav-home-tab"
+    >
+      <div class="sidebar-nav-main">
+        <!--Collegue icon-->
+
+        <ul id="CollegueDes" class="sidebar-nav mt-3 padding-adjust">
+          <li class="collaspe-view list-unstyled pb-4 border-0">
+            <span
+              >Colleagues</span
+            ><label class="add-collegue" data-bs-toggle="modal" data-bs-target="#invite-member"
+            ><img [nexaeiImageSrc]="'sidebar/add-user.png'" /> Invite Collegue</label
+            >
+          </li>
+          <li class="list-unstyled user-status">
+            <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Robert Smith</h5>
+              <label>Yes we can do this but we need to do...</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Arya Abhi</h5>
+              <label>Yes we can do this but we need to do...</label></span
+            >
+            <h6>Yesterday</h6>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Pooja Singh</h5>
+              <label>This is the most connecting thing the will...</label></span
+            >
+            <h6>12 Aug</h6>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Pooja Singh</h5>
+              <label>This is the most connecting thing the will...</label></span
+            >
+            <h6>12 Aug</h6>
+          </li>
+
+          <li class="list-unstyled user-status">
+            <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Pooja Singh</h5>
+              <label>This is the most connecting thing the will...</label></span
+            >
+            <h6>12 Aug</h6>
+          </li>
+        </ul>
+
+        <div (click)="hideStream()" id="IconCollegue" class="tgle-icon w-100 pt-2 pb-2c text-center">
+          <span></span>
+          <label> > </label>
+        </div>
+
+        <!--Teams icon-->
+      
+
+        <ul id="CollegueDes2" class="sidebar-nav p-0">
+          <li class="collaspe-view list-unstyled padding-adjust">
+            <span>Teams</span
+            ><label data-bs-toggle="modal" data-bs-target="#team-colab"
+              >+</label
+            >
+            <ul>
+              <li>
+                <span
+                  ><label class="light-blue"
+                    >P<img
+                      style="display: none"
+                      [nexaeiImageSrc]="'member/user.png'"
+                  /></label>
+                  <h5>Product</h5>
+                </span>
+              </li>
+
+                <li>
+                  <span
+                    ><label class="yellow"
+                      >I<img
+                        style="display: none"
+                        [nexaeiImageSrc]="'member/user.png'"
+                    /></label>
+                    <h5>Inscript</h5>
+                  </span>
+                </li>
+
+                <li>
+                  <span
+                    ><label class="light-blue"
+                      >P<img
+                        style="display: none"
+                        [nexaeiImageSrc]="'member/user.png'"
+                    /></label>
+                    <h5>Product</h5>
+                  </span>
+                </li>
+  
+                  <li>
+                    <span
+                      ><label class="yellow"
+                        >I<img
+                          style="display: none"
+                          [nexaeiImageSrc]="'member/user.png'"
+                      /></label>
+                      <h5>Inscript</h5>
+                    </span>
+                  </li>
+
+                  <li>
+                    <span class="active"
+                      ><label class="pink"
+                        >D<img
+                          style="display: none"
+                          [nexaeiImageSrc]="'member/user.png'"
+                      /></label>
+                      <h5>Design</h5>
+                    </span>
+                  </li>
+            </ul>
+          </li>
+        </ul>
+
+        <div (click)="teamStream()" id="IconCollegue2" class="tgle-icon w-100 pt-2 pb-2 text-center">
+          <span></span>
+          <label> > </label>
+        </div>
+
+         <!--Support icon-->
+
+         <ul id="CollegueDes3" class="sidebar-nav  support-group mt-3 padding-adjust">
+          <li class="collaspe-view list-unstyled pb-3 border-0">
+            <span
+              >Support Group</span
+            ><label data-bs-toggle="modal" data-bs-target="#team-colab"
+            >+</label
+          >
+          </li>
+          <li class="list-unstyled user-status">
+            <h4 class="light-blue-border"><label class="light-blue"
+              >F</label><img style="display: none;" [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Finance</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4 class="yellow-border"><label class="yellow"
+              >F</label><img style="display: none;" [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>IT</h5>
+              <label><b>This is the most connecting think the wi..</b></label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4 class="light-blue-borderk"><label class="light-blue"
+              >F</label><img style="display: none;" [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Human Resourses</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4 class="light-blue-borderk"><label class="light-blue"
+              >F</label><img style="display: none;" [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>Finance</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+
+          <li class="list-unstyled user-status">
+            <h4 class="light-blue-borderk"><label class="light-blue"
+              >F</label><img style="display: none;" [nexaeiImageSrc]="'member/user.png'" /></h4>
+            <span>
+              <h5>IT</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+        </ul>
+        <div (click)="SupportStream()" id="IconCollegue3" class="tgle-icon w-100 pt-2 pb-2 mb-4 text-center">
+          <span></span>
+          <label> > </label>
+        </div>
+      </div>
+
+      <!--calendar tab start-->
+      <div
+        class="tab-pane fade show active"
+        id="nav-home"
+        role="tabpanel"
+        aria-labelledby="nav-home-tab"
+      >
+        <div class="sidebar-nav-main">
+          <ul class="sidebar-nav p-0">
+            <li class="collaspe-view list-unstyled padding-adjust border-0">
+              <span
+                ><img [nexaeiImageSrc]="'header/polygon.svg'" />
+                Colleagues</span
+              ><label data-bs-toggle="modal" data-bs-target="#invite-member"
+                >+</label
+              >
+            </li>
+          </ul>
+          <ul class="sidebar-nav padding-adjust">
+            <li class="list-unstyled user-status">
+              <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+              <span>
+                <h5>Robert Smith</h5>
+                <label>Yes we can do this but we need to do...</label></span
+              >
+              <p>10:15 AM</p>
+            </li>
+            <li class="list-unstyled user-status">
+              <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+              <span>
+                <h5>Arya Abhi</h5>
+                <label>Yes we can do this but we need to do...</label></span
+              >
+              <h6>Yesterday</h6>
+            </li>
+            <li class="list-unstyled user-status">
+              <h4><img [nexaeiImageSrc]="'member/user.png'" /></h4>
+              <span>
+                <h5>Pooja Singh</h5>
+                <label
+                  >This is the most connecting thing the will...</label
+                ></span
+              >
+              <h6>12 Aug</h6>
+            </li>
+          </ul>
+          <ul class="sidebar-nav p-0">
+            <li class="collaspe-view list-unstyled padding-adjust">
+              <span><img [nexaeiImageSrc]="'header/polygon.svg'" /> Teams</span
+              ><label data-bs-toggle="modal" data-bs-target="#team-colab"
+                >+</label
+              >
+                <li>
+                  <span
+                    ><label class="light-blue"
+                      >P<img
+                        style="display: none"
+                        [nexaeiImageSrc]="'member/user.png'"
+                    /></label>
+                    <h5>Product</h5>
+                  </span>
+                </li>
+
+                  <li>
+                    <span
+                      ><label class="yellow"
+                        >I<img
+                          style="display: none"
+                          [nexaeiImageSrc]="'member/user.png'"
+                      /></label>
+                      <h5>Inscript</h5>
+                    </span>
+                  </li>
+
+                    <li>
+                      <span class="active"
+                        ><label class="pink"
+                          >D<img
+                            style="display: none"
+                            [nexaeiImageSrc]="'member/user.png'"
+                        /></label>
+                        <h5>Design</h5>
+                      </span>
+                    </li>
+                </ul>
+          <ul class="sidebar-nav p-0">
+            <li class="collaspe-view list-unstyled padding-adjust">
+              <span
+                ><img [nexaeiImageSrc]="'header/polygon.svg'" /> Support
+                Group</span
+              ><label>+</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
+
+      <!--calendar sec-->
+      <div
+        class="tab-pane fade"
+        id="nav-calendar"
+        role="tabpanel"
+        aria-labelledby="nav-calendar-tab"
+      >
+        <div class="sidebar-nav-main">
+          <div class="sidebar-calendar">
+            <div class="month">
+              <ul>
+                <li class="prev">&#10094;</li>
+                <li class="next">&#10095;</li>
+                <li>Apr 2021</li>
+              </ul>
+            </div>
+
+            <ul class="weekdays">
+              <li>Mo</li>
+              <li>Tu</li>
+              <li>We</li>
+              <li>Th</li>
+              <li>Fr</li>
+              <li>Sa</li>
+              <li>Su</li>
+            </ul>
+
+            <ul class="days">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li><span class="active">10</span></li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+            </ul>
+          </div>
+
+          <!--2nd calendar section-->
+          <div class="sidebar-calendar">
+            <div class="month">
+              <ul>
+                <li class="prev">&#10094;</li>
+                <li class="next">&#10095;</li>
+                <li>Apr 2021</li>
+              </ul>
+            </div>
+
+            <ul class="weekdays">
+              <li>Mo</li>
+              <li>Tu</li>
+              <li>We</li>
+              <li>Th</li>
+              <li>Fr</li>
+              <li>Sa</li>
+              <li>Su</li>
+            </ul>
+
+            <ul class="days">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav sidebar-bottom bg-color-dark">
+        <a
+          class="nav-link active"
+          id="nav-home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-home"
+          type="button"
+          role="tab"
+          aria-controls="nav-home"
+          aria-selected="true"
+          href="!#"
+          ><img [nexaeiImageSrc]="'sidebar/home.png'"
+        /></a>
+        <!-- <a href="!#"><img [nexaeiImageSrc]="'sidebar/line.png'" /></a> -->
+        <a href="!#"><img [nexaeiImageSrc]="'sidebar/all-colab.png'" /></a>
+        <a
+          class="nav-link"
+          id="nav-calendar-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-calendar"
+          type="button"
+          role="tab"
+          aria-controls="nav-contact"
+          aria-selected="false"
+          href="!#"
+          ><img [nexaeiImageSrc]="'sidebar/calendar.png'"
+        /></a>
+        <a href="!#"><img [nexaeiImageSrc]="'sidebar/more-bottom.png'" /></a>
+      </div>
+    </div>
+  </div>
+
+  <!--Create team colab -->
+  <div
+    class="modal fade"
+    id="team-colab"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content org_setup_skip_model">
+        <div class="modal-header border-0">
+          <button
+            type="button"
+            class="btn-close-model"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            X
+          </button>
+        </div>
+        <div class="modal-body team-colab pt-0">
+          <h5 class="text-center">Create Team Colab</h5>
+
+          <form class="" [formGroup]="registerFormTeam" (ngSubmit)="onSubmit()">
+            <fieldset class="form_card">
+              <div class="col-md-12">
+                <div class="input_field input_field_modal">
+                  <span class="icon">
+                    <img
+                      [nexaeiImageSrc]="'member/input-field/user-streight.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    placeholder='Team Name e.g. "Sales" or "Design"'
+                    [formControlName]="'teamName'"
+                    (keypress)="activate()"
+                    [ngClass]="{
+                      error_input:
+                        registerFormControl.teamName?.dirty &&
+                        registerFormControl.teamName?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                  />
+
+                  <p
+                    class="error_cntnt"
+                    *ngIf="
+                      registerFormControl.teamName?.dirty &&
+                      registerFormControl.teamName?.invalid &&
+                      !registerFormControl.teamName?.errors?.required &&
+                      !registerFormControl.teamName?.errors?.invalidNm &&
+                      !registerFormControl.teamName?.errors?.invalidsp
+                    "
+                  >
+                    Space not allowed.
+                  </p>
+                  <p
+                    class="error_cntnt"
+                    *ngIf="
+                      registerFormControl.teamName?.dirty &&
+                      registerFormControl.teamName?.errors?.required
+                    "
+                  >
+                    Name required.
+                  </p>
+                  <p
+                    class="error_cntnt"
+                    *ngIf="
+                      registerFormControl.teamName?.dirty &&
+                      registerFormControl.teamName?.errors?.invalidNm &&
+                      !registerFormControl.teamName?.errors?.required
+                    "
+                  >
+                    Only numbers not allowed
+                  </p>
+                  <p
+                    class="error_cntnt"
+                    *ngIf="
+                      registerFormControl.teamName?.dirty &&
+                      registerFormControl.teamName?.errors?.invalidsp &&
+                      !registerFormControl.teamName?.errors?.required
+                    "
+                  >
+                    Only special characters not allowed
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <span
+                  class="des_slider_popup"
+                  (click)="showDescription()"
+                  *ngIf="hideDescText"
+                  >+ Description</span
+                >
+                <div class="input_field input_field_model" *ngIf="showDesc">
+                  <textarea
+                    id=""
+                    name=""
+                    rows="4"
+                    cols="50"
+                    placeholder="Description"
+                    [formControlName]="'desc'"
+                    [ngClass]="{
+                      error_input:
+                        registerFormControl.desc?.dirty &&
+                        registerFormControl.desc?.invalid
+                    }"
+                  ></textarea>
+                </div>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.desc?.dirty &&
+                    registerFormControl.desc?.errors?.required
+                  "
+                >
+                  Description required.
+                </p>
+              </div>
+
+              <div class="col-md-12">
+                <div class="input_field input_field_modal">
+                  <span class="icon">
+                    <img
+                      [nexaeiImageSrc]="'member/input-field/user-circle.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    placeholder="Add members by name or email address"
+                  />
+                </div>
+              </div>
+              <p
+                class="error_cntnt"
+                *ngIf="
+                  registerFormControl.email?.dirty &&
+                  registerFormControl.email?.errors?.required
+                "
+              >
+                Email required.
+              </p>
+              <p
+                class="error_cntnt"
+                *ngIf="
+                  registerFormControl.email?.dirty &&
+                  registerFormControl.email?.errors?.notvalidEmail &&
+                  !registerFormControl.email?.errors?.required &&
+                  !registerFormControl.email?.errors?.invalidDomain
+                "
+              >
+                Invalid Email
+              </p>
+              <p
+                class="error_cntnt"
+                *ngIf="
+                  registerFormControl.email?.dirty &&
+                  registerFormControl.email?.errors?.invalidDomain &&
+                  !registerFormControl.email?.errors?.required
+                "
+              >
+                invalid Domain
+              </p>
+
+              <div class="col-md-12">
+                <div class="input_field input_field_modal">
+                  <span class="icon">
+                    <img
+                      class="spl-input-icon"
+                      [nexaeiImageSrc]="'member/input-field/user-tie.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    placeholder="Add team by name or email address"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="input_field input_field_modal">
+                  <span class="icon">
+                    <img
+                      [nexaeiImageSrc]="'member/input-field/parent-time.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    placeholder="Select a Parent Team (Optional)"
+                  />
+                  <p class="error_cntnt spcl-fnt" *ngIf="serverErrorMessage">
+                    {{ serverErrorMessage }} !!
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <label class="login_cndtn"
+                  ><input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexCheckChecked"
+                  />
+                  <label
+                    class="form-check-label check_emv"
+                    for="flexCheckChecked"
+                  ></label>
+                  <h6 style="margin: 0">Keep me as a passive member</h6>
+                  <p>
+                    If you check this option you will no be a part of the
+                    collaboration but you will still be able to view and
+                    download reports
+                  </p></label
+                >
+              </div>
+
+              <div class="col-md-12 mt-2 float-start">
+                <button
+                  type="submit"
+                  class="btn primary-xl primary-xl-modal"
+                  [disabled]="
+                    !isTermsChecked ||
+                    registerFormControl.teamName?.errors?.required
+                  "
+                >
+                  Create
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Invite member-->
+  <div
+    class="modal fade"
+    id="invite-member"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content org_setup_skip_model">
+        <div class="modal-header border-0">
+          <button
+            type="button"
+            class="btn-close-model"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            X
+          </button>
+        </div>
+        <div class="modal-body team-colab pt-0">
+          <h5 class="text-center">Invite Members</h5>
+          <form class="">
+            <fieldset class="form_card">
+              <div class="col-md-12">
+                <div class="input_field input_field_modal">
+                  <span class="icon">
+                    <img [nexaeiImageSrc]="'input_field/envelope.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    placeholder="Invite by email Address"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-12 mt-5 float-start">
+                <button type="submit" class="btn primary-xl primary-xl-modal">
+                  Send Invite
+                </button>
+              </div>
+
+              <div class="col-md-12 mt-2 float-start">
+                <button type="submit" class="btn copy-link">
+                  <img [nexaeiImageSrc]="'member/input-field/copy.svg'" /> Copy
+                  Link to Invite
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,256 @@
+<div id="wrapper">
+  <div class="navbar-header">
+    <a class="navbar-brand" (click)="muteStream()" id="sidebar-toggle"
+      ><img [nexaeiImageSrc]="'sidebar/left-arrow.svg'"
+    /></a>
+  </div>
+  <!--user staus-->
+  <div id="showingDropdown" class="user-status-feedback">
+    <ul>
+      <li (click)="specilInput()" class="special-input">How are you feeling today?</li>
+      <li class="special-input special-input-positioning" id="spclInput">
+       <a href="!#"> <img [nexaeiImageSrc]="'sidebar/emoji/smile.png'" /></a>
+       <a href="!#"> <img [nexaeiImageSrc]="'sidebar/emoji/angry.png'" /></a>
+       <a href="!#"> <img [nexaeiImageSrc]="'sidebar/emoji/little-angry.png'" /></a>
+       <a href="!#"> <img [nexaeiImageSrc]="'sidebar/emoji/sad.png'" /></a>
+       <a href="!#"> <img [nexaeiImageSrc]="'sidebar/emoji/laugh.png'" /></a>
+       <a href="!#"> <img [nexaeiImageSrc]="'sidebar/emoji/ignore.png'" /></a>
+
+      </li>
+      <li (click)="showDropmini()" class="dropdown-hovering">Set a status <img class="status-arrow-left" [nexaeiImageSrc]="'sidebar/left-arrow.svg'"
+        />
+      
+      <!--second dropdown-->
+        <ul id="dropMini">
+          <li class="active"><img [nexaeiImageSrc]="'sidebar/personl-day.png'" />Personal Day <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+          <li><img [nexaeiImageSrc]="'sidebar/week-off.png'" />Week off <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+          <li><img [nexaeiImageSrc]="'sidebar/in-a-meeting.png'" />In a meeting <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+          <li><img [nexaeiImageSrc]="'sidebar/commiting.png'" />Commuting <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+          <li><img [nexaeiImageSrc]="'sidebar/in-break.png'" />In Break <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+          <li><img [nexaeiImageSrc]="'sidebar/busy.png'" />Busy <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+          <li><img [nexaeiImageSrc]="'sidebar/out-sick.png'" />Out Sick <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+          <li><img [nexaeiImageSrc]="'sidebar/do-not-destureb.png'" />Don't Disturb <span> <img [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></span></li>
+
+        </ul>
+      </li>
+        <li (click)="redirectMyProfile()">View Profile</li>
+        <li 
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal" >Arrival Message</li>
+        <li>Away Message</li>
+    </ul>
+  </div>
+  <div id="fixscroll">
+  <div id="fixscroll" >
+    <aside id="sidebar-wrapper">
+      <div id="sidebar-wrapper-main">
+        <div class="sidebar-brand">
+          <ul class="padding-adjust m-0">
+            <li
+              class="list-unstyled user-status " [class]="stBool ? 'circleborderActive' : 'circleborder'"
+            >
+              <!--<h4 (click)="showDrop()">{{ fullname ? fullname.charAt(0) : "" }}</h4>-->
+              <h4 
+              style="cursor:pointer"><img *ngIf="profileImage1!='null'" (click)="openCropModal()" src="{{profileImage1}}">
+               <div *ngIf="profileImage1=='null'" (click)="openCropModal()"> {{ fullname.charAt(0)  }} </div>
+               <div *ngIf="profileImage1==' '" (click)="openCropModal()"> {{ fullname.charAt(0)  }} </div>
+              </h4>
+              <span>
+                <h5>{{ fullname }}</h5>
+                <label
+                  ><span [class]="stBool ? 'time_color_white' : 'time_color_white'">{{ showTimeFirst }} | &nbsp;</span>
+                  <span [class]="stBool ? 'time_color' : 'time_color_gray'">
+                    {{ showTimeSecond }} {{ st }}</span
+                  >
+                  <!--Function-->
+                  <span style="padding-left: 5px">
+                    <img *ngIf="stBool"
+                      punch_type=""
+                      nm=""
+                      nm2=""
+                      checkin_lat=""
+                      checkin_long=""
+                      checkout_lat=""
+                      checkout_long=""
+                      checkin_address=""
+                      checkout_address=""
+                      [nexaeiImageSrc]="'sidebar/location.png'"
+                  />
+                  <img *ngIf="!stBool"
+                      punch_type=""
+                      nm=""
+                      nm2=""
+                      checkin_lat=""
+                      checkin_long=""
+                      checkout_lat=""
+                      checkout_long=""
+                      checkin_address=""
+                      checkout_address=""
+                      [nexaeiImageSrc]="'sidebar/location.png'"
+                  />
+                </span>
+                  
+
+                  <strong class="active-user-map" *ngIf="stBool">
+                    <p></p>
+                    <agm-map [latitude]="currentLat" [longitude]="currentLon">
+                      <agm-marker
+                        [latitude]="currentLat"
+                        [longitude]="currentLon"
+                      ></agm-marker>
+                    </agm-map>
+                  </strong>
+                </label>
+              </span>
+              <a data-bs-toggle="dropdown" data-bs-auto-close="true" id="#more"
+                ><img [nexaeiImageSrc]="'sidebar/more.png'"
+              /></a>
+              <ul
+                class="list-unstyled dropdown-menu setting-log"
+                aria-labelledby="more"
+              >
+                <li>
+                  <h3>Settings</h3>
+                  <!-- <p>NexAei Settings</p> -->
+                  <label _ngcontent-ebw-c151=""><a _ngcontent-ebw-c151="" (click)="openArrivalMessageModal()" data-bs-toggle="modal"
+
+                    data-bs-target="#exampleModal"><img _ngcontent-ebw-c151="" src="./assets/images/sidebar/settings/billing.png" ng-reflect-nexaei-image-src="sidebar/settings/billing.png">Arrival Message</a></label>
+                </li>
+                <button [routerLink]="['/dashboard/logout/']">Logout</button>
+              </ul>
+            </li>
+          </ul>
+          <div class="sidebar-search w-100 float-start">
+            <!--<input
+              type="text"
+              placeholder="Search here ..."
+              [nexaeiBackgroundImage]="'header/search.svg'"
+            />-->
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-nav-main">
+       <app-member-card></app-member-card>
+        <app-team-card></app-team-card>
+       <!-- <app-empty-colabs></app-empty-colabs>-->
+
+        <!--Support icon-->
+
+        <!--  <ul
+          id="CollegueDes3"
+          class="sidebar-nav support-group mt-0 mb-0 padding-adjust"
+        >
+          <li class="collaspe-view list-unstyled pb-3 border-0">
+            <span>Support Group</span
+            ><label data-bs-toggle="modal" data-bs-target="#team-colab"
+              >+</label
+            >
+          </li>
+          <li class="list-unstyled user-status">
+            <h4 class="light-blu-border">
+              <label class="light-blue">F</label
+              ><img
+                style="display: none"
+                [nexaeiImageSrc]="'member/user.png'"
+              />
+            </h4>
+            <span>
+              <h5>Finance</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4 class="yellow-boder">
+              <label class="yellow">F</label
+              ><img
+                style="display: none"
+                [nexaeiImageSrc]="'member/user.png'"
+              />
+            </h4>
+            <span>
+              <h5>IT</h5>
+              <label
+                ><b>This is the most connecting think the wi..</b></label
+              ></span
+            >
+            <p>10:15 AM</p>
+          </li>
+          <li class="list-unstyled user-status">
+            <h4 class="light-blue-borderk">
+              <label class="light-blue">F</label
+              ><img
+                style="display: none"
+                [nexaeiImageSrc]="'member/user.png'"
+              />
+            </h4>
+            <span>
+              <h5>Human Resourses</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+          <li class="list-unstyled user-status active">
+            <h4 class="light-blue-borderk">
+              <label class="light-blue">F</label
+              ><img
+                style="display: none"
+                [nexaeiImageSrc]="'member/user.png'"
+              />
+            </h4>
+            <span>
+              <h5>Finance</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+
+          <li class="list-unstyled user-status">
+            <h4 class="light-blue-borderk">
+              <label class="light-blue">F</label
+              ><img
+                style="display: none"
+                [nexaeiImageSrc]="'member/user.png'"
+              />
+            </h4>
+            <span>
+              <h5>IT</h5>
+              <label>This is the most connecting think the wi..</label></span
+            >
+            <p>10:15 AM</p>
+          </li>
+        </ul>
+        <div
+          (click)="SupportStream()"
+          id="IconCollegue3"
+          class="tgle-icon w-100 pt-2 pb-2 mb-4 text-center"
+        >
+          <span></span>
+          <label> <img [nexaeiImageSrc]="'sidebar/down-arrow.png'" /> </label>
+        </div>-->
+      </div>
+    </aside>
+    <div class="sidebar-bottom bg-color-dark">
+      <a  (click)="goBack()" [ngClass]="this.page==='home' ? 'active' : ''" [routerLink]="['/dashboard/home/']"><img [nexaeiImageSrc]="'sidebar/home.png'" /> <img [nexaeiImageSrc]="'sidebar/home-active.png'" /></a>
+      <!--<a href="!#"><img [nexaeiImageSrc]="'sidebar/line.png'" /></a>-->
+      <a [routerLink]="['#']" (click)="emptyCollab()"><img [nexaeiImageSrc]="'sidebar/all-colab.png'" /> <img [nexaeiImageSrc]="'sidebar/all-colab-active.png'" /></a>
+      <a [routerLink]="['/dashboard/attendence-report/']"><img [nexaeiImageSrc]="'sidebar/calendar.png'" /><img [nexaeiImageSrc]="'sidebar/calendar-active.png'" /></a>
+      <!--<a href="!#"><img [nexaeiImageSrc]="'sidebar/more-bottom.png'" /></a>-->
+    </div>
+  </div>
+</div>
+
+<!--Create team colab -->
+
+
+
+<!--Invite member-->
+
+<!-- Invoke invitation popup Here -->
+<app-member-invitation></app-member-invitation>
+<app-add-team></app-add-team>
+<app-user-self-attendence></app-user-self-attendence>
+<app-colleague-invitation></app-colleague-invitation>
+<app-arrival-message-modal></app-arrival-message-modal>
+<app-profile-image-upload></app-profile-image-upload>

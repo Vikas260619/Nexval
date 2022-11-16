@@ -1,0 +1,70 @@
+  //modal
+  button.btn.copy-link {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    width: 62%;
+    color: #fff;
+    padding: 17px;
+    border-radius: 33px;
+    line-height: 0;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 12px auto 40px;
+    display: block;
+  }
+  
+  button.btn.copy-link img {
+    width: 16px;
+    margin-right: 3px;
+  }
+
+.input_field {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+h6.ent-eml {
+  font-size: 10px;
+  font-weight: 200;
+  color: #ebebeb;
+  margin-top: -16px;
+  /* bottom: 0; */
+}
+
+.input_field_add{
+  background: #000;
+  color: #ffffff;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 0 10px;
+  font-size: 11px;
+  width: 100%;
+  margin-bottom: 22px;
+  max-height: 140px;
+    overflow-y: auto;
+}
+
+.error_cntnt {
+  font-size: 12px;
+  bottom: auto;
+  margin-bottom: 8px;
+  position: inherit;
+}
+
+button.btn.primary-xl-modal {
+  width: 70%;
+  margin: 20px auto 0;
+  float: none;
+  display: block;
+} 
+
+button.btn.copy-link {
+  width: 44%;
+}
+
+.modal-content.org_setup_skip_model {
+  padding: 0 5rem;
+}
+
+

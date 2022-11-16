@@ -1,0 +1,26 @@
+<div class="pb-4" [ngClass]="user ? 'user-height-audio' : 'height-audio'">
+    <div class="row pt-4 mt-1 ps-5 pe-4 m_mid">
+
+        <div *ngFor="let link of filterLinks;" class="play-vdo col-md-12 mb-4">
+            <img class="me-3" [nexaeiImageSrc]="'media/link.png'" />
+            <div class="video-text">
+                <span>
+                    <label class="me-2" *ngIf="link.userPic === '' && link.sender != '' && link.sender != null && link.sender != undefined">{{ getShortName(link.sender) }}</label>
+                    <img class="me-2 m-img" *ngIf="link.userPic !== ''" src="{{link.userPic.uri}}" />
+                    <p class="pb-0 mb-0 pt-1">{{link.sender === nickName ? 'You' : link.sender}}</p>
+                </span>
+                <div>
+                    <a href="link.text" target="_blank"><h5>{{link.text}}</h5></a>
+                    <small class="text-white">{{link.createdAt | date: "dd MMM, YY 'at' hh:mm a"}}</small>
+                </div>
+            </div>
+        </div>
+         <!--Empty doc-->
+         <div *ngIf="filterLinks.length === 0" class="media-file-link text-center">
+            <img class="mb-4 mt-5" [nexaeiImageSrc]="'media/empty-link.png'" />
+
+            <p>You don't have any document files</p>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.m_mid .rounded {
+    border-radius: 0.6rem!important;
+}
+
+.play-vdo a img {
+    width: 50px;
+}
+
+.play-vdo span {
+    height: 195px;
+    overflow: hidden;
+    background: #fff;
+    float: left;
+    border-radius: 14px;
+    width: 100%;
+}
+
+.play-vdo span img {
+    height: 100%;
+}
+
+.video-text {
+    float: left;
+    width: 100%;
+}
+
+.play-vdo span a:hover img {
+    opacity: 0.8;
+}
+
+.play-vdo {
+    position: relative;
+    text-align: center;
+    display: block;
+}
+
+.play-vdo span a {
+    position: absolute;
+    top: 23%;
+    display: block;
+    width: 89%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -1,0 +1,239 @@
+<div class="container-fluid sign-up-page">
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0">
+      <div class="gardientbackground">
+        <img class="w-100" [nexaeiImageSrc]="'login_process.png'" />
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0 res-stu bg-color-dark">
+      <div class="form-container">
+        <span class="logo col-md-12">
+          <img [nexaeiImageSrc]="'logo.png'" />
+          <h1>Welcome to Colab</h1>
+          <p>Let's get you started</p>
+        </span>
+
+        <form class="" [formGroup]="registerFormOne" (ngSubmit)="onSubmit()">
+          <fieldset class="form_card g-3">
+            <div class="bg-color-gray row right-sec">
+              <div class="col-md-6">
+                <div class="input_field">
+                  <span class="icon"
+                    ><img [nexaeiImageSrc]="'input_field/user.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    [formControlName]="'firstName'"
+                    [ngClass]="{
+                      error_input:
+                        registerFormControl.firstName?.dirty &&
+                        registerFormControl.firstName?.invalid
+                    }"
+                  />
+                </div>
+
+                <P
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.firstName?.dirty &&
+                    registerFormControl.firstName?.errors?.required
+                  "
+                  >First name required</P
+                >
+
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.firstName?.dirty &&
+                    registerFormControl.firstName?.errors?.invalidName &&
+                    !registerFormControl.firstName?.errors?.required
+                  "
+                >
+                  Field should be alphabetic only
+                </p>
+              </div>
+              <div class="col-md-6">
+                <div class="input_field">
+                  <span class="icon">
+                    <img [nexaeiImageSrc]="'input_field/user.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    [formControlName]="'lastName'"
+                    [ngClass]="{
+                      error_input:
+                        registerFormControl.lastName?.dirty &&
+                        registerFormControl.lastName?.invalid
+                    }"
+                  />
+                </div>
+
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.lastName?.dirty &&
+                    registerFormControl.lastName?.errors?.required
+                  "
+                >
+                  Last name required
+                </p>
+
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.lastName?.dirty &&
+                    registerFormControl.lastName?.errors?.invalidName &&
+                    !registerFormControl.lastName?.errors?.required
+                  "
+                >
+                  Field should be alphabetic only
+                </p>
+              </div>
+              <div class="col-md-12">
+                <div class="input_field">
+                  <span class="icon">
+                    <img [nexaeiImageSrc]="'input_field/envelope.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    placeholder="Enter your work email"
+                    [formControlName]="'email'"
+                    [ngClass]="{
+                      error_input:
+                        registerFormControl.email?.dirty &&
+                        registerFormControl.email?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                  />
+                </div>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.email?.dirty &&
+                    registerFormControl.email?.errors?.required
+                  "
+                >
+                  Email required.
+                </p>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.email?.dirty &&
+                    registerFormControl.email?.errors?.notvalidEmail &&
+                    !registerFormControl.email?.errors?.required &&
+                    !registerFormControl.email?.errors?.invalidDomain
+                  "
+                >
+                  Please use valid email, only official emails are accepted
+                </p>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.email?.dirty &&
+                    registerFormControl.email?.errors?.invalidDomain &&
+                    !registerFormControl.email?.errors?.required
+                  "
+                >
+                  Invalid Domain
+                </p>
+              </div>
+              <div class="col-md-12">
+                <div class="input_field">
+                  <span class="icon"
+                    ><img [nexaeiImageSrc]="'input_field/lock.svg'"
+                  /></span>
+                  <input
+                    [type]="shPassword ? 'text' : 'password'"
+                    type="password"
+                    [ngClass]="{
+                      error_input:
+                        registerFormControl.password?.dirty &&
+                        registerFormControl.password?.invalid
+                    }"
+                    placeholder="Password"
+                    [formControlName]="'password'"
+                  />
+                  <label
+                    class="password_view"
+                    [ngClass]="{ active: shPassword }"
+                    ><a (click)="showPassword()"
+                      ><img [nexaeiImageSrc]="'input_field/eye.svg'" /></a
+                  ></label>
+                </div>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormControl.password?.dirty &&
+                    registerFormControl.password?.errors?.required
+                  "
+                >
+                  Password required
+                </p>
+                <p
+                  class="error_cntnt minimum-show"
+                  *ngIf="
+                    registerFormControl.password?.dirty &&
+                    registerFormControl.password?.errors?.invalidPassword &&
+                    !registerFormControl.password?.errors?.required
+                  "
+                >
+                  Use minimum 8 characters with a mix of letters (uppercase,
+                  lowercase) Numbers & Symbols
+                </p>
+              </div>
+              <!--<p class="error_cntnt minimum-show">
+                Use minimum 8 characters with a mix of letters (uppercase,
+                lowercase) Numbers & Symbols
+              </p>-->
+
+              <div class="col-md-12">
+                <label class="login_cndtn">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexCheckChecked"
+                    (change)="onCheckboxChange($event.target.checked)"
+                  />
+                  <label
+                    class="form-check-label check_emv"
+                    for="flexCheckChecked"
+                  ></label>
+                  <h6 class="signip_agreed">
+                    You agree to our
+                    <a [routerLink]="['/privacy/']">Privacy Policy</a> and
+                    <a [routerLink]="['/terms/']">Terms and Conditions</a>
+                  </h6></label
+                >
+                <p class="error_cntnt spcl_cndtn" *ngIf="serverErrorMessage">
+                  {{ serverErrorMessage }} !!
+                </p>
+              </div>
+
+              <div class="col-md-12">
+                <button
+                  type="submit"
+                  class="btn primary-xl"
+                  [disabled]="!isTermsChecked"
+                >
+                  Continue
+                </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <span class="bottom-text">
+          <label class="login_cndtn redirec_sigin"
+            ><h6>
+              Already have an account? <a [routerLink]="['/login/']">Login</a>
+            </h6></label
+          >
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

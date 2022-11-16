@@ -1,0 +1,49 @@
+<app-sidebar-pane-calender></app-sidebar-pane-calender>
+<app-header-pane></app-header-pane>
+<div class="inner-sec_">
+    <section>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="subheader width-full">
+                        <h5><a (click)="goMain()" style="cursor: pointer;"><img [nexaeiImageSrc]="'back.png'" /></a>{{selectedDate | formatTimestampDate}}</h5>
+
+                <div class="col-md-5 pull-left tag-section">
+                    <span>
+                       <h6> {{status}} <img *ngIf="status=='Absent'" [nexaeiImageSrc]="'/crs.png'" /> <img *ngIf="status=='Present'" [nexaeiImageSrc]="'calendar/tick.png'" />
+                       </h6>
+                    </span>
+
+                    <span>
+                        <p>Total: {{duration|minuteToHour}} hr</p>
+                    </span>
+                </div>
+            </div>   
+            
+            <!--map section-->
+            <!-- <div class="map-locate text-left" >
+              <span>
+                <label data-bs-toggle="modal" data-bs-target="#locationView"><img [nexaeiImageSrc]="'header/location.svg'" /></label>
+                <h6><img [nexaeiImageSrc]="'calendar/watch.png'" /> 11:30 PM In | 1 Apr</h6>
+                <h6><img [nexaeiImageSrc]="'header/location.svg'" />Block 4A, 3rd Floor, Unit No.303, Ambuja Realty Campus,, Ecospace Business Park, Rajarhat, Kolkata, West Bengal 700160</h6>
+             </span>
+            </div> -->
+
+            <div class="map-locate text-left" *ngFor="let d of sortData">
+                <span class="w-100">
+                  <label><img [nexaeiImageSrc]="'header/location.svg'" (click)="openSingleMapModal(d.latlong)" /></label>
+                  <h6><img [nexaeiImageSrc]="'calendar/watch.png'" /> {{d.timestamp | formatTimestampTime}} {{d.punch_direction| titlecase}} | {{selectedDate | formatTimestampDate}}</h6>
+                  <h6><img [nexaeiImageSrc]="'header/location.svg'"  />{{d.address}}</h6>
+               </span>
+
+               <!-- <span class="checkout">
+                <label><img [nexaeiImageSrc]="'header/location.svg'" /></label>
+                <h6><img [nexaeiImageSrc]="'calendar/watch.png'" /> 11:30 PM Out | 1 Apr</h6>
+                <h6><img [nexaeiImageSrc]="'header/location.svg'" />Block 4A, 3rd Floor, Unit No.303, Ambuja Realty Campus,, Ecospace Business Park, Rajarhat, Kolkata, West Bengal 700160</h6>
+             </span> -->
+              </div>
+
+         </div>
+        </div>
+    </section>
+</div> 
+<app-single-map-popup></app-single-map-popup>      

@@ -1,0 +1,81 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+
+<div class="inner-sec_">
+    <section>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="subheader width-full">
+                        <h5><a href="#!"><img [nexaeiImageSrc]="'back.png'" /></a>Mon, 1 Mar 21</h5>
+
+                <div class="col-md-5 pull-left tag-section">
+                    <span>
+                       <h6>Present <img [nexaeiImageSrc]="'calendar/tick.png'" />
+                       </h6>
+                    </span>
+
+                    <span>
+                        <p>Total: 11 hr</p>
+                    </span>
+                </div>
+            </div>   
+            
+            <!--map section-->
+            <div class="map-locate text-left">
+              <span>
+                <label data-bs-toggle="modal" data-bs-target="#locationView"><img [nexaeiImageSrc]="'header/location.svg'" /></label>
+                <h6><img [nexaeiImageSrc]="'calendar/watch.png'" /> 11:30 PM In | 1 Apr</h6>
+                <h6><img [nexaeiImageSrc]="'header/location.svg'" />Block 4A, 3rd Floor, Unit No.303, Ambuja Realty Campus,, Ecospace Business Park, Rajarhat, Kolkata, West Bengal 700160</h6>
+             </span>
+            </div>
+
+            <div class="map-locate text-left">
+                <span>
+                  <label><img [nexaeiImageSrc]="'header/location.svg'" /></label>
+                  <h6><img [nexaeiImageSrc]="'calendar/watch.png'" /> 11:30 PM Out | 1 Apr</h6>
+                  <h6><img [nexaeiImageSrc]="'header/location.svg'" />Block 4A, 3rd Floor, Unit No.303, Ambuja Realty Campus,, Ecospace Business Park, Rajarhat, Kolkata, West Bengal 700160</h6>
+               </span>
+
+               <span class="checkout">
+                <label><img [nexaeiImageSrc]="'header/location.svg'" /></label>
+                <h6><img [nexaeiImageSrc]="'calendar/watch.png'" /> 11:30 PM Out | 1 Apr</h6>
+                <h6><img [nexaeiImageSrc]="'header/location.svg'" />Block 4A, 3rd Floor, Unit No.303, Ambuja Realty Campus,, Ecospace Business Park, Rajarhat, Kolkata, West Bengal 700160</h6>
+             </span>
+              </div>
+
+         </div>
+        </div>
+    </section>
+</div>       
+
+
+<!--modal-->
+
+<div class="modal fade" id="locationView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn-close-model"> X </button>
+        </div>
+        <div class="modal-body">
+          <div class="location-name">
+            <ul class="p-0">
+                <li class="list-unstyled user-status d-flex">
+                    <h4>S</h4>
+                    <span>
+                        <h5>You</h5>
+                    </span>
+                </li>
+                <li>
+                    <p>Block 4A, 3rd Floor, Unit No.303, Ambuja Realty Campus,, Ecospace Business Park, Rajarhat, Kolkata, West Bengal 700160</p>
+                </li>
+            </ul>
+
+            <label>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319" width="100%" frameborder="0" style="border:0"></iframe>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

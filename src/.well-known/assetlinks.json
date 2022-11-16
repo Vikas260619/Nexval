@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.nexval.nexaeicolab",
+      "sha256_cert_fingerprints": [
+        "7E:46:CB:B4:FE:8C:69:95:B5:8A:59:EF:07:A7:CC:D9:2F:B9:35:BF:78:25:B2:65:08:8C:39:03:84:B5:9D:C3",
+        "D7:72:15:0A:C2:19:89:F2:09:0D:35:2C:5F:0B:EA:17:D8:1B:4D:0B:6B:80:7A:9F:A0:98:FF:3B:C9:4C:7F:F4"
+      ]
+    }
+  }
+]

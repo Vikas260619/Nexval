@@ -1,0 +1,190 @@
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="navbar-panel">
+        <div *ngIf="header.isLogoVisible" class="Innovation-logo">
+            <img [routerLink]="['/dashboard']" class="pointer" [nexaeiImageSrc]="'header/user-image.svg'" />
+        </div>
+        <div *ngIf="!header.orgName" class="Innovation-logo add-logo">
+            <span> <img [routerLink]="['/dashboard']" class="pointer" [nexaeiImageSrc]="'header/camera.svg'" /></span>
+            <h6>Add your organization logo</h6>
+        </div>
+        <div class="inovation-hq" [ngClass]="header.orgName ? 'show' : 'hide'">
+            <a data-bs-toggle="dropdown" data-bs-auto-close="true" #region_dropdown id="#innovation"
+                (click)="toggleRegionDropdown()">
+                Innovation HQ<img [nexaeiImageSrc]="'header/innovation-hq.svg'" />
+            </a>
+            <ul class="dropdown-menu open-list" aria-labelledby="innovation">
+                <h2>Region</h2>
+                <li *ngFor="let region of regionsList">
+                    <span>
+                        <a>
+                            <p><img [nexaeiImageSrc]="'header/location.svg'" /></p>
+                            <label>
+                                <h5>{{ region.name }}</h5>
+                            </label>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a>
+                            <h4>+ Add New</h4>
+                        </a>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div [ngClass]="header.isMenuVisible ? 'show' : 'hide'">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link " [routerLink]="['/dashboard']" aria-current="page">Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link ">Reports</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link acive dropdown-toggle" #department_dropdown
+                            (click)="toggleDepartmentDropdown()" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Department
+                        </a>
+                        <ul class="dropdown-menu open-list" aria-labelledby="navbarDropdown">
+                            <span *ngFor="let department of departmentList; let i=index">
+                                <li *ngIf="i<3">
+                                    <span>
+                                        <a [routerLink]="['/dashboard/department/detail']">
+                                            <p>s</p>
+                                            <label>
+                                                <h5>{{ department.name }}</h5>
+                                                <h6>Mnager : Alex Thomas</h6>
+                                            </label>
+                                        </a>
+                                    </span>
+                                </li>
+                            </span>
+                            <li>
+                                <span>
+                                    <a [routerLink]="['/dashboard/department']">
+                                        View All
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <span> <a [routerLink]="['/dashboard/department/add-department']">
+                                        <h4>+ Create New</h4>
+                                    </a></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a [routerLink]="['/dashboard/member']" class="nav-link ">Member</a>
+                    </li>
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" #teams_dropdown
+                            id="navbarDropdown" (click)="toggleTeamDropdown()" role="button"
+                            aria-expanded="false">Team</a>
+
+                        <ul class="dropdown-menu open-list open-list-team" aria-labelledby="navbarDropdown">
+                            <span *ngFor="let team of teamList; let i=index">
+                                <li *ngIf="i<3">
+                                    <span>
+                                        <a [routerLink]="['/dashboard/team/' + team.name]">
+                                            <label>
+                                                <h5>{{ team.name }}</h5>
+                                            </label>
+                                            <label>
+                                                <img [nexaeiImageSrc]="'girl.png'" />
+                                                <img [nexaeiImageSrc]="'girlsuser.png'" />
+                                                <p>+6</p>
+                                            </label>
+                                        </a>
+                                    </span>
+                                </li>
+                            </span>
+                            <li>
+                                <span>
+                                    <a [routerLink]="['/dashboard/team']">
+                                        View All
+                                    </a>
+                                </span>
+                            </li>
+                            <li>
+                                <span> <a [routerLink]="['/dashboard/team']">
+                                        <h4>+ Create New</h4>
+                                    </a></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link ">Apps</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="corner-header">
+                <ul class="list-unstyled">
+                    <li *ngIf="header.isSearchVisible">
+                        <form class="d-flex to-searchbar">
+                            <img [nexaeiImageSrc]="'header/search-bar.svg'" />
+                            <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                        </form>
+                    </li>
+                    <li>
+                        <a> <img [nexaeiImageSrc]="'header/notification.svg'" /></a>
+                    </li>
+                    <li>
+                        <a data-bs-toggle="dropdown" data-bs-auto-close="true" (click)="toggleSettingDropdown()"
+                            #settings_dropdown id="#settings"> <img [nexaeiImageSrc]="'header/setting.svg'" /></a>
+                        <ul class="list-unstyled dropdown-menu" aria-labelledby="settings">
+                            <li>
+                                <h3>Settings</h3>
+                                <p>NexAei Settings</p>
+                                <label> <a> <img [nexaeiImageSrc]="'header/billing.svg'" />Billing</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/user-management.svg'" />User
+                                        Management</a></label>
+                            </li>
+                            <li>
+                                <p>Modules Settings</p>
+                                <label> <a> <img [nexaeiImageSrc]="'header/time-attendance.svg'" />Time &
+                                        Attendance</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/desktop-activity.svg'" />Desktop
+                                        Activity</a></label>
+                            </li>
+                            <li>
+                                <p>Add-ons Settings</p>
+                                <label> <a> <img [nexaeiImageSrc]="'header/leave.svg'" />Leave</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/shift-management.svg'" />Shift
+                                        Management
+                                        Activity</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/workflows.svg'" />Profile Management
+                                        Activity</a></label>
+                            </li>
+                            <li>
+                                <p>Feature Settings</p>
+                                <label> <a> <img [nexaeiImageSrc]="'header/permission.svg'" />Permission</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/notification.svg'" />Notification</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/workflows.svg'" />Workflows</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/features.svg'" />Features</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/automation.svg'" />Automation</a></label>
+                                <label> <a> <img [nexaeiImageSrc]="'header/integration.svg'" />Integration</a></label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>
+                            <img (click)="logout()" class="pointer" [nexaeiImageSrc]="'header/user.svg'" />
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

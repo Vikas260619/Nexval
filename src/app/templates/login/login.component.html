@@ -1,0 +1,130 @@
+<div class="container-fluid" *ngIf="!loggedinCheck" style="height:100vh; overflow-y:scroll; padding-bottom:40px; ">
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0">
+      <div class="gardientbackground">
+        <img class="w-100" [nexaeiImageSrc]="'login_process.png'" />
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0 res-stu bg-color-dark">
+      <div class="form-container">
+        <span class="logo col-md-12">
+          <img [nexaeiImageSrc]="'logo.png'" />
+          <h1>Welcome to Colab</h1>
+          <p>Login to your account</p>
+        </span>
+
+        <form class="" [formGroup]="loginForm" (ngSubmit)="login()">
+          <fieldset class="form_card g-3">
+            <div class="bg-color-gray row right-sec">
+              <div class="col-md-12">
+                <div class="input_field">
+                  <span class="icon">
+                    <img [nexaeiImageSrc]="'input_field/envelope.svg'"
+                  /></span>
+                  <input
+                    type="email"
+                    id=""
+                    [ngClass]="{
+                      error_input:
+                        loginFormControls.email?.dirty &&
+                        loginFormControls.email?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    placeholder="Email Address"
+                    [formControlName]="'email'"
+                    email="true"
+                  />
+                </div>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    loginFormControls.email?.dirty &&
+                    loginFormControls.email?.errors?.required
+                  "
+                >
+                  Email required
+                </p>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    loginFormControls.email?.dirty &&
+                    loginFormControls.email?.invalid &&
+                    !loginFormControls.email?.errors?.required
+                  "
+                >
+                  Invalid Email
+                </p>
+              </div>
+              <div class="col-md-12">
+                <div class="input_field">
+                  <span class="icon"
+                    ><img [nexaeiImageSrc]="'input_field/lock.svg'"
+                  /></span>
+                  <input
+                    type="password"
+                    [type]="shPassword ? 'text' : 'password'"
+                    [ngClass]="{
+                      error_input:
+                        loginFormControls.password.invalid &&
+                        loginFormControls.password?.dirty
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    id=""
+                    placeholder="Password"
+                    [formControlName]="'password'"
+                  />
+                  <p
+                    class="error_cntnt"
+                    *ngIf="
+                      loginFormControls.password?.dirty &&
+                      loginFormControls.password?.errors?.required
+                    "
+                  >
+                    Password required
+                  </p>
+                  <!--<label
+                    class="password_view"
+                    [ngClass]="{ active: shPassword }"
+                    >
+                    <a (click)="showPassword()"
+                      ><img [nexaeiImageSrc]="'input_field/eye.svg'" /></a
+                  >
+                </label>-->
+                  <!--<p class="error_cntnt">
+                    Use minimum 8 characters with a mix of letters (uppercase,
+                    lowercase) Numbers & Symbols
+                  </p>-->
+                </div>
+              </div>
+              <p class="text-center text-red pt-2" *ngIf="data">
+                {{ data }}
+              </p>
+              <div class="col-md-12">
+                <button type="submit" class="btn primary-xl">Login</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <span class="bottom-text">
+          <label class="login_cndtn redirec_sigin mt-4">
+            <h6><a [routerLink]="['/forgetpass/']">Forgot Password?</a></h6>
+          </label>
+        </span>
+
+        <span class="bottom-text">
+          <label class="login_cndtn redirec_sigin">
+            <h6>
+              Don't have account?
+              <a [routerLink]="['/signup/user-signup/']">Sign up</a>
+            </h6>
+          </label>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

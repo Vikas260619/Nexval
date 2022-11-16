@@ -1,0 +1,20 @@
+<span id="hyper" class="line-description">
+    <ul class="list-unstyled">
+      <li><a (click)="refreshFilter()"> <img [nexaeiImageSrc]="'calendar/refresh.png'" /></a>
+      <h6>Filter</h6>
+      <button><img [nexaeiImageSrc]="'close_n.png'"(click)="showStream()" /></button></li>
+    </ul>
+    <ul class="list-unstyled">
+     <p>By Date</p>
+     <span (click)="getSelected('today')" [ngClass]="selectedElement=='today' ? 'active' : ''" >Today</span>
+     <span (click)="getSelected('yesterday')" [ngClass]="selectedElement=='yesterday' ? 'active' : ''">Yesterday</span>
+     <span (click)="getSelected('thisWeek')" [ngClass]="selectedElement=='thisWeek' ? 'active' : ''">This Week</span>
+     <span (click)="getSelected('lastWeek')" [ngClass]="selectedElement=='lastWeek' ? 'active' : ''">Last Week</span>
+     <span (click)="getSelected('thisMonth')" [ngClass]="selectedElement=='thisMonth' ? 'active' : ''">This Month</span>
+     <span (click)="getSelected('lastMonth')" [ngClass]="selectedElement=='lastMonth' ? 'active' : ''">Last Month</span>
+     <label><input type="checkbox" /><p>Custom Date</p></label>
+     <li><input [nexaeiBackgroundImage]="'calendar/clndr.png'" type="text" placeholder="Start Date"/></li>
+     <li><input [nexaeiBackgroundImage]="'calendar/clndr.png'" type="text" placeholder="End Date"/></li>
+     <button class="btn primary-xl">Apply</button>
+    </ul>
+  </span>

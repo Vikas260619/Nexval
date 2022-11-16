@@ -1,0 +1,358 @@
+<div class="emv-invittion inv-modal">
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    #force_password_update_modal
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content pt-2 pb-2 border border-light">
+        <div class="modal-header border-0">
+          <div class="d-flex justify-content-center w-100">
+            <img width="120px" [nexaeiImageSrc]="'logo.png'" />
+          </div>
+          <!--<button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>-->
+        </div>
+
+        <p class="text-center">Update your name and password</p>
+        <div class="modal-body border-0 d-flex justify-content-center pt-1">
+          <div class="col-md-7">
+            <form [formGroup]="formForce" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6 pe-1">
+                  <div
+                    class="bg-dark-sec col-md-12 border-r p-new d-flex"
+                    [ngClass]="{
+                      error_input:
+                        forcedFormControl.firstName?.dirty &&
+                        forcedFormControl.firstName?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                  >
+                    <div>
+                      <img
+                        class="me-2 pt-1"
+                        width="14px"
+                        [nexaeiImageSrc]="'emp-invite/frame.png'"
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      [formControlName]="'firstName'"
+                      aria-describedby=""
+                      placeholder="First Name"
+                      class="form-control bg-dark-sec border-0 text-white"
+                    />
+                  </div>
+                  <P
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.firstName?.dirty &&
+                      forcedFormControl.firstName?.errors?.required
+                    "
+                    >First name required</P
+                  >
+
+                  <p
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.firstName?.dirty &&
+                      forcedFormControl.firstName?.errors?.invalidName &&
+                      !forcedFormControl.firstName?.errors?.required
+                    "
+                  >
+                    Field should be alphabetic only
+                  </p>
+                </div>
+
+                <div class="col-md-6 ps-1">
+                  <div
+                    class="bg-dark-sec col-md-12 border-r p-new d-flex"
+                    [ngClass]="{
+                      error_input:
+                        forcedFormControl.lastName?.dirty &&
+                        forcedFormControl.lastName?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                  >
+                    <div>
+                      <img
+                        class="me-2 pt-1"
+                        width="14px"
+                        [nexaeiImageSrc]="'emp-invite/frame.png'"
+                      />
+                    </div>
+                    <input
+                      type="text"
+                      [formControlName]="'lastName'"
+                      aria-describedby=""
+                      placeholder="Last Name"
+                      class="form-control bg-dark-sec border-0 text-white"
+                    />
+                  </div>
+                  <P
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.lastName?.dirty &&
+                      forcedFormControl.lastName?.errors?.required
+                    "
+                    >Last name required</P
+                  >
+
+                  <p
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.lastName?.dirty &&
+                      forcedFormControl.lastName?.errors?.invalidName &&
+                      !forcedFormControl.lastName?.errors?.required
+                    "
+                  >
+                    Field should be alphabetic only
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 pt-2">
+                  <div
+                    class="bg-dark-sec col-md-12 border-r p-new d-flex"
+                    [ngClass]="{
+                      error_input:
+                        forcedFormControl.email?.dirty &&
+                        forcedFormControl.email?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                  >
+                    <div>
+                      <img
+                        class="me-2 pt-1"
+                        width="18px"
+                        [nexaeiImageSrc]="'emp-invite/mail.png'"
+                      />
+                    </div>
+                    <input
+                      type="email"
+                      [formControlName]="'email'"
+                      aria-describedby=""
+                      placeholder="Email"
+                      class="form-control e-mail-text bg-dark-sec border-0 text-white"
+                      [(ngModel)]="userEmail"
+                      disabled="true"
+                    />
+                  </div>
+                  <p
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.email?.dirty &&
+                      forcedFormControl.email?.errors?.required
+                    "
+                  >
+                    Email required.
+                  </p>
+                  <p
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.email?.dirty &&
+                      forcedFormControl.email?.errors?.notvalidEmail &&
+                      !forcedFormControl.email?.errors?.required &&
+                      !forcedFormControl.email?.errors?.invalidDomain
+                    "
+                  >
+                    Please use valid email, only official emails are accepted
+                  </p>
+                  <p
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.email?.dirty &&
+                      forcedFormControl.email?.errors?.invalidDomain &&
+                      !forcedFormControl.email?.errors?.required
+                    "
+                  >
+                    Invalid Domain
+                  </p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 pt-2">
+                  <div
+                    class="bg-dark-sec col-md-12 border-r p-new d-flex"
+                    [ngClass]="{
+                      error_input:
+                        forcedFormControl.password?.dirty &&
+                        forcedFormControl.password?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                  >
+                    <div>
+                      <img
+                        class="me-2 pt-1"
+                        width="15px"
+                        [nexaeiImageSrc]="'emp-invite/password.png'"
+                      />
+                    </div>
+                    <input
+                      [type]="shPassword ? 'text' : 'password'"
+                      [formControlName]="'password'"
+                      aria-describedby=""
+                      placeholder="New Password"
+                      class="form-control bg-dark-sec border-0 text-white"
+                    />
+                    <div
+                      class="password_view"
+                      [ngClass]="{ active2: shPassword }"
+                    >
+                      <a (click)="showPassword()">
+                        <img
+                          class="me-2 pt-1"
+                          width="20px"
+                          [nexaeiImageSrc]="'input_field/eye.svg'"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <p
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.password?.dirty &&
+                      forcedFormControl.password?.errors?.required
+                    "
+                  >
+                    Password required
+                  </p>
+                  <p
+                    class="error_cntnt2 pt-1 minimum-show"
+                    *ngIf="
+                      forcedFormControl.password?.dirty &&
+                      forcedFormControl.password?.errors?.invalidPassword &&
+                      !forcedFormControl.password?.errors?.required
+                    "
+                  >
+                    Use minimum 8 characters with a mix of letters (uppercase,
+                    lowercase) Numbers & Symbols
+                  </p>
+                </div>
+              </div>
+
+              <div class="row pb-3">
+                <div class="col-md-12 pt-2">
+                  <div
+                    class="bg-dark-sec col-md-12 border-r p-new d-flex"
+                    [ngClass]="{
+                      error_input:
+                        forcedFormControl.confirmPassword?.dirty &&
+                        forcedFormControl.confirmPassword?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                  >
+                    <div>
+                      <img
+                        class="me-2 pt-1"
+                        width="15px"
+                        [nexaeiImageSrc]="'emp-invite/password.png'"
+                      />
+                    </div>
+                    <input
+                      [type]="shPasswordC ? 'text' : 'password'"
+                      [formControlName]="'confirmPassword'"
+                      aria-describedby=""
+                      placeholder="Confirm New Password"
+                      class="form-control bg-dark-sec border-0 text-white"
+                    />
+                    <div
+                      class="password_view"
+                      [ngClass]="{ active2: shPasswordC }"
+                    >
+                      <a (click)="showPasswordConfirm()">
+                        <img
+                          class="me-2 pt-1"
+                          width="20px"
+                          [nexaeiImageSrc]="'input_field/eye.svg'"
+                      /></a>
+                    </div>
+                  </div>
+                  <p
+                    class="error_cntnt2 pt-1"
+                    *ngIf="
+                      forcedFormControl.confirmPassword?.dirty &&
+                      forcedFormControl.confirmPassword?.errors?.required
+                    "
+                  >
+                    Password required
+                  </p>
+                  <p
+                    class="error_cntnt2 minimum-show pt-1"
+                    *ngIf="
+                      forcedFormControl.confirmPassword?.dirty &&
+                      forcedFormControl.confirmPassword?.errors?.mustMatch &&
+                      !forcedFormControl.confirmPassword?.errors?.required
+                    "
+                  >
+                    Password and confirm password not match
+                  </p>
+                </div>
+              </div>
+
+              <!--<small class="text-white"
+                >Use minimum 8 characters with a mix of letters (uppercase,
+                lowercase) Numbers & Symbols</small
+              >-->
+
+              <div class="form-check pt-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckChecked"
+                  (change)="onCheckboxChange($event.target.checked)"
+                />
+                <label
+                  class="form-check-label check_emv"
+                  for="flexCheckChecked"
+                >
+                  You agree to our
+                  <a [routerLink]="['/comingsoon/']">Privacy Policy</a> and
+                  <a [routerLink]="['/comingsoon/']">Terms and Conditions </a>
+                </label>
+                <p
+                  class="error_cntnt2 pt-1 spcl_cndtn"
+                  *ngIf="serverErrorMessage"
+                >
+                  {{ serverErrorMessage }} !!
+                </p>
+              </div>
+
+              <button
+                type="submit"
+                class="btn primary-xl mt-4"
+                data-bs-target="#staticBackdrop"
+                [disabled]="!isTermsChecked"
+              >
+                Continue
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

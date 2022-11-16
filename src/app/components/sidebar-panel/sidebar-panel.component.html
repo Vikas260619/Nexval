@@ -1,0 +1,69 @@
+<div *ngIf="sideBarPanel.isSidePanelVisible">
+  <div id="wrapper">
+    <div id="fixscroll">
+      <div class="navbar-header">
+        <a class="navbar-brand" id="sidebar-toggle"><img [nexaeiImageSrc]="'sidebar/left-arrow.svg'" /></a>
+      </div>
+      <aside id="sidebar-wrapper">
+        <div id="sidebar-wrapper-main">
+          <div class="sidebar-brand">
+            <img [nexaeiImageSrc]="'sidebar/user-image.svg'" />
+          </div>
+        </div>
+        <ul class="sidebar-nav">
+          <li class="active">
+            <a>
+              <span>
+                <img [nexaeiImageSrc]="'sidebar/members.svg'" />
+                <img [nexaeiImageSrc]="'sidebar/members-hov.svg'" />
+              </span>
+              Member
+            </a>
+          </li>
+          <li>
+
+            <a> <span>
+                <img [nexaeiImageSrc]="'sidebar/access.svg'" />
+                <img [nexaeiImageSrc]="'sidebar/access-hov.svg'" />
+              </span>
+              Access</a>
+          </li>
+          <li>
+            <a> <span>
+                <img [nexaeiImageSrc]="'sidebar/profile.svg'" />
+                <img [nexaeiImageSrc]="'sidebar/profile-hov.svg'" />
+              </span>
+              Profile</a>
+          </li>
+          <li>
+            <a> <span>
+                <img [nexaeiImageSrc]="'sidebar/device.svg'" />
+                <img [nexaeiImageSrc]="'sidebar/device-hov.svg'" />
+              </span>
+              Devices</a>
+          </li>
+          <li>
+
+            <a> <span>
+                <img [nexaeiImageSrc]="'sidebar/permission.svg'" />
+                <img [nexaeiImageSrc]="'sidebar/permission-hov.svg'" />
+              </span>
+              Permission</a>
+          </li>
+          <li>
+            <a> <span>
+                <img [nexaeiImageSrc]="'sidebar/settings.svg'" />
+                <img [nexaeiImageSrc]="'sidebar/settings-hov.svg'" />
+              </span>
+              Setting</a>
+          </li>
+        </ul>
+        <div class="sidebar-bottom">
+          <p>Provided by</p>
+          <img [nexaeiImageSrc]="'logo.svg'" />
+        </div>
+      </aside>
+    </div>
+  </div>
+
+</div>

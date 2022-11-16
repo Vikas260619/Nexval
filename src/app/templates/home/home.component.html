@@ -1,0 +1,25 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+
+<div class="inner-sec_">
+    <section>
+        <div class="row">
+            <div class="col-lg-12 w-100 float-start text-center">
+                <!--empty data-->
+                <div class="table-empty-content welcom_innov">
+                    <span>
+                        <img [nexaeiImageSrc]="'member/member-qr.png'" />
+                        <h6>Welcome Shelly, at your Innovation Headquater</h6>
+                        <p>You can add Collegues, Team, and Support Colabs for your chosen activity or you can colab <br> 
+                            with Nexi, the Bot assistent to get started.</p>
+                            <p>Please give phone number to get the app link in "mobile" or scan QR code drom above</p>
+                        <button class="btn primary-xl mt-3"><a [routerLink]="['/dashboard/member']">Get 
+                                Link</a></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-invitation-code-popup></app-invitation-code-popup>
+

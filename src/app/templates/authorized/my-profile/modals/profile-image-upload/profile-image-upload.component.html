@@ -1,0 +1,106 @@
+<div class="emv-invittion">
+  <div
+    class="modal fade"
+    #crop_modal
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="text-center col-11">
+            <h6 class="modal-title">Profile Picture</h6>
+            <small class="text-white"
+              >Please upload your profile picture, your colleague will recognize
+              you better.
+            </small>
+          </div>
+          <button
+            type="button"
+            class="btn-close"
+            (click)="closeCropModal()"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="d-flex justify-content-center col-md-12">
+              <image-cropper
+                style="width: 350px;height: 300px;"
+                *ngIf="fileUploaded"
+                #cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [imageBase64]="currentImage"
+                [maintainAspectRatio]="true"
+                [crossOrigin]="true"
+                [aspectRatio]="4 / 4"
+                [resizeToWidth]="650"
+                [roundCropper]="true"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()"
+              ></image-cropper>
+              <img
+                *ngIf="!fileUploaded"
+                src="./assets/images/no-img.png"
+                width="300"
+              />
+            </div>
+            <!--<div class="text-center col-md-4">
+                        <h5>Preview</h5>
+                        <img [src]="croppedImage" />
+                    </div>-->
+          </div>
+        </div>
+        <div class="modal-footer border-0 d-flex justify-content-center pb-3">
+          <div class="d-flex">
+            
+            <div class="d-flex text-white">
+              <!-- <div>
+                <img class="me-2" width="26px" [nexaeiImageSrc]="'imageicon.png'" /></div> Browse photos 
+            </div>-->
+              <div class="row pt-2" >
+                <div class="text-center col-md-12">
+                  <input
+                    class="file-upload"
+                    type="file"
+                    (change)="fileChangeEvent($event)"
+                  />
+                  <div class="d-flex text-white ms-3 mid-brow" >
+                    <div>
+                      <img
+                        class="me-2"
+                        width="26px"
+                        [nexaeiImageSrc]="'imageicon.png'"
+                      />
+                    </div>
+                    Browse photos
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex ms-4">
+              <div class="text-white d-flex" style="cursor:pointer">
+                <div class="pt-1 pe-2">
+                  <img width="26px" [nexaeiImageSrc]="'deletcer.png'" />
+                </div>
+                <h6 class="fw-normal pt-2" (click)="deleteImage()" style="cursor:pointer">Delete</h6>
+              </div>
+
+              <button type="submit" class="btn save" (click)="imageSave()" [disabled]="!uploaded"  >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+
+a {
+  color: #ccc !important;
+  text-decoration: none !important;
+}
+.gardientbackground img {
+  position: absolute;
+  bottom: 0;
+}
+button.btn.primary-xl {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+}
+
+.av-selected-label {
+    position: absolute;
+    width: 100%;
+    float: left;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  
+  .av-selected-label input {
+    display: none;
+  }
+  
+  .av-selected-label .icon {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: none;
+    border: none;
+    border-radius: 0;
+  }
+
+  .av-selected-label .icon:before {
+    content: "";
+    background: url("../../../../assets/images/org_setup/tick_org_setup.png") CENTER CENTER NO-REPEAT;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+    opacity: 0;
+    background-size: 22px;
+    right: 8px;
+    top: 8px;
+  }
+  
+  .av-selected-label input:checked + .icon {
+    border-color: #3057d5;
+  }
+  
+  .av-selected-label input:checked + .icon:before {
+    color: #fff;
+    opacity: 1;
+  }
+  
+  .av-selected-label input:checked ~ .av-selected-content {
+    box-shadow: 0 2px 4px 0 rgba(219, 215, 215, 0.5);
+    border: solid 2px #3057d5;
+  }
+
+  .input_field label {
+    position: absolute;
+    top: 11px;
+    right: -23px;
+    font-size: 24px;
+    color: #A4A4A4;
+}
+
+.input_field label.transform {
+  transform: rotate(45deg);
+}
+
+.input_field label a {
+  cursor: pointer;
+}
+
+.input_field label a:hover {
+  opacity: 0.7;
+}
+
+.gardientbackground {
+  position: relative;
+  width: auto;
+  height: 100%;
+}
+
+@media (max-width: 1270px){
+.gardientbackground img {
+    height: auto;
+}
+}

@@ -1,0 +1,90 @@
+.chat_btm {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    padding: 0 59px;
+}
+
+
+.form-check-input {
+
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.form-check-label 
+{
+    font-size: 12px;
+    padding-left: 20px;
+    padding-top: 6px;
+}
+
+// .form-check-input:checked {
+//     background-color: #61C532;
+//     border-color: #61C532;
+// }
+.error_cntnt2 {
+    color: #f25945;
+    font-size: 12px !important;
+    margin-bottom: 0;
+    margin-top: 0;
+    bottom: 4px;
+}
+.modal {
+    background-color: rgba(0, 0, 0, 0.6)!important;
+}
+input:focus, input:active, input:focus-visible {
+    background: #000;
+    border:none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.password_view img {
+
+    opacity: .4;
+}
+
+.active2 img{
+    opacity: .9!important;
+}
+
+.border-light {
+    border-color: #a9a9a9!important;
+}
+
+.p-new {
+
+    padding: 12px 15px;
+}
+
+.p-new img {
+
+    margin-top: 4px;
+}
+
+.form-control {
+    font-size: 14px !important;
+}
+
+.inv-modal p {
+
+    font-size: 14px;
+}
+
+.e-mail-text  {
+    color:#7e7f80 !important
+}
+
+
+
+.form-check-input:focus {
+
+    border: 2px solid white !important;
+}
+
+
+.form-check-input:checked {
+    background-color: #61c532 !important;
+    border: 2px solid #61c532 !important;
+}

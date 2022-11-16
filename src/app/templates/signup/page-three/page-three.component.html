@@ -1,0 +1,185 @@
+<div class="container-fluid" style="overflow-y:auto; height:100vh;">
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0">
+      <div class="gardientbackground">
+        <img class="w-100" [nexaeiImageSrc]="'org_setup/org_setup-1.png'" />
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0 res-stu bg-color-dark">
+      <div class="form-container">
+        <span class="logo col-md-12">
+          <img [nexaeiImageSrc]="'logo.png'" />
+          <h1>Setup Your Organization</h1>
+          <p>Help us to know your business better</p>
+        </span>
+
+        <form class="" [formGroup]="registerFormThree" (ngSubmit)="onSubmit()">
+          <fieldset class="form_card">
+            <div class="bg-color-gray row right-sec">
+              <div class="col-md-12">
+                <span *ngIf="isServerError" class="d-block invalid-feedback">{{
+                  serverErrorMessage
+                }}</span>
+                <div class="input_field">
+                  <label
+                    ><a (click)="domainShow()" *ngIf="showDomainFlag == 0"
+                      >+</a
+                    ></label
+                  >
+                  <span class="icon">
+                    <img [nexaeiImageSrc]="'/input_field/web.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    [formControlName]="'email'"
+                    placeholder="email"
+                    [ngClass]="{
+                      error_input:
+                        registerFormThree.controls.email?.dirty &&
+                        registerFormThree.controls.email?.errors?.required
+                    }"
+                    [(ngModel)]="currEmail"
+                    disabled="true"
+                  />
+                </div>
+
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormThree.controls.email?.dirty &&
+                    registerFormThree.controls.email?.errors?.required
+                  "
+                >
+                  Email Required
+                </p>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormThree.controls.email?.dirty &&
+                    registerFormThree.controls.email?.errors?.email
+                  "
+                >
+                  Email format incorrect
+                </p>
+
+                <div class="input_field" *ngIf="showDomain">
+                  <label class="transform"
+                    ><a (click)="domainShowHide()">+</a></label
+                  >
+                  <span class="icon">
+                    <img [nexaeiImageSrc]="'/input_field/web.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    [formControlName]="'extraDomain'"
+                    placeholder="Add other domain"
+                    [ngClass]="{
+                      error_input:
+                        registerFormThree.controls.extraDomain?.dirty &&
+                        registerFormThree.controls.extraDomain?.errors
+                    }"
+                    [(ngModel)]="extraDomain"
+                  />
+                </div>
+
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormThree.controls.extraDomain?.dirty &&
+                    registerFormThree.controls.extraDomain?.errors?.required &&
+                    !registerFormThree.controls.extraDomain?.errors
+                      ?.invalidDomain
+                  "
+                >
+                  Domain Required
+                </p>
+                <p
+                  class="error_cntnt"
+                  *ngIf="
+                    registerFormThree.controls.extraDomain?.dirty &&
+                    registerFormThree.controls.extraDomain?.errors
+                      ?.notvalidDomain
+                  "
+                >
+                  Invalid Domain
+                </p>
+              </div>
+
+              <div class="col-md-12">
+                <div class="input_field">
+                  <span class="icon"
+                    ><img [nexaeiImageSrc]="'/input_field/org.svg'"
+                  /></span>
+                  <input
+                    type="text"
+                    id=""
+                    placeholder="Organization Name"
+                    [formControlName]="'orgName'"
+                    [ngClass]="{
+                      error_input:
+                        registerFormThree.controls.orgName?.dirty &&
+                        registerFormThree.controls.orgName?.errors?.required
+                    }"
+                  />
+                  <p
+                    class="error_cntnt"
+                    *ngIf="
+                      registerFormThree.controls.orgName?.dirty &&
+                      registerFormThree.controls.orgName?.errors?.required
+                    "
+                  >
+                    Organization Required
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="choose_indus">
+              <h6>Choose your industry</h6>
+              <div>
+                <div *ngFor="let vertical of verticals">
+                  <span>
+                    <label
+                      class="av-selected-label"
+                      for="selected-item-{{ vertical.id }}"
+                    >
+                      <input
+                        #checkboxes
+                        type="checkbox"
+                        name="selected-item"
+                        id="selected-item-{{ vertical.id }}"
+                        value="{{ vertical.id }}"
+                        (click)="
+                          checkVertival($any($event).target.value, $event)
+                        "
+                      />
+                      <span class="icon"></span>
+                    </label>
+                    <img
+                      [nexaeiImageSrc]="'org_setup/flow/choose_icon_1.png'"
+                    />
+                    <p>{{ vertical.name }}</p>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 mt-4 mb-5 float-start">
+              <button
+                type="submit"
+                class="btn primary-xl"
+                [disabled]="!submitBtn"
+              >
+                Continue
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-invitation-code-popup></app-invitation-code-popup>

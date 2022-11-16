@@ -1,0 +1,125 @@
+.button-section button {
+    float: right;
+    background: no-repeat;
+    border: none;
+    font-size: 14px;
+    margin: 0 0 0 17px;
+}
+
+.inner-sec_ {
+    background: #343434;
+}
+
+.subheader h5 a {
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 18px 0 0;
+    font-size: 32px;
+    line-height: 0;
+    float: left;
+    font-weight: 300;
+}
+
+.tablesection tr td span {
+    font-size: 18px;
+}
+
+.tablesection tr td label img {
+    width: 12px;
+}
+
+.tablesection tr td:first-child span:last-child {
+    margin-top: 6px;
+    display: flex;
+    font-size: 17px;
+}
+
+.tablesection tr td span.border {
+    width: 38px;
+    float: left;
+    height: 39px;
+    border-radius: 50px;
+    border: 2px solid #43cc2c!important;
+    margin-right: 8px;
+}
+
+.tablesection tr td span.border img {
+    width: 100%;
+}
+
+.tablesection tr {
+    background: #000;
+    border-radius: 9px;
+    display: block;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    padding: 3px 10px;
+}
+
+.tablesection tr td:nth-child(3) label{
+    float: left;
+    display: flex;
+    width: 70%;
+}
+
+.tablesection tr td:nth-child(3) span{
+    background: #554f4f;
+    padding: 0px 5px;
+    height: 90px;
+    border-radius: 3px;
+    border: 1px solid white;
+    position: relative;
+    top: 5px;
+}
+
+.tablesection tr td:nth-child(3) span img{
+   width: 12px;
+}
+
+.tablesection span img {
+    width: 22px;
+}
+
+.tablesection span.dotted img {
+    width: 6px;
+}
+
+.subheader h5 {
+    font-size: 16px;
+}
+
+.subheader {
+    justify-content: space-between;
+}
+
+.button-section button img {
+    width: 22px;
+}
+
+.button-section button.special {
+    margin: 1px 0 3px 0!important;
+}
+
+.button-section button.special img {
+    width: 15px!important;
+    margin: 2px 8px 0 0;
+    float: left;
+}
+
+button.special.special-border img {
+    width: 26px!important;
+}
+
+//table seection
+.tablesection {
+    color: #fff;
+}
+
+.tablesection tr td {
+    color: #fff;
+    border: none;
+    font-size: 12px;
+}

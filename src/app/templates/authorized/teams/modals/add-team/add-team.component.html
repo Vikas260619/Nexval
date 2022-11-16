@@ -1,0 +1,273 @@
+<div class="emv-invittion inv-modal">
+<div
+  #add_team_modal
+  class="modal fade"
+  id="team-colab"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+  
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content org_setup_skip_model">
+      <div class="modal-header border-0">
+        <button
+          type="button"
+          class="btn-close-model"
+          aria-label="Close"
+          (click)="closeTeamCreateModal()"
+        >
+          X
+        </button>
+      </div>
+      <div class="modal-body team-colab pt-0">
+        <h5 class="text-center">Create Team Colab</h5>
+
+        <form class="" [formGroup]="registerFormTeam" (ngSubmit)="onSubmit()">
+          <fieldset class="form_card">
+            <div class="col-md-12">
+              <div class="input_field input_field_modal">
+                <span class="icon">
+                  <img
+                    [nexaeiImageSrc]="'temes.png'"
+                /></span>
+                <input
+                  type="text"
+                  id=""
+                  placeholder='Team Name e.g. "Sales" or "Design"'
+                  [formControlName]="'teamName'"
+                  (keypress)="activate()"
+                  [ngClass]="{
+                    error_input:
+                      registerFormControl.teamName?.dirty &&
+                      registerFormControl.teamName?.invalid
+                  }"
+                  [ngClass]="{
+                    error_input: hasError
+                  }"
+                />
+
+                <p
+                  class="error_cntnt_3"
+                  *ngIf="
+                    registerFormControl.teamName?.dirty &&
+                    registerFormControl.teamName?.invalid &&
+                    !registerFormControl.teamName?.errors?.required &&
+                    !registerFormControl.teamName?.errors?.invalidNm &&
+                    !registerFormControl.teamName?.errors?.invalidsp &&
+                    !registerFormControl.teamName?.errors?.maxlength
+                  "
+                >
+                  Space not allowed.
+                </p>
+                <p
+                  class="error_cntnt_3"
+                  *ngIf="
+                    registerFormControl.teamName?.dirty &&
+                    registerFormControl.teamName?.errors?.required
+                  "
+                >
+                  Name required.
+                </p>
+                <p
+                  class="error_cntnt_3"
+                  *ngIf="
+                    registerFormControl.teamName?.dirty &&
+                    registerFormControl.teamName?.errors?.maxlength
+                  "
+                >
+                  Maximum 50 characters allowed.
+                </p>
+                <p
+                  class="error_cntnt_3"
+                  *ngIf="
+                    registerFormControl.teamName?.dirty &&
+                    registerFormControl.teamName?.errors?.invalidNm &&
+                    !registerFormControl.teamName?.errors?.required
+                  "
+                >
+                  Only numbers not allowed
+                </p>
+                <p
+                  class="error_cntnt_3"
+                  *ngIf="
+                    registerFormControl.teamName?.dirty &&
+                    registerFormControl.teamName?.errors?.invalidsp &&
+                    !registerFormControl.teamName?.errors?.required
+                  "
+                >
+                  Only special characters not allowed
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <span
+                class="des_slider_popup"
+                (click)="showDescription()"
+                *ngIf="hideDescText"
+                >+ Description</span
+              >
+              <div class="input_field input_field_model" *ngIf="showDesc">
+                <textarea
+                  id=""
+                  name=""
+                  rows="4"
+                  cols="50"
+                  placeholder="Description"
+                  [formControlName]="'desc'"
+                  [ngClass]="{
+                    error_input:
+                      registerFormControl.desc?.dirty &&
+                      registerFormControl.desc?.invalid
+                  }"
+                ></textarea>
+              </div>
+              <p
+                class="error_cntnt_3"
+                *ngIf="
+                  registerFormControl.desc?.dirty &&
+                  registerFormControl.desc?.errors?.required
+                "
+              >
+                Description required.
+              </p>
+            </div>
+
+            <!-- <div class="col-md-12">
+              <div class="input_field input_field_modal">
+                <span class="icon">
+                  <img [nexaeiImageSrc]="'member/input-field/user-circle.svg'"
+                /></span>
+                <input
+                  type="text"
+                  id=""
+                  placeholder="Add members by name or email address"
+                />
+              </div>
+            </div> -->
+            <p
+              class="error_cntnt_3"
+              *ngIf="
+                registerFormControl.email?.dirty &&
+                registerFormControl.email?.errors?.required
+              "
+            >
+              Email required.
+            </p>
+            <p
+              class="error_cntnt_3"
+              *ngIf="
+                registerFormControl.email?.dirty &&
+                registerFormControl.email?.errors?.notvalidEmail &&
+                !registerFormControl.email?.errors?.required &&
+                !registerFormControl.email?.errors?.invalidDomain
+              "
+            >
+              Invalid Email
+            </p>
+            <p
+              class="error_cntnt_3"
+              *ngIf="
+                registerFormControl.email?.dirty &&
+                registerFormControl.email?.errors?.invalidDomain &&
+                !registerFormControl.email?.errors?.required
+              "
+            >
+              invalid Domain
+            </p>
+
+            <!-- <div class="col-md-12">
+              <div class="input_field input_field_modal">
+                <span class="icon">
+                  <img
+                    class="spl-input-icon"
+                    [nexaeiImageSrc]="'member/input-field/user-tie.svg'"
+                /></span>
+                <input
+                  type="text"
+                  id=""
+                  placeholder="Add members by name or email address"
+                />
+              </div>
+            </div> -->
+            <div class="col-md-12">
+              <div class="col-md-12 input_field_add">
+                <app-autocomplete
+                  (hasError)="changeError($event)"
+                  (showButton)="buttonVisible($event)"
+                  (sameUser)="sameUserCheck($event)"
+                  (inList)="alreadyInList($event)"
+                ></app-autocomplete>
+              </div>
+              <p *ngIf="sameUser == true" [ngClass]="{ error_cntnt_3: sameUser }">
+                Cannot send invitation to youself
+              </p>
+               <p *ngIf="inList == true" [ngClass]="{ error_cntnt_3: inList }">
+                User already in list
+              </p>
+              <p *ngIf="errMsg" [ngClass]="{ error_cntnt_3: errMsg }">
+                This is not an Email id
+              </p>
+              <p *ngIf="serverErrorMessage" class="error_cntnt_3">
+                {{ serverErrorMessage }}
+              </p> 
+            </div>
+
+            <!-- <div class="col-md-12">
+              <div class="input_field input_field_modal">
+                <span class="icon">
+                  <img [nexaeiImageSrc]="'member/input-field/parent-time.svg'"
+                /></span>
+                <input
+                  type="text"
+                  id=""
+                  placeholder="Select a Parent Team (Optional)"
+                />
+                <p class="error_cntnt_3 spcl-fnt" *ngIf="serverErrorMessage">
+                  {{ serverErrorMessage }} !!
+                </p>
+              </div>
+            </div> -->
+
+            <!-- <div class="col-md-12">
+              <label class="login_cndtn"
+                ><input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="flexCheckChecked"
+                />
+                <label
+                  class="form-check-label check_emv"
+                  for="flexCheckChecked"
+                ></label>
+                <h6 style="margin: 0">Keep me as a passive member</h6>
+                <p>
+                  If you check this option you will no be a part of the
+                  collaboration but you will still be able to view and download
+                  reports
+                </p></label
+              >
+            </div> -->
+
+            <div class="col-md-12 mt-2 float-start">
+              <button
+                type="submit"
+                class="btn primary-xl primary-xl-modal"
+                [disabled]="
+                  !isTermsChecked ||
+                  registerFormControl.teamName?.errors?.required
+                "
+              >
+                Create
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

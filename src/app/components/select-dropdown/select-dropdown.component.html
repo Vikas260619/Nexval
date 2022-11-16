@@ -1,0 +1,11 @@
+<div class="dropdown">
+    <button #select_dropdown class="select-default select-blue" type="button" id="select-dropdown"
+        (click)="toggleDropdown()" data-bs-toggle="dropdown" aria-expanded="false" [nexaeiBackgroundImage]="'drop.png'">
+        {{selected}}
+    </button>
+    <ul class="dropdown-menu select-list" aria-labelledby="select-dropdown">
+        <li *ngFor="let item of items">
+            <a (click)="selectItem(item.name)" class="dropdown-item">{{item.name}}</a>
+        </li>
+    </ul>
+</div>

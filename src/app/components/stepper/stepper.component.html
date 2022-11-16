@@ -1,0 +1,65 @@
+<section id="stepper-shadow">
+    <!-- Horizontal Steppers -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center stepper-header width-full">
+                <span class="special"><a><img [nexaeiImageSrc]="'back.svg'" /></a></span>
+
+                <p>Get Start with <img [nexaeiImageSrc]="'logo.svg'" /></p>
+                <span><a><img [nexaeiImageSrc]="'eye.svg'" /></a></span>
+            </div>
+            <!-- Stepers Wrapper -->
+            <ul class="list-unstyled stepper-horizontal">
+
+                <!-- First Step -->
+                <li [ngClass]="memberCount > 0 ? 'completed' : ''">
+                    <a>
+                        <span><img [nexaeiImageSrc]="'tick.svg'" /></span>
+                        <span>Invite Member</span>
+                    </a>
+                </li>
+
+                <!-- Second Step -->
+                <li [ngClass]="teamCount > 0 ? 'completed' : ''">
+                    <a>
+                        <span><img [nexaeiImageSrc]="'tick.svg'" /></span>
+                        <span>Create a Team</span>
+                    </a>
+                </li>
+
+                <!-- Third Step -->
+                <li [ngClass]="deptCount > 0 ? 'completed' : ''">
+                    <a>
+                        <span><img [nexaeiImageSrc]="'tick.svg'" /></span>
+                        <span>Add Department</span>
+                    </a>
+                </li>
+                <!-- Fourth Step -->
+                <li>
+                    <a>
+                        <span><img [nexaeiImageSrc]="'tick.svg'" /></span>
+                        <span>Adjust Features</span>
+                    </a>
+                </li>
+                <!-- Fifth Step -->
+                <li>
+                    <a>
+                        <span><img [nexaeiImageSrc]="'tick.svg'" /></span>
+                        <span>Download App</span>
+                    </a>
+                </li>
+                <!-- Sixth Step -->
+                <li>
+                    <a>
+                        <span><img [nexaeiImageSrc]="'tick.svg'" /></span>
+                        <span>Track Time</span>
+                    </a>
+                </li>
+
+            </ul>
+            <!-- /.Stepers Wrapper -->
+
+        </div>
+    </div>
+    <!-- /.Horizontal Steppers -->
+</section>

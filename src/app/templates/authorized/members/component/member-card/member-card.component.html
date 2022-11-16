@@ -1,0 +1,42 @@
+<ul id="CollegueDes" class="sidebar-nav mt-3 mb-0 padding-adjust">
+  <li class="collaspe-view list-unstyled pb-4 border-0">
+    <span>Colleagues</span
+    ><label *ngIf="userRole=='SUPERADMIN'" (click)="openInvitionSendModal()" class="add-collegue"
+      ><img [nexaeiImageSrc]="'sidebar/add-user.png'" /> Invite Collegue
+    </label>
+  </li>
+  <span *ngFor="let c of colleagueListData">
+    <li (click)="collegueClick(c)"
+      class="list-unstyled user-status"
+      [class]="{
+        active: selectedColleague === c.sendbird_user_details.user_id
+      }"
+    >
+      <h4
+        [class]="c.latest_punch_type == 'IN' ? 'border-green' : 'border-gray-n'"
+      >
+        <img src="{{c.userpicture}}" *ngIf="c.userpicture" />
+        <span *ngIf="!c.userpicture" class="text-dark upper" >{{ c.fname.charAt(0) }}</span>
+      </h4>
+      <span data-bs-toggle="collapse">
+        <h5>{{ c.fname }} {{ c.lname }}</h5>
+        <!--<label (click)="collegueClick(c)"
+          >Yes we can do this but we need to do...</label
+        >--></span
+      >
+      <p>{{ c.latest_punch_time ? (c.latest_punch_time | formatTimestampTime):'' }}</p>
+    </li>
+  </span>
+</ul>
+
+<div
+  (click)="hideStream()"
+  id="IconCollegue"
+  class="tgle-icon w-100 pt-2 pb-2 text-center"
+  [class]="colleagueListData && colleagueListData.length < 4 ? 'disabled' : ''"
+>
+  <span></span>
+  <label>
+    <img [nexaeiImageSrc]="'sidebar/down-arrow.png'" />
+  </label>
+</div>

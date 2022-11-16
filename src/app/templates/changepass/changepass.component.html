@@ -1,0 +1,112 @@
+<div class="forgetpass">
+  <div class="container">
+    <div class="row justify-content-between pt-70 ps-lg-5 ps-0">
+      <div class="col-lg-4 pt-5 d-md-none d-lg-block">
+        <img
+          class="pt-lg-5"
+          width="85%"
+          [nexaeiImageSrc]="'forgerpassword/forget.png'"
+        />
+      </div>
+
+      <div class="col-md-6 col-lg-7 col-xl-6 p-0 res-stu bg-color-dark">
+        <div class="form-container w-75">
+          <span class="logo col-md-12">
+            <img width="100%" [nexaeiImageSrc]="'logo.png'" />
+            <h1>Change Password</h1>
+            <p>Enter new password</p>
+          </span>
+          <form class="mt-3" [formGroup]="changePass" (ngSubmit)="onSubmit()">
+            <fieldset class="form_card g-3">
+              <div class="bg-color-gray row right-sec mt-5">
+                <div class="col-md-12">
+                  <div class="input_field">
+                    <span class="icon"
+                      ><img src="./assets/images/input_field/lock.svg" /> </span
+                    ><input
+                      type="password"
+                      [formControlName]="'password'"
+                      placeholder="New Password"
+                      [ngClass]="{
+                        error_input:
+                        changePassControl.password?.dirty &&
+                        changePassControl.password?.invalid
+                      }"
+                    />
+                  </div>
+                </div>
+                <p
+                  class="error_cntnt-new"
+                  *ngIf="
+                    changePassControl.password?.dirty &&
+                    changePassControl.password?.errors?.required
+                  "
+                >
+                  Password required
+                </p>
+                <p
+                  class="error_cntnt-new"
+                  *ngIf="
+                    changePassControl.password?.dirty &&
+                    changePassControl.password?.errors?.invalidPassword &&
+                    !changePassControl.password?.errors?.required
+                  "
+                >
+                  Use minimum 8 characters with a mix of letters (uppercase,
+                  lowercase) Numbers & Symbols
+                </p>
+
+                <div class="col-md-12">
+                  <div class="input_field">
+                    <span class="icon"
+                      ><img src="./assets/images/input_field/lock.svg" /></span
+                    ><input
+                      type="password"
+                      [formControlName]="'confirmPassword'"
+                      placeholder="Confirm New Password"
+                      [ngClass]="{
+                        error_input:
+                        changePassControl.confirmPassword?.dirty &&
+                        changePassControl.confirmPassword?.invalid
+                      }"
+                    />
+                  </div>
+                </div>
+                <p
+                class="error_cntnt-new"
+                *ngIf="
+                changePassControl.confirmPassword?.dirty &&
+                changePassControl.confirmPassword?.errors?.required
+                "
+              >
+                Password required
+              </p>
+              <p
+                class="error_cntnt-new"
+                *ngIf="
+                changePassControl.confirmPassword?.dirty &&
+                changePassControl.confirmPassword?.errors?.mustMatch &&
+                  !changePassControl.confirmPassword?.errors?.required
+                "
+              >
+                Password and confirm password not match
+              </p>
+                <!-- <p class="use">
+                  Use minimum 8 characters with a mix of letters (uppercase,
+                  lowercase) Numbers & Symbols
+                </p> -->
+                <p class="error_cntnt-new" *ngIf="serverErrorMessage">
+                    {{ serverErrorMessage }} !!
+                  </p>
+
+                <div class="col-md-12">
+                  <button type="submit" class="btn primary-xl">Done</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

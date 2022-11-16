@@ -1,0 +1,123 @@
+<app-sidebar-pane-black></app-sidebar-pane-black>
+<app-header-pane></app-header-pane>
+<div class="mid-sec bg-dark-sec p-5 pt-4 emv-invittion" style="height:100vh; overflow-y:scroll;">
+    <section class="d-flex justify-content-start">
+        <div class="row col-md-8">
+       
+            <div class="col-12 d-flex">
+                <a  (click)="goBack()"  style="cursor: pointer;">
+                    <img class="left-arow" [nexaeiImageSrc]="'emp-invite/arrow.png'" />
+                   </a>
+                <div class="me-3">
+                    <div class="profilepic-new fw-bold "><img *ngIf="profileImage!='null'" src="{{profileImage}}">
+                      <div *ngIf="profileImage=='null'">  {{ fullname.charAt(0) }}</div> </div>
+                   
+                </div>
+                <div class="position-relative">
+                    <h6 class="text-white fw-normal pt-2">{{ fullname }}</h6>
+                    <a (click)="openCropModal()" class="camera" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img width="20px" [nexaeiImageSrc]="'cameraicon.png'" /></a>
+                </div>
+                <a href="#" class="ms-4 pt-1"><img width="10px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+            </div>
+
+            <!-- Modal -->
+
+
+            <div class="col-12 pt-3">
+                <input type="text" class="form-control form-sec border-0" id="" placeholder="Designation" />
+            </div>
+
+            <div class="col-12 pt-4 d-flex justify-content-between">
+                <div>
+                    <small>Email</small>
+                    <p>{{email}}</p>
+                </div>
+
+                <div>
+                    <small>Emp ID</small>
+                    <p>2323</p>
+                </div>
+
+                <div>
+                    <small>Joining date</small>
+                    <p>11 May, 2019</p>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="col-12 pt-2 d-flex justify-content-between">
+                <div>
+                    <small>Personal Details</small>
+                </div>
+            </div>
+
+            <div class="col-12 pt-1 d-flex justify-content-between">
+                <div>
+                    <small>Gender</small>
+                    <p>Male</p>
+                </div>
+
+                <div>
+                    <a href="#" class="pt-2"><img width="10px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+                </div>
+            </div>
+
+            <div class="col-12 pt-1 d-flex justify-content-between">
+                <div>
+                    <small>DOB </small>
+                    <p>12 Feb, 1995</p>
+                </div>
+
+                <div>
+                    <a href="#" class="pt-2"><img width="10px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+                </div>
+            </div>
+
+            <div class="col-12 pt-1 d-flex justify-content-between">
+                <div>
+                    <small>Qualifications </small>
+                    <p>None</p>
+                </div>
+
+                <div>
+                    <a href="#" class="pt-2"><img width="10px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+                </div>
+            </div>
+
+            <div class="col-12 pt-1 d-flex justify-content-between">
+                <div>
+                    <small>Blood Group</small>
+                    <p>None</p>
+                </div>
+
+                <div>
+                    <a href="#" class="pt-2"><img width="10px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+                </div>
+            </div>
+
+            <div class="col-12 pt-1 d-flex justify-content-between">
+                <div>
+                    <small>Mobile Number</small>
+                    <p>None</p>
+                </div>
+
+                <div>
+                    <a href="#" class="pt-2"><img width="10px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+                </div>
+            </div>
+
+            <div class="col-12 pt-1 d-flex justify-content-between">
+                <div>
+                    <small>Address</small>
+                    <p>None</p>
+                </div>
+
+                <div>
+                    <a href="#" class="pt-2"><img width="10px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-profile-image-upload></app-profile-image-upload>

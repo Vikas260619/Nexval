@@ -1,0 +1,215 @@
+a {
+    text-decoration: none;
+}
+.offline {
+    background: #8c8d8d;
+}
+.border-gray-n{
+    border:2px solid #8c8d8d;
+}
+
+.p-new {
+    padding: 23px 24px 25px 15px;
+    border-radius: 11px !important;
+}
+
+.f-control small {
+
+    font-size: 11px !important;
+    color:#808080;
+}
+
+.bg-light-gray2 {
+    background-color: #333333;
+    border-radius: 7px;
+}
+
+.f-control p {
+
+    font-size: 13px !important;
+    padding:0;
+    margin: 0;
+}
+
+.navbar {
+
+    background-color: #333333;
+    height: 100%;
+}
+.text-gray{
+    color: #7a7a7a;
+}
+
+
+
+
+
+// 8/19/22 
+
+.b-r::after {
+
+    border-right:1px solid #535151; 
+    position: absolute;
+    z-index: 1;
+    content: "";
+    height: 20px;
+    width: 20px;
+    right: 0;
+    top: 0;
+}
+
+.b-r {
+    position: relative;
+}
+
+hr {
+
+    margin-top:5px !important;
+}
+
+
+.tooltip-new1 {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-new1 .tooltiptext {
+    visibility: hidden;
+    width:200px;
+    background-color:#484848;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 9;
+    font-size: 12px;
+    text-align: left;
+    color: #A6A6A6;
+    top: 48px;
+    left: -47px;
+  }
+  
+  .tooltip-new1:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .tooltip-new1 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 45%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #484848 transparent transparent transparent;
+    top:-10px;
+    transform: rotate(180deg);
+}
+
+.pie-chart {
+	
+	width: 25px;
+	min-height:25px;
+	margin-left: 10px;
+    margin-top: -5px;
+}
+
+
+.navbar-new {
+    position: sticky;
+    z-index: 7;
+    background-color: #333333;
+    border-bottom: 0.5px solid #535151;
+    top: 0;
+    
+  }
+
+
+  .navbar-new::before {
+
+    content: "";
+    border-bottom: .5px solid #535151;
+    position: absolute;
+    z-index: 3;
+    width: 213px;
+    top: .5px;
+    height:100%;
+    right: -212px;
+    background-color: #333333;
+
+   }
+
+
+  .dropdown, .dropdown-center, .dropend, .dropstart, .dropup, .dropup-center {
+    position: relative;
+    margin-right: -26px;
+}
+
+.mt-7 {
+    margin-top: 7px;
+}
+.c-img-hover1 {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    position: relative;
+    background-color: #333;
+    border: 2px solid #666666;
+    text-align: center !important;
+    display: flex;
+    color: #fff;
+    font-size: 31px;
+    justify-content: center;
+    align-items: center;
+}
+
+.addtol {
+    width: 287px !important;
+    top: 32px !important;
+    left: -69px !important;
+}
+
+
+
+.modal-lg-new {
+    --bs-modal-width: 500px !important;
+}
+
+
+.deletmodal button.btn.primary-xl {
+    background: #61c532;
+    width: 100%;
+    color: #fff;
+    padding: 26px !important;
+    border-radius: 33px;
+    line-height: 0;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 12px;
+}
+
+
+.deletmodal .cancelbtn {
+    background: #707070;
+    width: 100%;
+    color: #fff;
+    padding: 26px !important;
+    border-radius: 33px;
+    line-height: 0;
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 12px;
+    border:1px solid #bfbfbf;
+}
+.c-img_small{
+    border:none!important;
+}
+
+.member-count {
+
+    font-size: 11px;
+    line-height: 21px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

@@ -1,0 +1,129 @@
+<div class="pb-4" [ngClass]="user ? 'user-height-audio' : 'height-audio'">
+    <div class="d-flex p-4 justify-content-between">
+      <div class="col-md-6 ps-4 d-flex">
+        <label *ngIf="userRole === 'SUPERADMIN'" class="conta-check ms-4">
+          <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+          (change)="checkUncheckAll()">
+          <span class="checkmark checkboxm"></span>
+        </label>
+        <small class="text-white">Members ({{ membersCount }}{{this.timer}})</small>
+      </div>
+      <div class="col-md-6 d-flex justify-content-end pe-3">
+        <a (click)="getMemberToRemove()"  *ngIf="userRole === 'SUPERADMIN'"  [ngClass]="this.checkedList.length > 0 ? 'enable-input me-2'
+          : 'disable-input me-2'">
+          <img width="29px" [nexaeiImageSrc]="'details_delet.png'" />
+      </a>
+        <a *ngIf="userRole=='SUPERADMIN'" (click)="openInvitationSendModal()">
+          <img width="35px" [nexaeiImageSrc]="'collab/Group1394.png'" />
+        </a>
+      </div>
+      <div *ngIf="isDeleted" class="timerloder">
+                
+        <div class="pt-2">  <a href="javascript:void(0)" style="cursor: auto;">{{ counter }} sec</a></div>
+
+        <a (click)="undoClick()" class="text-green pt-2">Undo</a>
+
+    </div>
+    </div>
+    <div class="d-flex justify-content-center mb-3" *ngFor="let m of members">
+      <label *ngIf="userRole === 'SUPERADMIN'" class="conta-check mt-3">
+        <input type="checkbox" [(ngModel)]="m.isSelected" name="list_name" value="{{m.id}}"
+        (change)="isAllSelected()">
+        <span class="checkmark"></span>
+      </label>
+      <!--<p class="pt-2 pe-2 pt-4">L3</p>-->
+      <div
+        class="team-collab bg-dark-2 border border-light col-md-11 f-control2 p-lg-2 d-flex justify-content-between pe-lg-3 ps-lg-3 align-items-center"
+      >
+        <div class="d-flex col-lg-3 col-3">
+          <div class="position-relative">
+            <!-- <div
+              class="online-status"
+              [class]="m.latest_punch_type == 'IN' ? ' online' : 'offline'"
+            ></div> -->
+            <img *ngIf="m.userpicture"
+              class="me-2 c-img mt-1"
+              [class]="
+                m.latest_punch_type == 'IN' ? 'border-green' : 'border-gray-n'
+              "
+              src="{{m.userpicture}}"
+            />
+          <span class="me-2 c-img mt-1 profilepic_new" [class]="
+          m.latest_punch_type == 'IN' ? 'border-green' : 'border-gray-n'
+        "  *ngIf="!m.userpicture">{{ m.fname.charAt(0) }}</span>
+          </div>
+          <div>
+            <ng-template [ngIf]="user_id != m.id" [ngIfElse]="elseBlock">
+              <p class="pb-0 mb-0">{{ m.fname.charAt(0).toUpperCase() +
+                m.fname.slice(1) }} {{ m.lname.charAt(0).toUpperCase() +
+                  m.lname.slice(1) }}</p>
+            </ng-template>
+
+            <ng-template #elseBlock>
+              <p class="pb-0 mb-0">You</p>
+            </ng-template>
+
+            <small class="text-white">{{ m.role_name }}</small>
+          </div>
+        </div>
+        
+        <div class="d-lg-flex justify-content-start col-lg-4 col-2">
+
+          <div class=" pt-1  text-end col-12 col-lg-8 ">
+            <a
+              class="nav-link text-white"
+              href="#"
+              id="navbarDarkDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              {{ m.role_name }}
+            </a>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between w-19">
+          <div class="text-start col-10">
+            <p class="pb-0 mb-0">
+              {{ m.latest_check_in | formatTimestampDate }} | <span class="time_color">{{ m.latest_check_in | formatTimestampTime }} In</span> 
+            </p>
+            <p class="pb-0 mb-0">
+              {{ m.latest_check_out | formatTimestampDate }} | <span class="time_color_gray">{{ m.latest_check_out | formatTimestampTime }} Out</span>
+            </p>
+          </div>
+          <div class="col-2 d-flex justify-content-start align-items-center">
+            <a
+              ><img
+                class="ms-3"
+                punch_type="{{ m.latest_punch_type }}"
+                nm="{{ m.fname }}"
+                nm2="{{ m.lname }}"
+                latest_checkin="{{ m.latest_check_in }}"
+                latest_checkout="{{ m.latest_check_out }}"
+                checkin_lat="{{ m.latest_check_in_latlong | formatLat }}"
+                checkin_long="{{ m.latest_check_in_latlong | formatLong }}"
+                checkout_lat="{{ m.latest_check_out_latlong | formatLat }}"
+                checkout_long="{{ m.latest_check_out_latlong | formatLong }}"
+                checkin_address="{{ m.latest_check_in_address }}"
+                checkout_address="{{ m.latest_check_out_address }}"
+                user_image="{{ m.userpicture }}"
+                (click)="openUserAttendenceModal($event)"
+                [nexaeiImageSrc]="'collab/map.png'"
+            /></a>
+          </div>
+        </div>
+
+        <div
+          class="d-flex justify-content-end pt-1 align-items-center col-lg-2"
+        >
+          <!-- <a href="#" class="me-3"
+            ><img width="20px" [nexaeiImageSrc]="'collab/Vector.png'"
+          /></a> -->
+          <!-- <a *ngIf="userRole=='SUPERADMIN'" class="me-2"
+            ><img width="6px" [nexaeiImageSrc]="'collab/dot.png'"
+          /></a> -->
+        </div>
+      </div>
+    </div>
+  </div>

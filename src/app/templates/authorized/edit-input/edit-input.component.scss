@@ -1,0 +1,48 @@
+$lightGray: #c8c8c8;
+
+.cell {
+  width: 100%;
+  height: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.cellInput {
+  width: 100%;
+  height: 100%;
+}
+
+.data_name {
+  background-color: black;
+  color: #fff;
+  border:none;
+  border-bottom: 1px solid #4D4D4D;
+  padding-bottom: 10px;
+  width:100%;
+  padding-right: 55px;
+  overflow: hidden;
+  border-radius: 0;
+  float: left;
+  margin-bottom:5px;
+  padding-left:0 !important;
+}
+
+input:focus, input:active, input:focus-visible {
+  box-shadow:none !important;
+  background-color: black;
+  color: #fff;
+  border:none !important;
+  border-bottom: 1px solid #4D4D4D !important;
+  padding-bottom: 10px;
+}
+
+.icon-x {
+
+  margin-left: -58px;
+
+}
+.align{
+  width: 100%;
+    float: left;
+}

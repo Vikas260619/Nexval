@@ -1,0 +1,214 @@
+<div class="forgetpass">
+  <div class="container">
+    <div class="row justify-content-between pt-70 ps-lg-5 ps-0">
+      <div class="col-lg-5 pt-5 d-md-none d-lg-block">
+        <img
+          class="pt-lg-5"
+          width="80%"
+          [nexaeiImageSrc]="'forgerpassword/enterotp.png'"
+        />
+      </div>
+
+      <div class="col-md-6 col-lg-7 col-xl-6 p-0 res-stu bg-color-dark">
+        <div class="form-container w-75">
+          <span class="logo col-md-12">
+            <img width="100%" [nexaeiImageSrc]="'logo.png'" />
+            <h1>Verify your Email Address</h1>
+            <p>
+              Please enter the six digit verification code sent to your email
+              {{email}}
+            </p>
+          </span>
+          <form
+            class="mt-3"
+            [formGroup]="forgotPassOTP"
+            (ngSubmit)="onSubmit()"
+          >
+            <fieldset class="form_card g-3">
+              <div class="bg-color-gray row right-sec mt-3">
+                <div class="col-md-12 d-flex mb-2">
+                  <input
+                    class="form-control-lg w-14 bg-black border-0 me-2"
+                    [ngClass]="{
+                      error_input:
+                        changepassOTPControl.digitOne?.dirty &&
+                        changepassOTPControl.digitOne?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    type="text"
+                    placeholder=""
+                    #otpInputs
+                    [formControlName]="'digitOne'"
+                    maxlength="1"
+                    (keyup)="toggleFocus($event, 0)"
+                  />
+
+                  <input
+                    class="form-control-lg w-14 bg-black border-0 me-2"
+                    [ngClass]="{
+                      error_input:
+                        changepassOTPControl.digitTwo?.dirty &&
+                        changepassOTPControl.digitTwo?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    type="text"
+                    placeholder=""
+                    #otpInputs
+                    [formControlName]="'digitTwo'"
+                    maxlength="1"
+                    (keyup)="toggleFocus($event, 1)"
+                  />
+
+                  <input
+                    class="form-control-lg w-14 bg-black border-0 me-2"
+                    [ngClass]="{
+                      error_input:
+                        changepassOTPControl.digitThree?.dirty &&
+                        changepassOTPControl.digitThree?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    type="text"
+                    placeholder=""
+                    #otpInputs
+                    [formControlName]="'digitThree'"
+                    maxlength="1"
+                    (keyup)="toggleFocus($event, 2)"
+                  />
+
+                  <input
+                    class="form-control-lg w-14 bg-black border-0 me-2"
+                    [ngClass]="{
+                      error_input:
+                        changepassOTPControl.digitFour?.dirty &&
+                        changepassOTPControl.digitFour?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    type="text"
+                    placeholder=""
+                    #otpInputs
+                    [formControlName]="'digitFour'"
+                    maxlength="1"
+                    (keyup)="toggleFocus($event, 3)"
+                  />
+
+                  <input
+                    class="form-control-lg w-14 bg-black border-0 me-2"
+                    [ngClass]="{
+                      error_input:
+                        changepassOTPControl.digitFive?.dirty &&
+                        changepassOTPControl.digitFive?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    type="text"
+                    placeholder=""
+                    #otpInputs
+                    [formControlName]="'digitFive'"
+                    maxlength="1"
+                    (keyup)="toggleFocus($event, 4)"
+                  />
+
+                  <input
+                    [ngClass]="{
+                      error_input:
+                        changepassOTPControl.digitSix?.dirty &&
+                        changepassOTPControl.digitSix?.invalid
+                    }"
+                    [ngClass]="{
+                      error_input: hasError
+                    }"
+                    class="form-control-lg w-14 bg-black border-0"
+                    type="text"
+                    placeholder=""
+                    #otpInputs
+                    [formControlName]="'digitSix'"
+                    maxlength="1"
+                    (keyup)="toggleFocus($event, 5)"
+                  />
+                </div>
+
+                <p
+                  class="text-center text-red pb-0 mb-1"
+                  *ngIf="
+                    (changepassOTPControl.digitThree?.dirty &&
+                      changepassOTPControl.digitThree?.invalid) ||
+                    (changepassOTPControl.digitTwo?.dirty &&
+                      changepassOTPControl.digitTwo?.invalid) ||
+                    (changepassOTPControl.digitOne?.dirty &&
+                      changepassOTPControl.digitOne?.invalid) ||
+                    (changepassOTPControl.digitFour?.dirty &&
+                      changepassOTPControl.digitFour?.invalid) ||
+                    (changepassOTPControl.digitFive?.dirty &&
+                      changepassOTPControl.digitFive?.invalid) ||
+                    (changepassOTPControl.digitSix?.dirty &&
+                      changepassOTPControl.digitSix?.invalid)
+                  "
+                >
+                  Please enter valid OTP
+                </p>
+                <p
+                  class="text-center text-red mb-1 pb-0 not-vadid"
+                  *ngIf="
+                    changepassOTPControl.digitThree?.dirty &&
+                    !changepassOTPControl.digitThree?.invalid &&
+                    changepassOTPControl.digitSix?.dirty &&
+                    !changepassOTPControl.digitSix?.invalid &&
+                    changepassOTPControl.digitOne?.dirty &&
+                    !changepassOTPControl.digitOne?.invalid &&
+                    changepassOTPControl.digitTwo?.dirty &&
+                    !changepassOTPControl.digitTwo?.invalid &&
+                    changepassOTPControl.digitFour?.dirty &&
+                    !changepassOTPControl.digitFour?.invalid &&
+                    changepassOTPControl.digitFive?.dirty &&
+                    !changepassOTPControl.digitFive?.invalid &&
+                    !otpResend &&
+                    serverErrorMessage
+                  "
+                >
+                  {{ serverErrorMessage }}
+                </p>
+                <p class="text-center text-red pb-0 mb-0" *ngIf="otpResend">
+                  <span class="text-white m-0 p-0"
+                    >OTP resend successfully !!</span
+                  >
+                </p>
+
+                <div class="col-md-12 ps-5 pe-5 pt-4">
+                  <button
+                    type="submit"
+                    [disabled]="isSubmitFormLoading"
+                    class="btn primary-xl"
+                    [ngClass]="otpTimeout==true?'disabled' :''"
+                  >
+                    Confirm
+                  </button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <span class="bottom-text"
+          ><label class="login_cndtn redirec_sigin mt-4">
+            <h6>
+              Didn't receive the code?
+              <a class=" "  [ngClass]="otpTimeout==false?'disabled' :''" [ngClass]="otpTimeout==true?'green' :'link-secondary'"   (click)="resendOTP()" style="cursor:pointer" >Resend</a>
+            </h6>
+            <h6 class="pt-2">
+              <a href="javascript:void(0)" style="cursor: auto;">{{ counter }} sec</a>
+            </h6></label
+          ></span
+        >
+      </div>
+    </div>
+  </div>
+</div>

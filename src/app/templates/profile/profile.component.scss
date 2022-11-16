@@ -1,0 +1,106 @@
+
+.profilepic-new {
+    width: 46px;
+    height: 46px;
+    background: #fff;
+    border-radius: 50%;
+    text-align: center;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin-top: -4px;
+}
+
+.camera {
+    position: absolute;
+    top: 23px;
+    right: 89px;
+}
+
+.form-sec {
+    background-color: #000;
+    border-bottom: 1px solid #4D4D4D !important;
+    border-radius: 0;
+    padding-left: 0;
+    font-size: 13px;
+} 
+
+input:focus, input:active, input:focus-visible {
+    background: #000;
+    border: 1px solid #000 !important;
+    outline: none;
+    box-shadow: 0 0 6px 0px #000;
+    border-bottom: 1px solid #4D4D4D !important;
+}
+
+.emv-invittion .form-control:focus {
+    border-bottom: 1px solid #4D4D4D !important;
+}
+
+small {
+
+    color: #858585;
+    font-size: 12px;
+}
+
+p {
+    font-size: 12px;
+}
+
+hr {
+
+    border-top: 1px solid #5d5d5d !important;
+    margin-left: 13px;
+}
+
+.emv-invittion .modal-content {
+    background: #333333 !important;
+    border-radius: 25px !important;
+    border:2px solid #8e8e8e !important
+}
+
+
+.modal-lg, .modal-xl {
+    max-width: 700px;
+}
+
+.modal-header {
+
+    border-bottom: .5px solid #535151;
+}
+
+.pro_pic {
+
+    width: 297px;
+    height: 298px;
+    background-color: #5b5b5b;
+    border: .5px solid #000;
+    position: relative;
+}
+
+.save{
+    background: #61c532;
+    width: auto;
+    color: #fff;
+    padding: 18px 54px;
+    border-radius: 33px;
+    line-height: 0;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: -5px;
+    margin-left: 20px;
+}
+
+.left-arow {
+
+    margin-left: -36px;
+}
+
+.head_top {
+
+    position: fixed;
+    z-index: 9;
+    width: 100%;
+}

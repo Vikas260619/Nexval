@@ -1,0 +1,29 @@
+<div class="pb-4" [ngClass]="user ? 'user-height-audio' : 'height-audio'">
+    <div class="row pt-4 mt-1 ps-5 pe-4 m_mid">
+
+        <div *ngFor="let media of filterMedia;" class="play-vdo col-md-6  col-lg-4  col-xl-3 pb-4">
+            <!-- <img class="w-100 rounded" src="{{media.plainUrl}}" /> -->
+            <span>
+                <a href="#!"><img [nexaeiImageSrc]="media.type === 'video/mp4' ? 'play-video.png' : 'media/audio-play.png'" /></a>
+            </span>            
+            <div class="video-text d-flex pt-3">
+                <div>
+                    <label class="me-2"*ngIf="media.userPic === '' && media.sender != '' && media.sender != null && media.sender != undefined">{{ getShortName(media.sender) }}</label>
+                    <img style="cursor: pointer;" class="me-2 m-img" *ngIf="media.userPic !== ''" src="{{media.userPic.uri}}" />
+                </div>
+                <div>
+                    <p class="pb-0 mb-0">{{media.sender === nickName ? 'You' : media.sender}}</p>
+                    <small class="text-white">
+                        {{media.createdAt | date: "dd MMM | hh:mm a"}}
+                        </small>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="filterMedia.length == 0" class="media-file-link text-center">
+            <img class="mb-4 mt-5" [nexaeiImageSrc]="'media/empty-file.png'" />
+
+            <p>You don't have any Media files</p>
+        </div>
+        
+    </div>
+</div>

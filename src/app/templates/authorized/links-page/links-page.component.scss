@@ -1,0 +1,37 @@
+.m_file .rounded {
+    border-radius: 33px !important;
+}
+
+.play-vdo img {
+    width: 34px;
+    float: left;
+    top: 11px;
+    position: relative;
+}
+
+.video-text span {
+    width: 100%;
+    display: block;
+}
+
+.video-text span img {
+    width: 22px!important;
+    height: 22px!important;
+    top: 0;
+}
+
+.video-text label {
+    width: 22px;
+    height: 22px;
+    float: left;
+}
+
+.video-text {
+    display: grid;
+}
+
+.video-text h5 {
+    font-size: 13px;
+    margin: 2px 0;
+    font-weight: normal;
+}

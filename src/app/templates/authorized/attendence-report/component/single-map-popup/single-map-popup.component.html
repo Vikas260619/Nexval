@@ -1,0 +1,47 @@
+
+<div
+  #user_attendence_modal
+  class="modal fade"
+  id="invite-member"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content org_setup_skip_model">
+      <div class="modal-header border-0 ps-0 pb-2">
+        <div class="d-flex">
+          <div class="position-relative profilepic-new  me-2 " [class]="st=='true' ? 'border-green' : 'border-gray-internal'">
+        <!-- <img class="c-img2" [nexaeiImageSrc]="'man.png'" /> -->
+        <img class="c-img2" *ngIf="profileImage!='null'" (click)="showDrop()" src="{{profileImage}}"> 
+        <div *ngIf="profileImage == 'null'">{{ fullname.charAt(0) }}</div>  
+      </div>
+      
+      <div><p class="pb-0 mb-0 pt-2"> {{fullname}} </p></div></div>
+        <button
+          type="button"
+          class="btn-close-model"
+          (click)="closesingleMapModal()"
+         
+        >
+          X
+        </button>
+      </div>
+      <div class="modal-body team-colab p-0 " >
+
+        <p class="fs-12">{{( address!='null' && address!='undefined') ? address : ''}}</p>
+
+
+       <div class="m-radius mt-3"><agm-map [latitude]="this.lat" [longitude]="this.lon">
+            <agm-marker
+              [latitude]="this.lat"
+              [longitude]="this.lon"
+            >
+        </agm-marker>
+        </agm-map> </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,495 @@
+<div
+  [ngClass]="
+    userRole == 'SUPERADMIN'
+      ? 'mid-sec emv-invittion chat-new-sec'
+      : 'mid-sec emv-invittion chat-new-sec_user'
+  "
+  #scrollMe
+  [scrollTop]="scrollMe.scrollHeight"
+>
+  <!--<app-empty-colaboration></app-empty-colaboration>-->
+
+  <!-- <div class="mid-sec emv-invittion chat-new-sec" #scrollMe [scrollTop]="scrollMe.scrollHeight"> -->
+  <section class="mix-sec">
+    <div class="row">
+      <div id="navbar" class="navbar-new">
+        <div class="col-md-12 pt-2 ps-4 pe-2">
+          <div class="row pt-1 justify-content-between">
+            <div class="col-xl-3 col-lg-6 col-5 d-flex" *ngIf="teamCollab">
+              <a (click)="goBack()" style="cursor: pointer">
+                <img
+                  class="left-arow"
+                  [nexaeiImageSrc]="'emp-invite/arrow.png'"
+                />
+              </a>
+              <a class="d-flex" [routerLink]="['../team-collab-internal/']"
+                ><div class="me-3">
+                  <div class="profilepic">
+                    {{ currentTeam ? currentTeam.charAt(0) : "" }}
+                  </div>
+                </div>
+                <div>
+                <h5 class="text-white fw-normal h6">
+                  {{
+                    currentTeam && currentTeam.length > 12
+                      ? currentTeam.substr(0, 12) + "..."
+                      : currentTeam
+                  }}
+                </h5>
+                <p class="fs-12 mt-n1 text-light member-count">{{this.currentTeamUsers}} Members</p>
+              </div>
+              </a>
+            </div>
+            <div
+              class="col-xl-4 col-lg-6 col-5 pb-3 d-flex"
+              *ngIf="!teamCollab"
+            >
+              <a (click)="goBackCollegue()" style="cursor: pointer">
+                <img
+                  class="left-arow"
+                  [nexaeiImageSrc]="'emp-invite/arrow.png'"
+                />
+              </a>
+              <a class="d-flex"
+                ><div class="me-3" style="cursor: pointer">
+                  <div
+                    class="profilepic"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample"
+                    aria-expanded="false"
+                    aria-controls="collapseWidthExample"
+                    [class]="
+                      current_colleague_latest_punch_type == 'IN'
+                        ? 'border-green'
+                        : 'border-gray-n'
+                    "
+                  >
+                    <img src="{{ userImgUrl }}" *ngIf="userImgUrl != 'null'" />
+                    <div *ngIf="userImgUrl == 'null'">
+                      {{
+                        currentTeam ? currentTeam.charAt(0).toUpperCase() : ""
+                      }}
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a [routerLink]="['../member-collab-internal/']">
+                <h5 class="text-white fw-normal pt-2 h6">
+                  {{
+                    currentTeam && currentTeam.length > 18
+                      ? currentTeam.substr(0, 18) + "..."
+                      : currentTeam
+                  }}
+                </h5>
+              </a>
+            </div>
+
+            <div
+              class="col-md-12 col-xl-6 mt-3 mt-lg-3 d-flex flow_sec justify-content-center"
+              *ngIf="!teamCollab"
+            >
+              <!-- <div class="ps-3 pe-3 d-flex sec_first b-r">
+                <p class="pt-2 mt-n1">Availability</p>
+                <h5 class="text-green ps-2 mt-n1 h6">10:15 am</h5>
+                <div></div>
+              </div>
+
+              <div class="ps-3 pe-3 d-flex sec_first">
+                <p class="pt-2 mt-n1">Availablity avg.</p>
+                <h5 class="text-green ps-2 mt-n1 h6">8:30 hr</h5>
+              </div> -->
+            </div>
+
+            <div
+              class="col-md-12 col-xl-7 pt-1 mt-3 mt-lg-1 d-flex flow_sec justify-content-center"
+              *ngIf="teamCollab"
+            >
+              <div class="tooltip-new1">
+                <div class="pe-3 d-flex sec_first b-r">
+                  <p>Attendance</p>
+                  <span class="tooltiptext addtol"
+                    >Percentage of members checked in till now in the team</span
+                  >
+
+                  <h5 class="text-green ps-2 h6">
+                    {{ attendencePercentage }}%
+                  </h5>
+                  <div>
+                    <figure class="pie-chart" #mask></figure>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ps-3 pe-3 d-flex sec_first">
+                <p class=" tooltip-new1">Early Bird
+                  <span class="tooltiptext" style="margin-top:-10px">Early bird is the person who checked earliest among the team members.</span>
+                </p>
+                <div
+                  class="ps-1 mt-n1"
+                  [ngClass]="earlybirdTime != '00:00 00 00' ? 'sign_s' : ''"
+                >
+                  <div class="tooltip-new1">
+                    <img
+                      *ngIf="
+                        early_bird_image != '' && earlybirdTime != '00:00 00 00'
+                      "
+                      class="me-1 c-img_small ms-3"
+                      src="{{ early_bird_image }}"
+                    />
+                    <img
+                      *ngIf="
+                        early_bird_image == '' && earlybirdTime == '00:00 00 00'
+                      "
+                      class="me-1 c-img_small ms-3"
+                      src="./assets/images/user-none.png"
+                    />
+                    <div
+                      *ngIf="early_bird_image == '' && earlybirdFname"
+                      class="me-1 c-img_small ms-3"
+                    >
+                      {{
+                        earlybirdFname
+                          ? earlybirdFname.charAt(0).toUpperCase()
+                          : ""
+                      }}
+                    </div>
+
+                    <span class="tooltiptext" *ngIf="earlybirdFname"
+                      >{{ earlybirdFname }} {{ earlybirdLname }}
+                      <!--({{ empId }})-->
+                      came early today in this colab.</span
+                    >
+                    
+                  </div>
+                </div>
+
+                <h5 class="text-green ps-2 mt-n1 h6">
+                  {{
+                    earlybirdTime != "00:00 00 00"
+                      ? (earlybirdTime | formatTimestampTime) + " In"
+                      : earlybirdTime
+                  }}
+                </h5>
+              </div>
+            </div>
+
+            <div
+              class="col-md-2 col-lg-2 col-6 d-flex justify-content-end pt-1 search_s"
+            >
+              <!-- <div>
+                <div class="header_search d-flex ps-2 pr-2">
+                  <div>
+                    <img
+                      class="mt-7"
+                      width="17px"
+                      [nexaeiImageSrc]="'emp-invite/search.png'"
+                    />
+                  </div>
+                  <form>
+                    <input
+                      type="text"
+                      class="form-control border-0"
+                      name="search"
+                      id="search"
+                      placeholder=""
+                    />
+                  </form>
+                </div>
+              </div> -->
+
+              <!-- <a href="#"
+                ><img
+                  class="pt-1 me-1"
+                  width="25px"
+                  [nexaeiImageSrc]="'Integrat.png'"
+              /></a> -->
+
+              <div class="dropdown" *ngIf="userRole == 'SUPERADMIN'">
+                <a
+                  href="#"
+                  class="me-3"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  ><img class="pt-1" width="13px" [nexaeiImageSrc]="'dot.png'" *ngIf="teamCollab"
+                /></a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li>
+                    <a
+                      href="javascript:void(0)"
+                      class="dropdown-item"
+                      (click)="openInvitationSendModal()"
+                      ><img
+                        class="me-2"
+                        width="18px"
+                        [nexaeiImageSrc]="'emp-invite/inviteuser.png'"
+                      />
+                      Invite Teammates</a
+                    >
+                  </li>
+                  <!-- <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                      (click)="openArrivalMessageModal()"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      ><img
+                        class="me-2"
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/massage.png'"
+                      />
+                      Arrival Message</a
+                    >
+                  </li> -->
+                  <!-- <li>
+                    <a class="dropdown-item" href="#"
+                      ><img
+                        class="me-2"
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/away.png'"
+                      />
+                      Away Message</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      ><img
+                        class="me-2"
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/settings.png'"
+                      />
+                      Colab Settings</a
+                    >
+                  </li> -->
+
+                  <li>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#deleteTeam"
+                        ><img
+                        class="me-2"
+                        width="20px"
+                        [nexaeiImageSrc]="'delet.png'"
+                      />
+                      Delete Team
+                    </a>
+                    
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="user-collab-hover w-400 position-absolute"
+          *ngIf="closeSnap"
+        >
+          <div class="collapse collapse-horizontal" id="collapseWidthExample">
+            <div class="card card-body bg-dark-sec w-400 rounded p-new">
+              <div class="d-flex justify-content-between">
+                <div class="d-flex">
+                  <div class="position-relative">
+                    <div
+                      class="online-status-big d-none"
+                      [class]="
+                        current_colleague_latest_punch_type == 'IN'
+                          ? 'online'
+                          : 'offline'
+                      "
+                    ></div>
+                    <img
+                      class="me-3 c-img-hover"
+                      [class]="
+                        current_colleague_latest_punch_type == 'IN'
+                          ? 'border-green'
+                          : 'border-gray-n'
+                      "
+                      src="{{ userImgUrl }}"
+                      *ngIf="userImgUrl != 'null' && userImgUrl != ''"
+                    />
+                    <div
+                      class="me-3 c-img-hover1"
+                      *ngIf="userImgUrl == 'null'"
+                      [class]="
+                        current_colleague_latest_punch_type == 'IN'
+                          ? 'border-green'
+                          : 'border-gray-n'
+                      "
+                    >
+                      {{
+                        currentTeam ? currentTeam.charAt(0).toUpperCase() : ""
+                      }}
+                    </div>
+                  </div>
+                  <div>
+                    <p class="pb-0 mb-0 fs-5 pt-2">
+                      {{
+                        current_colleague_fname
+                          ? current_colleague_fname.charAt(0).toUpperCase() +
+                            current_colleague_fname.slice(1)
+                          : ""
+                      }}
+                      {{
+                        current_colleague_lname
+                          ? current_colleague_lname.charAt(0).toUpperCase() +
+                            current_colleague_lname.slice(1)
+                          : ""
+                      }}
+                    </p>
+                    <p class="text-white">
+                      {{
+                        current_colleague_role_name != "null"
+                          ? current_colleague_role_name
+                          : "---"
+                      }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="pt-2">
+                  <p class="m-0 p-0">
+                    {{
+                      current_colleague_latest_punch_time
+                        ? (current_colleague_latest_punch_time
+                          | formatTimestampDate)
+                        : ""
+                    }}
+                  </p>
+                  <p
+                    class="m-0 p-0 text-green"
+                    [class]="
+                      current_colleague_latest_punch_type == 'IN'
+                        ? 'text-green'
+                        : 'text-gray'
+                    "
+                  >
+                    {{
+                      current_colleague_latest_punch_time
+                        ? (current_colleague_latest_punch_time
+                          | formatTimestampTime)
+                        : ""
+                    }}
+                    {{
+                      current_colleague_latest_punch_type == "IN" ? "In" : "Out"
+                    }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="d-flex ps-2 pt-3">
+                <p>
+                  <img
+                    width="18px"
+                    class="me-2"
+                    [nexaeiImageSrc]="'smile.png'"
+                  />
+                  Feeling Good
+                </p>
+
+                <p class="ps-4">
+                  <img
+                    width="20px"
+                    class="me-2"
+                    [nexaeiImageSrc]="'calender.png'"
+                  />
+                  {{
+                    current_colleague_doj
+                      ? (current_colleague_doj | formatTimestamp)
+                      : ""
+                  }}
+                </p>
+              </div>
+
+              <div class="d-flex ps-2 d-none">
+                <a href="#" class="me-3 pt-1"
+                  ><img width="22px" [nexaeiImageSrc]="'emp-invite/phone.png'"
+                /></a>
+                <a href="#" class="me-3 pt-1"
+                  ><img width="22px" [nexaeiImageSrc]="'emp-invite/video.png'"
+                /></a>
+
+                <a href="#" class="me-3 pt-1"
+                  ><img width="22px" [nexaeiImageSrc]="'collab/Vector.png'"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="chat-sec-new" #scrollMe [scrollTop]="scrollMe.scrollHeight"> -->
+      <app-chat-board
+        *ngIf="IslocalStorageData"
+        (newItemEvent)="getChannel($event)"
+        [getMessages]="messages"
+        (isUndoClickChild)="isUndoClickChild($event)"
+        [ChannelId]="{
+          appId: application_id,
+          nickName: nickname,
+          channel_url: channel_url,
+          user_id: user_id,
+          tm1: tm,
+          groupCreatedAt: groupCreatedAt
+        }"
+      ></app-chat-board>
+      <!-- </div> -->
+    </div>
+  </section>
+  <!-- <div *ngIf="IslocalStorageData" class="row pt-1 ps-2 gray_bg">
+  <app-chat-post
+    (newMessage)="getMessage($event)"
+    [ChannelId]="channel"
+  ></app-chat-post>  </div> -->
+
+  <!-- Delet Modal -->
+  <div
+    class="modal fade deletmodal"
+    id="deleteTeam"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="deleteTeamLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-lg-new">
+      <div class="modal-content pt-3 pb-3 border border-secondary">
+        <div class="modal-body border-0 d-flex justify-content-center pt-4">
+          <div class="col-lg-10 col-sm-9 position-relative">
+            <div class="d-flex justify-content-center">
+              <div>
+                <img width="100px" [nexaeiImageSrc]="'red-delet.png'" />
+              </div>
+            </div>
+
+            <p class="text-center pt-3">
+              Are you sure want to delete {{this.currentTeam}} team ? It will delete
+              permanently.
+            </p>
+
+            <div class="d-flex justify-content-between">
+              <button
+                type="submit"
+                class="btn cancelbtn mt-4 me-1"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                Cancle
+              </button>
+
+              <button
+                type="submit"
+                class="btn primary-xl mt-4 ms-1"
+                (click)="deleteTeam()"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <app-arrival-message-modal></app-arrival-message-modal> -->
+<app-force-login></app-force-login>
+<!-- <app-profile-image-upload></app-profile-image-upload> -->

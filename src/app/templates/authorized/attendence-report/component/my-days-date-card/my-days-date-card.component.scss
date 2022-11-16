@@ -1,0 +1,106 @@
+.attendance-report h6 {
+    font-size: 12px;
+    font-weight: 300;
+    float: left;
+    width: 100%;
+    margin: 0;
+}
+
+
+
+.attendance-report img {
+    width: 14px;
+    float: right;
+}
+
+.green {
+    color: #43cc2c;
+}
+
+.light-pink{
+    color: #F49A13;
+}
+
+.pink{
+    color: #FE6651;
+}
+
+.attendance-report label {
+    font-size: 11px;
+    float: left;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.attendance-report span {
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 9px;
+}
+
+.attendance-report span img {
+    float: left;
+    float: left;
+    margin: 0px 4px 0 0;
+}
+
+.attendance-report span img:last-child {
+    float: right;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    width: 15px;
+}
+
+.attendance-report span label {
+    font-size: 10px;
+    float: left;
+    margin: 0 !important;
+}
+
+.attendance-report p {
+    font-size: 10px;
+    margin: 0;
+    float: left;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.attendance-report:nth-child(7), .attendance-report:nth-child(14), .attendance-report:nth-child(21), .attendance-report:nth-child(28) {
+    margin-right: 0!important;
+}
+
+//dropdown
+.button-section button span {
+    background: #4c4c4c;
+    position: absolute;
+    right: 0;
+    z-index: 99;
+    border: 1px solid #626262;
+    border-radius: 12px;
+    top: 24px;
+    width: 258px;
+    padding: 8px 13px;
+}
+
+
+.button-section button span ul li label {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+    border-radius: 50px;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    float: left;
+    margin-right: 10px;
+}
+
+.red{
+    color: #FE6651!important;
+}

@@ -1,0 +1,1523 @@
+<div class="" [ngClass]="
+userRole == 'SUPERADMIN'
+  ? 'from-top from-top-new'
+  : 'from-top'
+"> 
+  
+  <!-- <div> -->
+  <div class="col-md-12 ">
+    <div class=" col-12 position-relative">
+      <div
+        *ngFor="let message of messages; let i = index"
+        class="col-md-12"
+        id="{{ message.messageId }}"
+      >
+        <div
+          class="col-lg-12 position-relative"
+          *ngIf="
+            i == 0 ||
+            (message.createdAt | date: 'dd MMMM yyyy') !=
+              (messages[i - 1].createdAt | date: 'dd MMMM yyyy')
+          "
+        >
+          <div
+            class="date color-blue d-flex justify-content-center dated-sec mt-1 w-100"
+          >
+            <p class="c-f">
+              {{
+                (message.createdAt | date: "dd MMMM yyyy") !=
+                (todayDate | date: "dd MMMM yyyy")
+                  ? (message.createdAt | date: "dd MMMM yyyy")
+                  : "Today"
+              }}
+            </p>
+          </div>
+        </div>
+        <div
+        class="d-flex pt-5"
+        *ngIf="
+          (i == 0 ||
+          message.sender != messages[i - 1].sender ||
+          (i == 0 ||
+            message.sender != messages[i - 1].sender ||
+            message.createdAt | date: 'dd MMMM yyyy') !=
+            (messages[i - 1].createdAt | date: 'dd MMMM yyyy')) && message.data != 'user Removed'
+        "
+      >
+        <div class="position-relative ml-46">
+          <div class="online-status-one online"></div>
+          <div class="d-flex">
+            <div class="me-2">
+              <div class="profilepic-new mb-3" [class]="
+              message.st == 'IN'
+                ? 'border-green'
+                : 'border-gray-n'
+            ">
+                <div
+                  *ngIf="
+                    (message.userPic == '' || !message.userPic)"
+                >
+                  {{ getShortName(message.sender) }}
+                </div>
+                <img
+                  *ngIf="message.userPic !== '' && message.userPic"
+                  src="{{ message.userPic.uri }}"
+                  alt="profile"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="d-flex">
+            <p class="pb-0 mb-0 fw-bold-new">
+              {{ message.sender === nickName ? "You" : message.sender }}
+            </p>
+            <div>
+              <img
+                class="me-2 ms-2"
+                width="5px"
+                [nexaeiImageSrc]="'collab/dot2.png'"
+              />
+            </div>
+            <small class="text-white pt-1"
+              ><mydate>{{
+                message.createdAt | date: "hh:mm a"
+              }}</mydate></small
+            >
+          </div>
+          <small class="designation">{{
+            message.designation !== "" && message.designation
+              ? camelCase(message.designation.designation)  
+              : camelCase(Member)
+          }}</small>
+        </div>
+      </div>
+        <div [ngClass]="message.customType !== 'DELETED'  && message.data !== 'user Removed' ? 'hover-effcct' : 'isDeleted-hover-effcct'">
+          <div class="tooltip_hover_new">
+            <div *ngIf="message.customType !== 'DELETED' && message.data !== 'user Removed'" class="tooltiptext">
+              <!-- <img
+                class="me-2 ms-3"
+                width="20px"
+                [nexaeiImageSrc]="'collab/thumb.png'"
+              />
+              <img
+                class="me-2 ms-3"
+                width="17px"
+                [nexaeiImageSrc]="'collab/share.png'"
+              /> -->
+              <img
+                *ngIf="message.parentMessage.parentMessageText == null"
+                class="me-2 ms-3"
+                width="20px"
+                [attr.mk]="message.messageId"
+                [attr.text]="message.text"
+                [attr.sender]="message.sender"
+                [attr.cat]="message.createdAt"
+                [attr.name]="message.name"
+                [attr.plainUrl]="message.plainUrl"
+                [attr.messageType]="message.messageType"
+                [attr.type]="message.type"
+                (click)="ReplyFunction($event)"
+                [nexaeiImageSrc]="'collab/left.png'"
+              />
+              <img
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal-new"
+                class="me-2 ms-3"
+                width="20px"
+                [attr.mk]="message.messageId"
+                [attr.text]="message.text"
+                [attr.sender]="message.sender"
+                [attr.cat]="message.createdAt"
+                (click)="forwordFunction($event)"
+                [nexaeiImageSrc]="'collab/arrow.png'"
+              />
+              <img
+                *ngIf="message.sender === nickName && !message.isFile && !message.isImage"
+                class="me-2 ms-3"
+                width="15px"
+                [attr.mk]="message.messageId"
+                [attr.text]="message.text"
+                [nexaeiImageSrc]="'collab/edit.png'"
+                (click)="editMessage($event)"
+              />
+
+              <img
+                *ngIf="message.sender === nickName"
+                class="me-2 ms-3"
+                width="15px"
+                [attr.message]="message"
+                [attr.type]="message.messageType"
+                [attr.mk]="message.messageId"
+                [attr.text]="message.text"
+                [attr.sender]="message.sender"
+                [attr.cat]="message.createdAt"
+                (click)="DeleteMessageFun($event)"
+                [nexaeiImageSrc]="'collab/delet.png'"
+              />
+            </div>
+          </div>
+         
+          <div class="col-md-12">
+            <div class="col-12">
+              <div class="edit" *ngIf="message.data !== 'user Removed'">
+              <div
+              class="col-12 position-relative"
+              *ngIf="
+                tick === 0 &&
+                message.sender === nickName &&
+                message.parentMessage.parentMessageText == null &&
+                message.messageType == 'user' &&
+                message.messageType !== 'file' &&
+                message.customType !== 'DELETED'
+              "
+            >
+              <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/Group.png'" />
+            </div>
+            <div
+              class="col-12"
+              *ngIf="
+                tick === 1 &&
+                message.sender === nickName &&
+                message.parentMessage.parentMessageText == null &&
+                message.messageType == 'user' &&
+                message.messageType !== 'file' &&
+                message.customType !== 'DELETED'
+              "
+            >
+              <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/tick.png'" />
+            </div>
+            <div
+              class="col-12 position-relative"
+              *ngIf="
+                tick === 2 &&
+                message.sender === nickName &&
+                message.parentMessage.parentMessageText == null &&
+                message.messageType == 'user' &&
+                message.messageType !== 'file' &&
+                message.customType !== 'DELETED'
+              "
+            >
+              <img class="tick-img " width="11px" [nexaeiImageSrc]="'collab/Group1.png'" />
+            </div>
+          </div>
+              <div class="edit" *ngIf="message.data !== 'user Removed'">
+                <small
+                  *ngIf="
+                    message.parentMessage.parentMessageText == null &&
+                    message.messageType == 'user' &&
+                    message.customType !== 'DELETED'
+                  "
+                  class=""
+                  >{{ message.createdAt | date: "hh:mm a" }}</small
+                >
+
+                <a
+                  *ngIf="
+                    message.parentMessage.parentMessageText == null &&
+                    message.customType !== 'DELETED' &&
+                    message.updatedAt !== 0 &&
+                    isUndoClick == false &&
+                    message.messageType === 'user' &&
+                    message.messageType !== 'file'
+                  "
+                  class="text-secondary float-end editsec"
+                >
+                  Edited
+              </a>
+              </div>
+              <div class="col-12 pb-1 ps-5-new-1 position-relative" >
+                <p
+                  *ngIf="
+                    message.parentMessage.parentMessageText == null &&
+                    message.messageType == 'user' &&
+                    message.messageType !== 'file' &&
+                    message.customType !== 'DELETED' &&
+                    message.customType !== 'FORWARDED' &&
+                    message.data != 'user Removed'  
+                  "
+                  class="text-white chatmessage p-0 m-0 col-10"
+                >
+                  {{ message.text }}
+                </p>
+                
+              <div *ngIf="message.data === 'user Removed'" class="date color-blue d-flex justify-content-center dated-sec-new ps-5-remove w-100">
+                <p class="c-f-new">{{ message.createdAt | date: "dd MMM YY" }}, {{ message.text }}</p>
+              </div>
+            
+                <div
+                  *ngIf="
+                    message.customType === 'FORWARDED' &&
+                    message.messageType !== 'file'
+                  "
+                  class="col-md-12"
+                >
+                  <div class="Forwarded-bg">
+                    <div class="c-for pb-1 ps-3">
+                      <img width="15px" [nexaeiImageSrc]="'collab/arrow.png'" />
+
+                      <span>Forwarded </span>
+                    </div>
+
+
+                    <div class="Forwarded-text">
+                    <div class="c-for ">
+                      <span class="ps-0"
+                        >{{
+                          message.sender === nickName ? "You" : message.sender
+                        }},
+                        {{
+                          message.createdAt | date: "dd MMM, YY | hh:mm a"
+                        }}</span
+                      >
+                    </div>
+                    <small class="text-white ">{{ message.text }}</small>
+
+                  </div> </div>
+                  <div class="clearfix"></div>
+                </div>
+
+                <small
+                  class="text-secondary fst-italic "
+                  *ngIf="
+                    message.customType === 'DELETED' &&
+                    message.messageType !== 'file'
+                  "
+                  >This message has been deleted</small
+                >
+                <a
+                  class="ps-2 text-green"
+                  *ngIf="
+                    message.customType === 'DELETED' &&
+                    isUndo === true &&
+                    message.messageType !== 'file' &&
+                    editedMessageId == message.messageId
+                  "
+                  [attr.mk]="message.messageId"
+                  [attr.text]="message.text"
+                  [attr.type]="message.messageType"
+                  (click)="undoMessage($event)"
+                  >Undo</a
+                >
+              </div>
+              <!-- <div class="col-12 pb-1 ps-5-new-1" *ngIf="message.data == 'user Removed'">
+              <div
+              class="date color-blue d-flex justify-content-center dated-sec mt-1"
+            >
+              <p class="c-f">
+                {{ message.text }}
+              </p>
+            </div>
+          </div> -->
+              <div
+                *ngIf="
+                  message.isImage &&
+                  message.customType !== 'DELETED' &&
+                  message.messageType !== 'user'
+                "
+                class="col-md-12 clearfix ps-5-new-2 position-relative"
+              >
+              <div class="edit">
+              <div
+              class="col-12"
+              *ngIf="
+                message.customType !== 'DELETED' &&
+                message.sender === nickName &&
+                message.messageType !== 'user' &&
+                tick === 0
+              "
+            >
+              <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/Group.png'" />
+            </div>
+            <div
+              class="col-12"
+              *ngIf="
+                message.customType !== 'DELETED' &&
+                message.sender === nickName &&
+                message.messageType !== 'user' &&
+                tick === 1
+              "
+            >
+              <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/tick.png'" />
+            </div>
+            <div
+              class="col-12 position-relative"
+              *ngIf="
+                message.customType !== 'DELETED' &&
+                message.sender === nickName &&
+                message.messageType !== 'user' &&
+                tick === 2
+              "
+            >
+              <img class="tick-img " width="11px" [nexaeiImageSrc]="'collab/Group1.png'" />
+            </div>
+            </div>
+                <!-- <small class="text-white pt-4 float-start"
+                  ><mydate>{{
+                    message.createdAt | date: "dd/MM | HH:mm a"
+                  }}</mydate></small
+                > -->
+
+                <img
+                  *ngIf="message.customType !== 'FORWARDED'"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop1"
+                  class="img-class"
+                  [src]="message.plainUrl"
+                  [attr.imgId]="message.messageId"
+                  (click)="getModelMessage(message)"
+                />
+                <div class="clearfix"></div>
+
+                <div
+                  *ngIf="message.customType === 'FORWARDED'"
+                  class="col-md-12 pb-1 float-start"
+                >
+                  <div class="Forwarded pt-2">
+                    <div class="c-for">
+                      <img width="15px" [nexaeiImageSrc]="'collab/arrow.png'" />
+
+                      <span>Forwarded </span>
+                    </div>
+
+                    <div class="c-for pb-1">
+                      <span
+                        >{{
+                          message.sender === nickName ? "You" : message.sender.length > 23 ? (message.sender | slice: 0:25) + "..." : message.sender
+                        }} ,</span>
+
+                        <span>
+                          {{
+                            message.createdAt | date: "dd MMM, YY | hh:mm a"
+                          }}</span
+                        >
+
+                        </div>
+                     
+
+                    <img
+                      class="img-class me-0"
+                      [src]="message.plainUrl"
+                      [attr.imgId]="message.messageId"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop1"
+                      (click)="getModelMessage(message)"
+                    />
+                    <div class="clearfix"></div>
+
+                    <small
+                    class="float-start pb-1 text-white "
+                    *ngIf="message.messageWithImage !== '' && message.customType === 'FORWARDED'"
+                  >
+                    {{ message.messageWithImage }}
+                  </small>
+
+                  
+              
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <small class=" edit edit-3">{{
+                  message.createdAt | date: "hh:mm a"
+                }}</small>
+                <!-- <small *ngIf="
+                message.parentMessage.parentMessageText == null &&
+                message.customType !== 'DELETED' && message.updatedAt !== 0
+              " class="text-white">
+                  Edited
+                </small> -->  
+
+                <small
+                  class="float-start col-10 pb-1 text-white fs-small"
+                  *ngIf="message.messageWithImage !== '' && message.customType !== 'FORWARDED'"
+                >
+                  {{ message.messageWithImage }}
+                </small>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade modal-fullscreen footer-to-bottom"
+                  id="staticBackdrop1"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                  *ngIf="modelData"
+                >
+                  <div class="modal-dialog animated fadeInDown">
+                    <div class="modal-content">
+                      <div
+                        class="d-flex justify-content-between pt-3 ps-3 ps-3"
+                      >
+                        <h5
+                          class="modal-title h6 fw-light"
+                          id="staticBackdropLabel"
+                        >
+                          Design Team
+                        </h5>
+
+                        <h5
+                          class="modal-title h6 fw-light"
+                          id="staticBackdropLabel"
+                        >
+                          {{ modelData.name }}
+                        </h5>
+
+                        <div class="d-flex justify-content-end">
+                          <!-- <div class="me-3">
+                            <img width="20px" [nexaeiImageSrc]="'zoomin.png'" />
+                          </div>
+
+                          <div class="me-3">
+                            <img
+                              width="20px"
+                              [nexaeiImageSrc]="'zoomout.png'"
+                            />
+                          </div> -->
+
+                          <div class="me-3">
+                            <!-- <a href="/images/myw3schoolsimage.jpg" download>
+                              <img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
+                            </a> -->
+                            <!-- <a
+                              href="{{modelData.plainUrl}}"
+                              target="_self"
+                              download
+                            > -->
+                            <img
+                              (click)="downloadImage(modelData)"
+                              crossorigin="anonymous"
+                              width="20px"
+                              [nexaeiImageSrc]="'down.png'"
+                              data-bs-dismiss="modal"
+                              style="cursor: pointer;"
+                            />
+                            <!-- </a> -->
+                          </div>
+                          <div class="me-2">
+                            <img width="1px" [nexaeiImageSrc]="'lin2.png'" />
+                          </div>
+
+                          <button
+                            type="button"
+                            class="btn-close2 pe-3"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <img
+                              width="22px"
+                              [nexaeiImageSrc]="'close_n.png'"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                      <hr />
+                      <div
+                        class="modal-body d-flex justify-content-center align-items-center"
+                      >
+                        <img
+                          width="500px"
+                          [src]="modelData.plainUrl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <small
+                class="text-secondary fst-italic ps-5-new-1"
+                *ngIf="
+                  message.customType === 'DELETED' &&
+                  message.messageType !== 'user'
+                "
+                >This message has been deleted</small
+              >
+              <a
+                class="text-green ps-2 "
+                *ngIf="
+                  message.customType === 'DELETED' &&
+                  isUndo === true &&
+                  message.messageType !== 'user' &&
+                  editedMessageId == message.messageId
+                "
+                [attr.mk]="message.messageId"
+                [attr.text]="message.text"
+                [attr.type]="message.messageType"
+                (click)="undoMessage($event)"
+                >Undo</a
+              >
+              <div>
+              <div
+                *ngIf="
+                  message.isFile &&
+                  message.customType !== 'DELETED' &&
+                  message.messageType !== 'user'
+                "
+                class="position-relative mt-3 ms-5"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop2"
+                (click)="getModelfile(message)"
+
+              >
+                
+                <div class="edit">
+                <div
+                class="col-12"
+                *ngIf="
+                  message.isFile &&
+                  message.sender === nickName &&
+                  message.messageType !== 'user' &&
+                  tick === 0
+                "
+              >
+                <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/Group.png'" />
+              </div>
+              <div
+                class="col-12"
+                *ngIf="
+                  message.isFile &&
+                  message.sender === nickName &&
+                  message.messageType !== 'user' &&
+                  tick === 1
+                "
+              >
+                <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/tick.png'" />
+              </div>
+              <div
+                class="col-12"
+                *ngIf="
+                  message.isFile &&
+                  message.sender === nickName &&
+                  message.messageType !== 'user' &&
+                  tick === 2
+                "
+              >
+                <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/tick.png'" />
+              </div>
+            </div>
+                <div
+                  *ngIf="message.customType !== 'FORWARDED'"
+                  class="sec-chat-doc rounded "
+                  style="cursor: pointer;"
+                >
+                <small class="edit edit-new-doc"
+                  >{{
+                    message.createdAt | date: "hh:mm a"
+                  }}</small
+                >
+                  <img
+                    width="25px"
+                    class="ms-3 float-start me-2 mt-1"
+                    [nexaeiImageSrc]="
+                      message.type === 'text/plain'
+                        ? 'txt 1.png'
+                        : message.type === 'application/pdf'
+                        ? 'pdf 1.png'
+                        : message.type === 'application/x-zip-compressed'
+                        ? 'zip 2.png'
+                        : message.type === 'application/msword'
+                        ? 'word.png'
+                        : message.type ===
+                          'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                        ? 'excel 1.png'
+                        : message.type ===
+                          'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                        ? 'ppt 1.png'
+                        : message.type === 'text/csv'
+                                ? 'Group 1977.png'
+                                : message.type === 'audio/mpeg'
+                                ? 'audio-file 1.png'
+                        : message.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ? 'word.png' :'other icon.png'
+                    "
+                  />
+
+                  <p style="padding-top: 0.5rem" class="text-white ms-3">
+                    {{  message.name.length > 10 ? (message.name | slice: 0:12) + "..." : message.name}} 
+                  </p>
+                  <!-- <small
+                    class="text-white hover-content" style="float: right;">{{
+                    message.createdAt | date: "HH:mm a"
+                  }}</small> -->
+                  <!-- Modal -->
+                  <div
+                    class="modal fade modal-fullscreen footer-to-bottom"
+                    id="staticBackdrop2"
+                    data-bs-backdrop="static"
+                    data-bs-keyboard="false"
+                    tabindex="-1"
+                    aria-labelledby="staticBackdropLabel1"
+                    aria-hidden="true"
+                    *ngIf="modelFileData"
+                  >
+                    <div class="modal-dialog animated fadeInDown">
+                      <div class="modal-content">
+                        <div
+                          class="d-flex justify-content-between pt-3 ps-3 ps-3"
+                        >
+                          <h5
+                            class="modal-title h6 fw-light"
+                            id="staticBackdropLabel1"
+                          >
+                            Design Team
+                          </h5>
+
+                          <h5
+                            class="modal-title h6 fw-light"
+                            id="staticBackdropLabel1"
+                          >
+                            {{ modelFileData.name }}
+                          </h5>
+
+                          <div class="d-flex justify-content-end">
+                            <!-- <div class="me-3">
+                              <img
+                                width="20px"
+                                [nexaeiImageSrc]="'zoomin.png'"
+                              />
+                            </div>
+
+                            <div class="me-3">
+                              <img
+                                width="20px"
+                                [nexaeiImageSrc]="'zoomout.png'"
+                              />
+                            </div> -->
+
+                            <div class="me-3">
+                              <!-- <a href="/images/myw3schoolsimage.jpg" download>
+                            <img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
+                          </a> -->
+                              <a
+                                [href]="modelFileData.plainUrl"
+                                [download]="modelFileData.name"
+                              >
+                                <img
+                                  width="20px"
+                                  [nexaeiImageSrc]="'down.png'"
+                                  data-bs-dismiss="modal"
+                                  style="cursor: pointer;"
+                                />
+                              </a>
+                            </div>
+                            <div class="me-2">
+                              <img width="1px" [nexaeiImageSrc]="'lin2.png'" />
+                            </div>
+
+                            <button
+                              type="button"
+                              class="btn-close2 pe-3"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            >
+                              <img
+                                width="22px"
+                                [nexaeiImageSrc]="'close_n.png'"
+                              />
+                            </button>
+                          </div>
+                        </div>
+                        <hr />
+                        <div
+                          class="modal-body d-flex justify-content-center align-items-center"
+                        >
+                          <img
+                            width="100px"
+                            height="100px"
+                            [nexaeiImageSrc]="
+                              modelFileData.type === 'text/plain'
+                                ? 'txt 1.png'
+                                : modelFileData.type === 'application/pdf'
+                                ? 'pdf 1.png'
+                                : modelFileData.type ===
+                                  'application/x-zip-compressed'
+                                ? 'zip 2.png'
+                                : modelFileData.type === 'application/msword'
+                                ? 'word.png'
+                                : modelFileData.type ===
+                                  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                                ? 'excel 1.png'
+                                : modelFileData.type === 'application/vnd.ms-excel'
+                                ? 'excel 1.png'
+                                : modelFileData.type ===
+                                  'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                                ? 'ppt 1.png'
+                                : modelFileData.type ===
+                                  'application/vnd.ms-powerpoint'
+                                ? 'ppt 1.png'
+                                : modelFileData.type === 'text/csv'
+                                ? 'Group 1977.png'
+                                : modelFileData.type === 'audio/mpeg'
+                                ? 'audio-file 1.png'
+                                : modelFileData.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ? 'word.png' : 'other icon.png'
+                            "
+                          />
+                            <pdf-viewer *ngIf="modelFileData.type === 'application/pdf'"
+                              src="{{modelFileData.plainUrl}}"
+                              [render-text]="true"
+                              [original-size]="false"
+                              style="width: 800px; height: 600px"
+                            ></pdf-viewer>
+                          <!-- <iframe width="402" height="346" frameborder="0" scrolling="no" src={{modelFileData.plainUrl}}></iframe> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+ 
+
+
+                <div class="clearfix"></div>
+                <div
+                  class="w-100 text-white"
+                  *ngIf="
+                    message.messageWithImage !== '' &&
+                    message.customType !== 'FORWARDED'
+                  "
+                >
+                 <div class="col-10 ps-3"> <small class="p-0 m-0 fs-small">{{ message.messageWithImage }}</small>
+                </div> </div>
+                <div class="clearfix"></div>
+
+                <div
+                  *ngIf="message.customType === 'FORWARDED'"
+                  class="col-md-12 pb-1"
+                >
+                <small *ngIf="message.customType === 'FORWARDED'" class="edit edit2">{{
+                  message.createdAt | date: "hh:mm a"
+                }}</small>
+  
+                  <div class="Forwarded pt-2 float-start ms-2 mt-n16">
+                    <div class="c-for">
+                      <img width="15px" [nexaeiImageSrc]="'collab/arrow.png'" />
+
+                      <span>Forwarded </span>
+                    </div>
+
+                    <div class="c-for pb-1">
+                      <span
+                        >{{
+                          message.sender === nickName ? "You" : message.sender.length > 23 ? (message.sender | slice: 0:25) + "..." : message.sender
+                        }} ,</span>
+
+                        <span>
+                          {{
+                            message.createdAt | date: "dd MMM, YY | hh:mm a"
+                          }}</span
+                        >
+                        </div>
+
+                    <img
+                     width="20px" class="float-start"
+                      [nexaeiImageSrc]="
+                        message.type === 'text/plain'
+                          ? 'txt 1.png'
+                          : message.type === 'application/pdf'
+                          ? 'pdf 1.png'
+                          : message.type === 'application/x-zip-compressed'
+                          ? 'zip 2.png'
+                          : message.type === 'application/msword'
+                          ? 'word.png'
+                          : message.type ===
+                            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                          ? 'excel 1.png'
+                          : message.type === 'application/vnd.ms-excel'
+                          ? 'excel 1.png'
+                          : message.type ===
+                            'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                          ? 'ppt 1.png'
+                          : message.type === 'application/vnd.ms-powerpoint'
+                          ? 'ppt 1.png'
+                          : message.type === 'text/csv'
+                          ? 'Group 1977.png'
+                          : message.type === 'audio/mpeg'
+                          ? 'audio-file 1.png'
+                          : message.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ? 'word.png' : 'other icon.png'
+                      "
+                    />
+
+                    <p class="ps-4 fs-12">{{  message.name.length > 10 ? (message.name | slice: 0:12) + "..." : message.name}}</p>
+              
+                    <small class="float-start col-12 pb-1 text-white fs-small"
+                  *ngIf="message.messageWithImage !== '' && message.customType === 'FORWARDED'">
+                  {{ message.messageWithImage }} </small>
+                  
+                      
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+                <div class="clearfix"></div>
+              </div>
+
+              <div>
+                <div
+                  *ngIf="
+                    message.parentMessage.parentMessageText != null &&
+                    message.customType !== 'DELETED'
+                  "
+                >
+
+                <div class="edit">
+                  <div
+                  class="col-12 position-relative"
+                  *ngIf="
+                    tick === 0 &&
+                    message.customType !== 'DELETED'
+                    
+                  "
+                >
+                  <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/Group.png'" />
+                </div>
+                <div
+                  class="col-12"
+                  *ngIf="
+                    tick === 1 &&
+                    message.customType !== 'DELETED'
+                  "
+                >
+                  <img class="tick-img" width="11px" [nexaeiImageSrc]="'collab/tick.png'" />
+                </div>
+                <div
+                  class="col-12 position-relative"
+                  *ngIf="
+                    tick === 2 &&
+                    message.customType !== 'DELETED'
+                  "
+                >
+                  <img class="tick-img " width="11px" [nexaeiImageSrc]="'collab/Group1.png'" />
+                </div>
+                </div>
+
+                <div class="fw-message">
+                  <div class="chat-show">
+                    
+                    <div class="text-white p-3">
+                      <div class="d-flex justify-content-start">
+                        <small class="edit edit3">{{
+                          message.createdAt | date: "hh:mm a"
+                        }}</small>
+                  
+                        <p class="user-fw m-0 p-0">
+                          {{
+                            message.parentMessage.parentMessageSender ===
+                            nickName
+                              ? "You"
+                              : message.parentMessage.parentMessageSender
+                          }}
+                        </p>
+                        {{message.parentMessage.messageType}}
+                        <small class="ps-2 mt-1 time-stamp">{{
+                          message.parentMessage.parentMessageTime
+                            | date: "dd MMM | hh:mm a"
+                        }}</small>
+                      </div>
+                      <img class="float-start me-2 mt-1" width="25px" *ngIf="(message.parentMessage.perentType === 'image/jpeg' ||
+                      message.parentMessage.perentType === 'image/png' ||
+                      message.parentMessage.perentType === 'image/webp' ||
+                      message.parentMessage.perentType === 'image/SVG') && 
+                      (message.parentMessage.parentMessageType === 'file')"  [nexaeiImageSrc]="'imageicon.png'" />
+
+                      <img class="float-start me-2 mt-1" width="25px" *ngIf="message.parentMessage.perentType !== 'image/jpeg' &&
+                      message.parentMessage.perentType !== 'image/png' &&
+                      message.parentMessage.perentType !== 'image/webp' &&
+                      message.parentMessage.perentType !== 'image/SVG' &&
+                      message.parentMessage.parentMessageType === 'file'"  [nexaeiImageSrc]="'docicon.png'" />
+
+                      <p class="p-0 m-0 pt-1 fs-small">
+                        {{ message.parentMessage.parentMessageText }}
+                      </p>
+                    </div>
+                  </div> 
+
+                  <div class="bg-new d-flex justify-content-between">
+                    <p class="pb-1 mb-1 fs-small">{{ message.text }}</p>
+
+                    <!-- <a href="#" class="ps-2">
+                      <img
+                        class="pt-1"
+                        width="8px"
+                        [nexaeiImageSrc]="'dot.png'"
+                    /></a> -->
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="chat_space"></div>
+
+<section class="finalchat">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div
+          *ngIf="
+            (replyClick !== true && previewImage == false) ||
+            this.previews.length == 0
+          "
+          class="d-flex"
+        >
+          <div class="chat_btm">
+            <!-- <div *ngFor="let fileStatus of uploadProgress | async">
+          <p>Uploading File: {{fileStatus.filename}}</p>
+          </div> -->
+            <div
+              *ngIf="this.messages.length === 0 && this.groupCreatedAt"
+              class="text-center col-11 text-secondary pe-3"
+            >
+              This group is created on
+              {{ this.groupCreatedAt | date: "dd MMM HH:mm a" }}
+            </div>
+            <div
+              *ngIf="messages.length === 0 && this.groupCreatedAt"
+              class="text-center col-11 text-secondary pe-3"
+            >
+              Say "Hello" to start colab
+            </div>
+            <div
+              *ngIf="
+                this.messages.length === 0 &&
+                this.channel &&
+                this.channel.createdAt &&
+                this.groupCreatedAt === null
+              "
+              class="text-center col-11 text-secondary pe-3"
+            >
+              This group is created on
+              {{ this.channel.createdAt | date: "dd MMM HH:mm a" }}
+            </div>
+            <div
+              *ngIf="
+                this.messages.length === 0 &&
+                this.channel &&
+                this.channel.createdAt &&
+                this.groupCreatedAt === null
+              "
+              class="text-center col-11 text-secondary pe-3"
+            >
+              Say "Hello" to start colab
+            </div>
+
+            <small class="type-left text-white fst-italic pl-25">{{ typingMember }}</small>
+            <div *ngIf="replyClick == false" class="d-flex pb-2 chat-p">
+              <!-- <h3 class="pt-2 h4 pe-2">T</h3> -->
+              <div class="bg-dark-sec f-control">
+                <div *ngIf="emptyErrorMessage" class="upload w-100 text-danger fs-12 d-flex justify-content-between">
+                  
+                  <p class="text-danger">Please type message to continue...</p>
+                
+                </div>
+                <!-- <div class="upload w-100 text-danger fs-12 d-flex justify-content-between">
+                  
+                  <p class="text-danger">Maximum upload file size: 25 MB.</p>
+
+                  <a href="#"
+                  ><img
+                    width="15px"
+                    [nexaeiImageSrc]="'close_n.png'"
+                /></a>
+                
+                </div> -->
+
+                 
+                 <textarea rows="1" rows="1"  class="w-83 form-control bg-dark-sec border-0 ps-0 "
+                  id=""
+                  aria-describedby=""
+                  placeholder="Write here..."
+                  [(ngModel)]="textMessage"
+                  (keyup.enter)="sbSendTextMessage(this.channel)"
+                  (ngModelChange)="typingStart(this.channel)"
+                  ></textarea>  
+
+                 <!-- <span 
+
+                   class="w-83 form-control bg-dark-sec border-0 ps-0 textarea"
+                  id=""
+                  aria-describedby=""
+                  [(ngModel)]="textMessage"
+                  (keyup.enter)="sbSendTextMessage(this.channel)"
+                  (ngModelChange)="typingStart(this.channel)" cols="50" role="textbox" contenteditable>
+                </span> -->
+
+      
+                <!-- <input
+                  type="text"
+                  class="w-83 form-control bg-dark-sec border-0 ps-0"
+                  id=""
+                  aria-describedby=""
+                  placeholder="Write here..."
+                  [(ngModel)]="textMessage"
+                  (keyup.enter)="sbSendTextMessage(this.channel)"
+                  (ngModelChange)="typingStart(this.channel)"
+                /> -->
+                <div class="col-md-1 d-flex justify-content-end pt-1">
+                  <!-- <a href="#" class="me-3"
+                    ><img
+                      width="20px"
+                      [nexaeiImageSrc]="'emp-invite/Group1384.png'"
+                  /></a> -->
+                  <div class="me-3 image-upload pt-1">
+                    <label for="file-input">
+                      <img
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/Vector.png'"
+                    /></label>
+                    <input
+                      accept="/*"
+                      id="file-input"
+                      name="file"
+                      type="file"
+                      (change)="selectFiles($event)"
+                      multiple
+                      style="display: none"
+                    />
+                  </div>
+                  <!-- <a href="#" class=""
+                    ><img
+                      width="20px"
+                      [nexaeiImageSrc]="'emp-invite/smile.png'"
+                  /></a> -->
+                </div>
+              </div>
+              <a
+                (click)="sbSendTextMessage(this.channel)"
+                [ngClass]="
+                  (inputChange && textMessage !== '') && (!clickSendButton)
+                    ? 'enable-input ms-3 mt-1'
+                    : 'disable-input ms-3 mt-1'
+                "
+                ><img width="40px" [nexaeiImageSrc]="'emp-invite/send.png'"
+              /></a>
+            </div>
+          </div>
+        </div>
+        <div
+          *ngIf="replyClick === true && previewImage == false"
+          class="row pt-1 ps-2 gray_bg"
+        >
+          <div class="d-flex">
+            <div class="chat_btm">
+              <div class="d-flex pt-2 pb-2 align-items-end">
+                <h3 class="pt-2">T</h3>
+                <div class="bg-dark-sec f-control">
+                  <div class="col-md-8 col-lg-8">
+                    <div
+                      class="bg-light-gray2 border border-white text-white p-3 ms-1 mt-1"
+                    >
+                      <div class="d-flex pb-1 justify-content-between">
+                        <div class="col-11 d-flex">
+                          <p>
+                            {{
+                              this.perentSender === nickName
+                                ? "You"
+                                : this.perentSender
+                            }}
+                          </p>
+                          <small class="ps-2 mt-1">{{
+                            this.perentTime | date: "dd MMM | HH:mm a"
+                          }}</small>
+                        </div>
+
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss=""
+                          aria-label="Close"
+                          (click)="closeReply()"
+                        >
+                          <img
+                            class="clo"
+                            width="25px"
+                            [nexaeiImageSrc]="'close.png'"
+                          />
+                        </button>
+                      </div>
+                      <img class="float-start me-2 mt-n5" width="25px"
+                        *ngIf="
+                          (perentType === 'image/jpeg' ||
+                          perentType === 'image/png' ||
+                          perentType === 'image/webp' ||
+                          perentType === 'image/SVG') &&
+                          perentMessageType != 'user'
+                        "
+                        [nexaeiImageSrc]="'imageicon.png'"
+                      />
+                      <img class="float-start me-2 mt-n5" width="25px"
+                        *ngIf="
+                          perentType !== 'image/jpeg' &&
+                          perentType !== 'image/png' &&
+                          perentType !== 'image/webp' &&
+                          perentType !== 'image/SVG' &&
+                          perentMessageType != 'user'
+                        "
+                        [nexaeiImageSrc]="'docicon.png'"
+                      />
+                      <p *ngIf="perentMessageType == 'file'" class="p-0 m-0 fs-small">
+                        {{ this.perentName }}
+                      </p>
+                      <p *ngIf="perentMessageType != 'file'" class="p-0 m-0 fs-small">
+                        {{ this.perentText }}
+                      </p>
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    class="w-83 form-control bg-dark-sec border-0 ps-0"
+                    id=""
+                    aria-describedby=""
+                    placeholder="Write here..."
+                    [(ngModel)]="textMessage"
+                    (keyup.enter)="sbSendTextMessage(this.channel)"
+                    (ngModelChange)="typingStart(this.channel)"
+                  />
+                  <div class="col-md-1 d-flex justify-content-end pt-1">
+                    <!-- <a href="#" class="me-3"
+                      ><img
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/Group1384.png'"
+                    /></a> -->
+                    <div class="me-3 image-upload pt-1">
+                      <label for="file-input">
+                        <img
+                          width="20px"
+                          [nexaeiImageSrc]="'emp-invite/Vector.png'"
+                      /></label>
+                      <input
+                        accept="/*"
+                        id="file-input"
+                        name="file"
+                        type="file"
+                        (change)="selectFiles($event)"
+                        style="display: none"
+                        multiple
+                      />
+                    </div>
+                    <!-- <a href="#" class=""
+                      ><img
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/smile.png'"
+                    /></a> -->
+                  </div>
+                </div>
+                <a
+                  (click)="sbSendTextMessage(this.channel)"
+                  [ngClass]="
+                    (inputChange && textMessage !== '') && (!clickSendButton)
+                      ? 'enable-input ms-3 mt-1 pt-1'
+                      : 'disable-input ms-3 mt-1 pt-1'
+                  "
+                  ><img width="40px" [nexaeiImageSrc]="'emp-invite/send.png'"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          *ngIf="previewImage == true && replyClick == false && this.previews.length > 0"
+          class="row pt-1 ps-2 gray_bg"
+        >
+          <div class="d-flex">
+            <div class="chat_btm">
+              <div class="d-flex pt-2 pb-2 align-items-end">
+                <h3 class="pt-2">T</h3>
+
+                <div class="bg-dark-sec f-control">
+                  <div *ngIf="(currentFileType == 'text/javascript' || currentFileType == 'video/mp4') && isCheckFileSupport.length !== 0" class="upload w-100 text-danger fs-12 d-flex justify-content-between">
+                  
+                    <p class="text-danger">Uploaded file have not valid format.</p>
+  
+                    <!-- <a href="#"
+                    ><img
+                      width="15px"
+                      [nexaeiImageSrc]="'close_n.png'"
+                  /></a> -->
+                  
+                  </div>
+                  <div *ngIf="progressInfo != '100'" class="upload w-100 text-danger fs-12 d-flex justify-content-between">
+                  
+                    <p class="text-danger">File upload in progress please wait...</p>
+                  
+                  </div>
+  
+                  <div class="d-flex pb-1 chat-doc p-2 pb-0">
+                    <div
+                      *ngFor="let preview of previews"
+                      class="col-lg-gap position-relative"
+                    >
+                    <!-- <p *ngIf="preview.type == 'text/javascript'" style="color: 'red'">Uploaded file have not valid format</p> -->
+
+      
+                      <div
+                        *ngIf="preview.isImage"
+                      >
+                        <button
+                          type="button"
+                          data-bs-dismiss=""
+                          aria-label="Close"
+                          class="btn-close close-img"
+                          (click)="closeImage(preview)"
+                        ></button>
+                        <img class="rounded for-size" [src]="preview.url" />
+                      </div>
+                      <div
+                        *ngIf="!preview.isImage"
+                      >
+                        <button
+                          type="button"
+                          data-bs-dismiss=""
+                          aria-label="Close"
+                          (click)="closeImage(preview)"
+                          class="btn-close close-img"
+                        ></button>
+
+                        <div class="sec-chat-file rounded border-danger">
+                          <img
+                            width="18px"
+                            class="ms-2 mt-2"
+                            [nexaeiImageSrc]="
+                              preview.type === 'text/plain'
+                                ? 'txt 1.png'
+                                : preview.type === 'application/pdf'
+                                ? 'pdf 1.png'
+                                : preview.type ===
+                                  'application/x-zip-compressed'
+                                ? 'zip 2.png'
+                                : preview.type === 'application/msword'
+                                ? 'word.png'
+                                : preview.type ===
+                                  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                                ? 'excel 1.png'
+                                : preview.type ===
+                                  'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                                ? 'ppt 1.png'
+                                : preview.type === 'text/csv'
+                                ? 'Group 1977.png'
+                                : message.type === 'audio/mpeg'
+                                ? 'audio-file 1.png'
+                                : 'other icon.png'
+                            "
+                          />
+                          <p class="text-white pt-4 text-center">
+                            {{
+                              preview.file_name.length > 23
+                                ? (preview.file_name | slice: 0:25) + "..."
+                                : preview.file_name
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="col-lg-gap position-relative">
+                              <button type="button" data-bs-dismiss="" aria-label="Close" class="btn-close close-img"></button>
+      
+                              <div class="sec-chat-file w-100 rounded">
+                                  <img width="18px" class="ms-2 mt-2" [nexaeiImageSrc]="'file.png'" />
+      
+                                  <p class="text-white pt-5 text-center">Report_of_the.doc</p>
+                              </div>
+                          </div>
+      
+                          <div class="col-lg-gap position-relative">
+                              <button type="button" data-bs-dismiss="" aria-label="Close" class="btn-close close-img"></button>
+                              <img class="w-100 rounded" [nexaeiImageSrc]="'man.png'" />
+                          </div> -->
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                  <input
+                    type="text"
+                    class="w-83 form-control bg-dark-sec border-0 float-start ps-0"
+                    id=""
+                    aria-describedby=""
+                    placeholder="Write here..."
+                    [(ngModel)]="textMessage"
+                    (keyup.enter)="sbSendTextMessage(this.channel)"
+                    (ngModelChange)="typingStart(this.channel)"
+                  />
+                  <div class="col-md-1 d-flex justify-content-end pt-1">
+                    <!-- <a href="#" class="me-3"
+                      ><img
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/Group1384.png'"
+                    /></a> -->
+                    <div class="me-3 image-upload pt-1">
+                      <label for="file-input">
+                        <img
+                          width="20px"
+                          [nexaeiImageSrc]="'emp-invite/Vector.png'"
+                      /></label>
+                      <input
+                        accept=".jpg,.png,.pdf,.txt,.pdf,.gif,.zip,.rar,.rtf"
+                        id="file-input"
+                        name="file"
+                        type="file"
+                        (change)="selectFiles($event)"
+                        style="display: none"
+                        multiple
+                      />
+                    </div>
+                    <!-- <a href="#" class=""
+                      ><img
+                        width="20px"
+                        [nexaeiImageSrc]="'emp-invite/smile.png'"
+                    /></a> -->
+                  </div>
+                </div>
+                <a
+                  (click)="sbSendTextMessage(this.channel)"
+                  [ngClass]="
+                    (inputChange || textMessage !== '' || previewImage) && (!clickSendButton) && progressInfo == '100'
+                      ? 'enable-input ms-3 mt-1 pt-1'
+                      : 'disable-input ms-3 mt-1 pt-1'
+                  "
+                  ><img width="40px" [nexaeiImageSrc]="'emp-invite/send.png'"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+    </div>
+  </div>
+
+  
+</section>
+
+
+ <!-- --------forword model-------- -->
+ <div
+ class="modal fade"
+ id="exampleModal-new"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog modal-lg-new modal-dialog-centered">
+   <div class="modal-content pt-2 border-light-new">
+     <div class="modal-header border-0 pb-1">
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+       ></button>
+
+       <h5
+         class="modal-title text-center w-100 h6"
+         id="exampleModal-new"
+       >
+         Forward Message
+       </h5>
+
+       <button
+         type="button"
+         class="btn-success"
+         (click)="forwordMessage()"
+         data-bs-dismiss="modal"
+       >
+         Send
+       </button>
+     </div>
+     <div class="modal-body border-0 ps-0 pr-0">
+       <!-- <div class="justify-content-center d-flex w-100">
+       <div class="fw_search d-flex col-8">
+         <div class="pt-1">
+           <img width="17px" [nexaeiImageSrc]="'emp-invite/search.png'" />
+         </div>
+         <form class="w-75">
+           <input
+             type="text"
+             class="form-control border-0"
+             name="search"
+             id="search"
+             placeholder="Search people & colab"
+           />
+         </form>
+       </div>
+     </div> -->
+
+       <p class="suc">Suggested</p>
+
+       <div class="mid-schrall">
+         <div
+           *ngFor="let team of collegueAndTeamArray; let i = index"
+           class="justify-content-between d-flex position-relative name-pic mb-3"
+         >
+           <div class="d-flex">
+             <div class="position-relative">
+               <div class="online-status-small online"></div>
+               <div class="d-flex">
+                 <div class="me-2">
+                   <div class="profilepic-new-fw">
+                     <div *ngIf="team.sendbird_team_details && 
+                      team.name != '' && team.name != null
+                 ">
+                       {{ getShortNameForLong(team.name) }}
+                     </div>
+                     <div *ngIf="team.sendbird_user_details && 
+                     team.sendbird_user_details.nickname != '' && team.sendbird_user_details.nickname != null">
+                       {{
+                        getShortNameForLong(
+                           team.sendbird_user_details.nickname
+                         )
+                       }}
+                     </div>
+                     <!-- <img
+                 *ngIf="(member.userpicture !== '' && message.userpicture)"
+                   class="border-green"
+                   src="{{member.userpicture}}"
+                 /> -->
+                   </div>
+                 </div>
+               </div>
+             </div>
+             <p *ngIf="team.sendbird_team_details" class="fs-11">
+               {{ team.name }}
+             </p>
+             <p *ngIf="team.sendbird_user_details" class="fs-11">
+               {{ team.sendbird_user_details.nickname }}
+             </p>
+           </div>
+           <div>
+             <button
+               type="button"
+               [ngClass]="
+                 team.status === 'Selected'
+                   ? 'btn-success-new'
+                   : 'btn btn-select'
+               "
+               (click)="selectColleagues(team)"
+             >
+               {{ team.status }}
+             </button>
+             <!-- <button *ngIf="buttonClass == i" type="button" class="btn-success-new">Selected</button>
+           <button
+            *ngIf="buttonClass != i"
+             type="button"
+             class="btn btn-select"
+             (click)="selectColleagues(team, i)"
+           >
+             Select 
+           </button>-->
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>

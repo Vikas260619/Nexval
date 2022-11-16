@@ -1,0 +1,96 @@
+<div
+  #getLink_modal
+  class="modal fade"
+  
+  tabindex="-1"
+ 
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content org_setup_skip_model border border-secondary">
+      <div class="modal-header border-0 d-flex justify-content-center">
+        <div>
+          <h6 class="text-center h5">Get Mobile App Link</h6>
+
+          <p class="text-center fs-12 pt-3">
+            Please give phone number to get the app link in mobile
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close-model"
+          
+          aria-label="Close"
+          (click)="closeGetLinkModal()"
+        >
+          X
+        </button>
+      </div>
+      <div class="modal-body team-colab pt-0">
+        <fieldset class="form_card">
+          <form [formGroup]="getLinkForm" (ngSubmit)="onSubmit()">
+            <div class="bg-dark-sec col-md-12 f-control p-3 mb-2 d-flex" [ngClass]="{
+              error_input:
+              linkFormControl.mobileNo?.dirty &&
+              linkFormControl.mobileNo?.invalid
+            }">
+              <div>
+                <img
+                  width="15px"
+                  class="me-2 mt-1 pt-1"
+                  [nexaeiImageSrc]="'mobile.png'"
+                />
+              </div>
+              <input
+                type="text"
+                [formControlName]="'mobileNo'"
+                id=""
+                placeholder="Mobile Number"
+                class="form-control bg-dark-sec border-0 text-white"
+                maxlength="11"
+                (keyup)="myFunc($event)"
+              />
+              
+            </div>
+            <p
+              class="error_cntnt"
+              *ngIf="
+              linkFormControl.mobileNo?.dirty &&
+              linkFormControl.mobileNo?.errors?.required
+              "
+            >
+            Mobile no. required.
+            </p>
+            <p
+            class="error_cntnt" *ngIf="
+            linkFormControl.mobileNo?.dirty &&
+            linkFormControl.mobileNo?.errors?.invalidMobileNumber &&
+                    !linkFormControl.mobileNo?.errors?.required && !linkFormControl.mobileNo?.errors?.maxlength
+                  ">Invalid mobile no</p>
+
+                  <p
+                  class="error_cntnt" *ngIf="
+                  linkFormControl.mobileNo?.dirty &&
+                  linkFormControl.mobileNo?.errors?.maxlength &&
+                          !linkFormControl.mobileNo?.errors?.required && !linkFormControl.mobileNo?.errors?.invalidMobileNumber
+                        ">Invalid mobile no</p>      
+            <div class="col-md-12 float-start">
+              <button type="submit" class="btn primary-xl primary-xl-modal" [disabled]="!btnActive" >
+                Send Link
+              </button>
+
+              <p class="fs-12 text-center pt-4" *ngIf="isSubmitted">
+                <img
+                  width="15px"
+                  class="me-2"
+                  [nexaeiImageSrc]="'success.png'"
+                />
+                Link has been successfully sent
+              </p>
+            </div>
+          </form>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

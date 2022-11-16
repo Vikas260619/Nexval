@@ -1,0 +1,420 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+
+<div class="inner-sec_">
+    <section>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="subheader width-full">
+                    <div class="nav tabular-button col-md-4 pull-left">
+                        <a class="nav-link active" id="nav-my-tab" data-bs-toggle="tab" data-bs-target="#my-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" href="!#">My Days</a>
+                        <a class="nav-link" id="nav-team-tab" data-bs-toggle="tab" data-bs-target="#team-home" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" href="!#">Team Days</a>
+                    </div>
+                    <div class="col-md-8 col-xs-12 pull-left button-section">
+                        <button>
+                          <img [nexaeiImageSrc]="'calendar/download.png'" />
+                        </button>
+                        <button>
+                          <label (click)="showStream()"><img [nexaeiImageSrc]="'calendar/line-series.png'" /></label>
+
+                          <!--dropdown start-->
+                          <span id="hyper" class="line-description">
+                            <ul class="list-unstyled">
+                              <li><a href=#!> <img [nexaeiImageSrc]="'calendar/refresh.png'" /></a>
+                              <h6>Filter</h6>
+                              <button><img [nexaeiImageSrc]="'close_n.png'" /></button></li>
+                            </ul>
+                            <ul class="list-unstyled">
+                             <p>By Date</p>
+                             <span>Today</span>
+                             <span>Yesterday</span>
+                             <span>This Week</span>
+                             <span>Last Week</span>
+                             <span class="active">This Month</span>
+                             <span>Last Month</span>
+                             <label><input type="checkbox" /><p>Custom Date</p></label>
+                             <li><input [nexaeiBackgroundImage]="'calendar/clndr.png'" type="text" placeholder="Start Date"/></li>
+                             <li><input [nexaeiBackgroundImage]="'calendar/clndr.png'" type="text" placeholder="End Date"/></li>
+                             <button class="btn primary-xl">Apply</button>
+                            </ul>
+                          </span>
+                        </button>
+                        <button class="special">
+                          <img [nexaeiImageSrc]="'calendar/all-team.png'" />
+                          <label data-bs-toggle="dropdown" data-bs-auto-close="true" id="#countrycodevisible1">All Team</label>
+
+                          <!--dropdown start-->
+                          <span class="dropdown-menu" aria-labelledby="countrycodevisible1">
+                            <ul class="list-unstyled">
+                              <li><a href=#!> <img [nexaeiImageSrc]="'calendar/refresh.png'" /></a>
+                              <input [nexaeiBackgroundImage]="'emp-invite/search.png'" type="text" placeholder="Search" />
+                              <button>Done</button></li>
+                            </ul>
+                            <ul class="list-unstyled">
+                              <li><label class="bg-a">A</label><p>All Team</p></li>
+                              <li><label class="bg-b">A</label><p>Design</p><img class="cir-img" [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></li>
+                              <li><label class="bg-c">A</label><p>Nexaei Development</p><img class="cir-img" [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></li>
+                              <li><label class="bg-d">A</label><p>Docuchif Testing</p><img class="cir-img" [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></li>
+                              <li><label class="bg-e">A</label><p>Design Testing Team</p></li>
+                            </ul>
+                          </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Calendar sec-->
+    <section>
+        <!--My days-->
+        <div class="tab-pane fade show active" id="my-home" role="tabpanel" aria-labelledby="nav-my-tab">
+            <div class="sidebar-calendar">
+           
+                <ul class="weekdays">
+                  <li>Mon</li>
+                  <li>Tue</li>
+                  <li>Wed</li>
+                  <li>Thu</li>
+                  <li>Fri</li>
+                  <li>Sat</li>
+                  <li>Sun</li>
+                </ul>
+                
+                <ul class="days">  
+                  <li>
+                    <a href="#!">
+                        <h6><label>1 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>2 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="pink">Personal Day</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>3 Mar</label><img [nexaeiImageSrc]="'calendar/cross.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>4 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>5 Mar</label><img [nexaeiImageSrc]="'calendar/swipe-tick.png'" /></h6>
+                        <label class="light-pink">Swipe</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p class="pink">Total: Undefine hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>6 Mar</label><img [nexaeiImageSrc]="'calendar/cross.png'" /></h6>
+                        <label class="pink">Weekend</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>7 Mar</label><img [nexaeiImageSrc]="'calendar/cross.png'" /></h6>
+                        <label class="pink">Weekend</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p></p>
+                    </a>
+                  </li>
+
+                  <ul class="swipe-apply">vhv</ul>
+                  <li>
+                    <a href="#!">
+                        <h6><label>8 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>9 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>10 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>11 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>12 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>13 Mar</label><img [nexaeiImageSrc]="'calendar/cross.png'" /></h6>
+                        <label class="pink">Weekend</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>14 Mar</label><img [nexaeiImageSrc]="'calendar/cross.png'" /></h6>
+                        <label class="pink">Weekend</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>15 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>16 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>17 Mar</label></h6>
+                        <label class="green">--</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>--:-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>--:-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: -- hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>18 Mar</label></h6>
+                        <label class="green">--</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>--:-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>--:-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: -- hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>19 Mar</label></h6>
+                        <label class="green">--</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>--:-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>--:-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: -- hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>20 Mar</label></h6>
+                        <label class="pink">Weekend</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>21 Mar</label></h6>
+                        <label class="pink">Weekend</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>-- Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p></p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>22 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>23 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>24 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>25 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>26 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>27 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>28 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>29 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>30 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#!">
+                        <h6><label>31 Mar</label><img [nexaeiImageSrc]="'calendar/tick.png'" /></h6>
+                        <label class="green">Present</label>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM In</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>10:30 AM Out</label><img [nexaeiImageSrc]="'calendar/location.png'" /></span>
+                        <p>Total: 11 hr</p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--Team Days-->
+        <div class="tab-pane fade" id="team-home" role="tabpanel" aria-labelledby="nav-team-tab">
+            <div class="sidebar-calendar">
+           
+            <ul class="weekdays">
+              <li>Mo</li>
+              <li>Tu</li>
+              <li>We</li>
+              <li>Th</li>
+              <li>Fr</li>
+              <li>Sa</li>
+              <li>Su</li>
+            </ul>
+            
+            <ul class="days">  
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li><span class="active">10</span></li>
+              <li>11</li>
+              <li>12</li>
+              <li>13</li>
+              <li>14</li>
+              <li>15</li>
+              <li>16</li>
+              <li>17</li>
+              <li>18</li>
+              <li>19</li>
+              <li>20</li>
+              <li>21</li>
+              <li>22</li>
+              <li>23</li>
+              <li>24</li>
+              <li>25</li>
+              <li>26</li>
+              <li>27</li>
+              <li>28</li>
+              <li>29</li>
+              <li>30</li>
+              <li>31</li>
+            </ul>
+          </div>
+        </div>
+    </section>
+    
+    </div>

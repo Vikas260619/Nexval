@@ -1,0 +1,413 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+<div class="schrall-sec">
+    <section class="col-12 emv-invittion bg-color-dark collab pt-2 pb-5">
+        <div class="row justify-content-between pt-1">
+            <div class="col-4 d-flex ps-lg-5 ps-4">
+                <div class="me-3">
+                    <div class="profilepic">D</div>
+                </div>
+                <div>
+                    <h4 class="text-white fw-normal pt-2">Design</h4>
+                    <small class="text-white">9 Aug, 2021</small>
+                </div>
+                <a href="#" class="ms-3 pt-2"><img width="16px" [nexaeiImageSrc]="'collab/icon1.png'" /></a>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end pt-1">
+                <a href="#" class="me-3"><img width="22px" [nexaeiImageSrc]="'emp-invite/search.png'" /></a>
+                <a href="#" class="me-3"><img width="22px" [nexaeiImageSrc]="'emp-invite/phone.png'" /></a>
+                <a href="#" class="me-3"><img width="22px" [nexaeiImageSrc]="'emp-invite/video.png'" /></a>
+                <div class="dropdown">
+                    <a href="#" class="me-3" id="" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img width="15px" [nexaeiImageSrc]="'emp-invite/dot.png'" />
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="">
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img
+                                    class="me-2" width="15px" [nexaeiImageSrc]="'emp-invite/plus.png'" /> Add
+                                members</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><img class="me-2" width="20px"
+                                    [nexaeiImageSrc]="'emp-invite/massage.png'" /> Arrival Message</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><img class="me-2" width="20px"
+                                    [nexaeiImageSrc]="'emp-invite/away.png'" /> Away Message</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><img class="me-2" width="20px"
+                                    [nexaeiImageSrc]="'emp-invite/settings.png'" /> Colab Settings</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content pt-2 pb-2">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title text-center w-100" id="exampleModalLabel">
+                                    Add Members
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body border-0 d-flex justify-content-center pt-5">
+                                <div class="col-md-7 position-relative">
+                                    <div class="bg-dark-sec col-md-12 f-control p-3 d-flex">
+                                        <div>
+                                            <img class="me-2 pt-1" width="15px"
+                                                [nexaeiImageSrc]="'emp-invite/frame.png'" />
+                                        </div>
+                                        <input type="text" id="" aria-describedby=""
+                                            placeholder="Search member by name, email"
+                                            class="form-control bg-dark-sec border-0 text-white" />
+                                    </div>
+                                    <div class="profile_dropdown bg-dark-sec pb-0 d-none">
+                                        <div class="d-flex pb-3">
+                                            <div>
+                                                <img class="me-3" [nexaeiImageSrc]="'Ellipse16.png'" />
+                                            </div>
+                                            <p class="pt-2 mt-1">Amit Kumar</p>
+                                        </div>
+                                        <div class="d-flex pb-3">
+                                            <div>
+                                                <img class="me-3" [nexaeiImageSrc]="'Ellipse16.png'" />
+                                            </div>
+
+                                            <p class="pt-2 mt-1">Amita kumar</p>
+                                        </div>
+                                        <div class="d-flex pb-3">
+                                            <div>
+                                                <img class="me-3" [nexaeiImageSrc]="'Ellipse16.png'" />
+                                            </div>
+                                            <p class="pt-2 mt-1">Amita kumar</p>
+                                        </div>
+                                        <div class="d-flex pb-3">
+                                            <p class="pt-2 mt-1">+ Invite amit.kumar</p>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn primary-xl mt-4">Add</button>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit" class="btn copy_btn mt-4 col-7">
+                                            <img class="me-2" width="15px" [nexaeiImageSrc]="'emp-invite/copy.png'" />
+                                            Copy Link to Invite
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex ps-lg-5 ps-4 pe-2 pt-4 justify-content-between">
+            <div class="col-md-4">
+                <small class="text-white">Add Description</small>
+                <hr class="pt-0 mt-1" />
+            </div>
+            <div class="col-md-8 d-flex justify-content-end pe-3">
+                <small class="text-white">Parent Team:</small>
+                <div class="dropdown collab2">
+                    <button class="btn btn-outline-light rounded-pill ms-4 mt-n1 dropdown-toggle pt-1 pb-1"
+                        type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Software
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="tabs-wrapper">
+                <nav class="tabs">
+                    <a href="#" class="tab after-slide is-active" data-target="1">Members</a>
+                    <a href="#" class="tab after-slide" data-target="2">Media</a>
+                    <a href="#" class="tab after-slide" data-target="3">Files</a>
+                    <a href="#" class="tab after-slide" data-target="4">Links</a>
+                    <a href="#" class="tab after-slide" data-target="5">Tags</a>
+                    <a href="#" class="tab after-slide" data-target="5">Sub Teams (0)</a>
+                </nav>
+            </div>
+        </div>
+        <div class="pb-4">
+            <div class="d-flex p-4 justify-content-between">
+                <div class="col-md-6 ps-4 d-flex">
+
+                    <label class="conta-check ms-4">
+                        <input type="checkbox" >
+                        <span class="checkmark checkboxm"></span>
+                      </label>
+
+                    <small class="text-white mt-1">Members (6)</small>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end pe-3">
+
+                    <a href="#" class="me-2">
+                        <img width="29px" [nexaeiImageSrc]="'details_delet.png'" />
+                    </a>
+
+                    <a href="#">
+                        <img width="35px" [nexaeiImageSrc]="'collab/Group1394.png'" />
+                    </a>
+                </div>
+            </div>
+
+            <div class="timerloder">
+                
+                <div> <img width="35px" [nexaeiImageSrc]="'coundown.png'" /></div>
+
+                <a href="" class="text-green pt-2">Undo</a>
+
+            </div>
+
+            <div class="d-flex justify-content-center mb-3">
+                
+                <label class="conta-check mt-3">
+                    <input type="checkbox" checked="checked">
+                    <span class="checkmark"></span>
+                  </label>
+
+                <div
+                    class="bg-dark-2 border border-light col-md-11 f-control2 p-2 d-flex justify-content-between pe-3 ps-3 align-items-center">
+                    <div class="d-flex">
+                        <div class="position-relative">
+                            <div class="online-status online"></div>
+                            <img class="me-3 c-img border-green" [nexaeiImageSrc]="'Ellipse16.png'" />
+                        </div>
+                        <div>
+                            <p class="pb-0 mb-0">Amit Kumar</p>
+                            <small class="text-white">AVP Product</small>
+                        </div>
+                    </div>
+                    <div class="dropdown pt-1">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Team Admin
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="pb-0 mb-0">10:30 AM In</p>
+                            <small class="text-white">7:30 PM Out</small>
+                        </div>
+                        <div><img data-bs-toggle="modal" data-bs-target="#exampleModalmap" class="ms-3" [nexaeiImageSrc]="'collab/map.png'" /></div>
+                    </div>
+
+   <!-- Modal location -->
+   <div class="modal fade" id="exampleModalmap" tabindex="-1" aria-labelledby="exampleModalmap"
+   aria-hidden="true">
+   <div class="modal-dialog modal-lg modal-dialog-centered">
+       <div class="modal-content">
+           <div class="modal-header border-0 pb-0">
+            <div class="d-flex">
+                <div class="position-relative">
+                    <div class="online-status online"></div>
+                    <img class="me-3 c-img border-green" [nexaeiImageSrc]="'Ellipse16.png'" />
+                </div>
+                <div>
+                    <p class="pb-0 mb-0 pt-3">Robert Smith</p>
+                </div>
+            </div>
+            
+               <button type="button" class="btn-close" data-bs-dismiss="modal"
+                   aria-label="Close"></button>
+           </div>
+           <div class="modal-body location">
+
+            <div class="row">
+             
+                     <div class="col-md-6">
+
+                        <div class="d-flex">
+
+                             <div class="time">In : 10:30 AM</div>
+
+                           <div class="ps-3 pt-1">  <p class="fw-light">12 Jun, 22</p> </div>
+
+                        </div>
+
+                        <p class="text-white fw-light address">Block 4A, 3rd Floor, Unit No.303, Ecospace Business Park, Action Area 2, Newtown, Rajarhat, Kolkata, West Bengal 700160</p>
+
+                        <iframe class="rounded mt-2" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.3802445221513!2d88.46934301443457!3d22.602271637578152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a020ac65a0c810b%3A0xca4fccfbd64b6318!2sNexval!5e0!3m2!1sen!2sin!4v1657886451403!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                     </div>
+
+                     <div class="col-md-6">
+
+                        <div class="d-flex">
+
+                             <div class="time-gray">Out : 10:30 PM</div>
+
+                           <div class="ps-3 pt-1">  <p class="fw-light">12 Jun, 22</p> </div>
+
+                        </div>
+
+                        <p class="text-white fw-light address">HFVJ+6RJ, Action Area II, Newtown, Kadampukur, West Bengal 700135</p>
+                        
+
+                        <iframe class="rounded mt-2 opacity" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.3802445221513!2d88.46934301443457!3d22.602271637578152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a020ac65a0c810b%3A0xca4fccfbd64b6318!2sNexval!5e0!3m2!1sen!2sin!4v1657886451403!5m2!1sen!2sin" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                     </div>
+
+
+                    </div>
+
+
+           </div>
+       </div>
+   </div>
+</div>
+
+                    <div class="d-flex justify-content-end pt-1 align-items-center">
+                        <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'collab/Vector.png'" /></a>
+                        <a href="#" class="me-2"><img width="6px" [nexaeiImageSrc]="'collab/dot.png'" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <label class="conta-check mt-3">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                <div
+                    class="bg-dark-2 border border-light col-md-11 f-control2 p-2 d-flex justify-content-between pe-3 ps-3 align-items-center">
+                    <div class="d-flex">
+                        <div class="position-relative">
+                            <div class="online-status online"></div>
+                            <img class="me-3 c-img border-green" [nexaeiImageSrc]="'Ellipse16.png'" />
+                        </div>
+                        <div>
+                            <p class="pb-0 mb-0">Amit Kumar vvv</p>
+                            <small class="text-white">AVP Product</small>
+                        </div>
+                    </div>
+                    <div class="dropdown pt-1">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Team Admin
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="pb-0 mb-0">10:30 AM In</p>
+                            <small class="text-white">7:30 PM Out</small>
+                        </div>
+                        <div><img class="ms-3" [nexaeiImageSrc]="'collab/map.png'" /></div>
+                    </div>
+                    <div class="d-flex justify-content-end pt-1 align-items-center">
+                        <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'collab/Vector.png'" /></a>
+                        <a href="#" class="me-2"><img width="6px" [nexaeiImageSrc]="'collab/dot.png'" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <label class="conta-check mt-3">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                <div
+                    class="bg-dark-2 border border-light col-md-11 f-control2 p-2 d-flex justify-content-between pe-3 ps-3 align-items-center">
+                    <div class="d-flex">
+                        <div class="position-relative">
+                            <div class="online-status online"></div>
+                            <img class="me-3 c-img border-green" [nexaeiImageSrc]="'Ellipse16.png'" />
+                        </div>
+                        <div>
+                            <p class="pb-0 mb-0">Amit Kumar vvv</p>
+                            <small class="text-white">AVP Product</small>
+                        </div>
+                    </div>
+                    <div class="dropdown pt-1">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Team Admin
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="pb-0 mb-0">10:30 AM In</p>
+                            <small class="text-white">7:30 PM Out</small>
+                        </div>
+                        <div><img class="ms-3" [nexaeiImageSrc]="'collab/map.png'" /></div>
+                    </div>
+                    <div class="d-flex justify-content-end pt-1 align-items-center">
+                        <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'collab/Vector.png'" /></a>
+                        <a href="#" class="me-2"><img width="6px" [nexaeiImageSrc]="'collab/dot.png'" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <label class="conta-check mt-3">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                <div
+                    class="bg-dark-2 border border-light col-md-11 f-control2 p-2 d-flex justify-content-between pe-3 ps-3 align-items-center">
+                    <div class="d-flex">
+                        <div class="position-relative">
+                            <div class="online-status online"></div>
+                            <img class="me-3 c-img border-green" [nexaeiImageSrc]="'Ellipse16.png'" />
+                        </div>
+                        <div>
+                            <p class="pb-0 mb-0">Amit Kumar vvv</p>
+                            <small class="text-white">AVP Product</small>
+                        </div>
+                    </div>
+                    <div class="dropdown pt-1">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Team Admin
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="pb-0 mb-0">10:30 AM In</p>
+                            <small class="text-white">7:30 PM Out</small>
+                        </div>
+                        <div><img class="ms-3" [nexaeiImageSrc]="'collab/map.png'" /></div>
+                    </div>
+                    <div class="d-flex justify-content-end pt-1 align-items-center">
+                        <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'collab/Vector.png'" /></a>
+                        <a href="#" class="me-2"><img width="6px" [nexaeiImageSrc]="'collab/dot.png'" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-3">
+                <label class="conta-check mt-3">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                <div
+                    class="bg-dark-2 border border-light col-md-11 f-control2 p-2 d-flex justify-content-between pe-3 ps-3 align-items-center">
+                    <div class="d-flex">
+                        <div class="position-relative">
+                            <div class="online-status online"></div>
+                            <img class="me-3 c-img border-green" [nexaeiImageSrc]="'Ellipse16.png'" />
+                        </div>
+                        <div>
+                            <p class="pb-0 mb-0">Amit Kumar vvv</p>
+                            <small class="text-white">AVP Product</small>
+                        </div>
+                    </div>
+                    <div class="dropdown pt-1">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDarkDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Team Admin
+                        </a>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="pb-0 mb-0">10:30 AM In</p>
+                            <small class="text-white">7:30 PM Out</small>
+                        </div>
+                        <div><img class="ms-3" [nexaeiImageSrc]="'collab/map.png'" /></div>
+                    </div>
+                    <div class="d-flex justify-content-end pt-1 align-items-center">
+                        <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'collab/Vector.png'" /></a>
+                        <a href="#" class="me-2"><img width="6px" [nexaeiImageSrc]="'collab/dot.png'" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

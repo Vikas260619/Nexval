@@ -1,0 +1,59 @@
+<!--Material-->
+<mat-form-field class="example-chip-list" appearance="fill">
+  <span class="icon">
+    <img [nexaeiImageSrc]="'input_field/envelope.svg'"
+  /></span>
+  <mat-chip-list #chipList aria-label="Email selection">
+    <mat-chip *ngFor="let e of emails; let i = index" (removed)="remove(e)">
+      <span
+        class="selected_users"
+        [class]="{
+          green: i % 2 == 0,
+          pink: i % 3 == 0,
+          blue: i % 5 == 0,
+          yellow: i % 7 == 0
+        }"
+        *ngIf="nameArray[e]==null"
+        >{{ e ? e.charAt(0) : "" }}</span>
+        <div class="profilepic1" *ngIf="nameArray[e]!=null"> <img  src="{{nameArray[e]}}">  </div> 
+        {{ e }}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input
+      placeholder="Invite by Email Address"
+      #EmailInput
+      [formControl]="emailCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+      (change)="handleEmptyInput($event)"
+    />
+
+    <mat-autocomplete
+      [matAutocompletDisabled]="!showDrop"
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option
+        style="
+          width: 2000px;
+          background-color: #000;
+          font-size: 14px;
+          color: #fff;
+          height: 57px !important;
+        "
+        *ngFor="let em of filteredEmails | async"
+        [value]="email"
+      >
+      <div class="profilepic1" *ngIf="nameArray[em|tokenFilter]!=null"> <img  src="{{nameArray[em|tokenFilter]}}">  </div> 
+      <div class="profilepic1" *ngIf="nameArray[em|tokenFilter]==null"> {{em.charAt(0).toUpperCase()}}  </div>
+      {{ em }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-chip-list>
+</mat-form-field>
+
+

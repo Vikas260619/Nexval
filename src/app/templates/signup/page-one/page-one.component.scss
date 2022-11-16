@@ -1,0 +1,67 @@
+
+
+.login_cndtn input[type="checkbox"]:after {
+    position: relative;
+    display: block;
+    left: 0px;
+    top: 0px;
+    width: 22px;
+    height: 22px;
+    content: "";
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .login_cndtn input[type="checkbox"]:checked::after{
+    display: none;
+  }
+
+  p.error_cntnt.minimum-show {
+    white-space: inherit;
+    bottom: -14px;
+    padding-right: 24px;
+}
+
+h6.signip_agreed a {
+  font-weight: 400!important;
+}
+
+h6.signip_agreed {
+  font-size: 9px!important;
+  display: flex;
+}
+
+  .login_cndtn input[type="checkbox"]:checked {
+    background: url("../../../../assets/images/check-tick.jpg") CENTER CENTER NO-REPEAT;
+    background-size: 135%;
+    border: none;
+  }
+
+  .error_cntnt.spcl_cndtn {
+    bottom: -6px;
+    padding: 0 0px;
+  }
+
+  label.form-check-label.check_emv {
+    float: left;
+}
+
+  .error_cntnt {
+    width: 100%;
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+label.login_cndtn {
+  margin-top: 17px;
+  margin-bottom: 8px;
+}
+
+.sign-up-page {
+
+  overflow-y: scroll;
+  height: 100vh;
+
+}

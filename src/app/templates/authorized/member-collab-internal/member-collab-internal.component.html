@@ -1,0 +1,80 @@
+<div class="mid-sec emv-invittion">
+
+    <section class="bg-dark-sec">
+  
+      <div class="row">
+      <div id="navbar" class="bg-dark-sec pt-1">
+        <div class="row justify-content-between pt-1">
+          <div class="col-9 d-flex ps-lg-5 ps-4">
+            <a [routerLink]="['/dashboard/team-collab/']" class="pe-4" style="cursor: pointer">
+              <img class="left-arow mt-4" [nexaeiImageSrc]="'emp-invite/arrow.png'" />
+            </a>
+            <div class="me-4">
+              <div class="profilepic bg-white active-profile"
+              [class]="memberCheckin == 'IN' ? 'profilepic bg-white active-profile' : 'profilepic bg-white inactive-profile'"
+              >
+                <h3 *ngIf="this.userProfile == ''" >{{getShortName(this.selectedUserName)}}</h3>
+                <img *ngIf="this.userProfile !== ''" class="left-arow" [src]="this.userProfile" />
+
+                <label class="me-2" *ngIf="this.userProfile === '' && this.selectedUserName.sender != '' && this.selectedUserName.sender != null && this.selectedUserName.sender != undefined">{{ getShortName(this.selectedUserName) }}</label>
+                          </div>
+            </div>
+            <div>
+              <h5 class="text-white fw-normal pt-1">{{this.selectedUserName}}</h5>
+              
+              <p class="text-gray mt-n1 fs-12 mb-2" style="color: #6e6e6e;">{{this.designation}}</p>
+              <p class="text-white mt-three fs-12"> <img class="left-emoji" [nexaeiImageSrc]="'sidebar/emoji/smile.png'" /> Feeling Good</p>
+    
+            </div>
+          
+          </div>
+          <div class="col-md-3 d-flex justify-content-end pt-1">
+              <p *ngIf="(memberCheckin == 'IN' || memberCheckin == 'OUT')" class="text-white mt-n1 fs-12 mt-2 pe-3">{{(this.memberCheckinDateTime | formatTimestampDate)}} | <label style="color:#43cc2c;">{{(this.memberCheckinDateTime | formatTimestampTime)}} In</label></p>
+              <p *ngIf="(memberCheckin == null)" class="text-secondary mt-n1 fs-12 mt-2 pe-3">- - : - - : - -  |  <label style="color: #8b8b8b"> --:-- </label></p>
+              
+          </div>
+        </div>
+    
+        <div class="d-flex ps-lg-5 ms-lg-4 ps-4 pe-2 justify-content-between pb-3" style="display:none !important;">
+          <div class="tablesection col-lg-12 text-left">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Emp ID</th>
+                        <th>joining date</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr>
+                        <td>{{this.userEmail}}</td>
+                        <td>2323</td>
+                        <td>11 May, 2019</td>
+                        <td>+91.9999999999</td>
+                    </tr>
+                </tbody> 
+            </table>   
+          </div> 
+        </div>
+      
+      <div class="col-md-12" style="padding-top:20px;">
+        <div class="tabs-wrapper">
+          <nav class="tabs">      
+            <!-- <a (click)="renderMedia()" style="cursor: pointer;" [ngClass]="isMedia ? 'tab after-slide is-active' : 'tab after-slide'" data-target="2">Media</a> -->
+            <a (click)="renderDocs()" style="cursor: pointer;" [ngClass]="isDocs ? 'tab after-slide is-active' : 'tab after-slide'" data-target="3">Doc</a>
+            <a (click)="renderLinks()" style="cursor: pointer;" [ngClass]="isLinks ? 'tab after-slide is-active' : 'tab after-slide'" data-target="4">Links</a>
+            <a (click)="renderImages()" style="cursor: pointer;" [ngClass]="isImages ? 'tab after-slide is-active' : 'tab after-slide'" data-target="5">Images</a>   
+        </nav>
+        </div>
+      </div>
+    </div></div>
+    <!-- <app-media-page [collabChat]="collabChat" *ngIf="isMedia"></app-media-page> -->
+    <app-doc-page [collabChat]="collabChat" *ngIf="isDocs"></app-doc-page>
+    <app-links-page [collabChat]="collabChat" *ngIf="isLinks"></app-links-page>
+    <app-images-page [collabChat]="collabChat" *ngIf="isImages"></app-images-page>
+    </section>
+  </div>
+  <app-loggedin-user-attendence></app-loggedin-user-attendence>
+  

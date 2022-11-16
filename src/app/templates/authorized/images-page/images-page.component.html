@@ -1,0 +1,197 @@
+<div class="pb-4" [ngClass]="user ? 'user-height-audio' : 'height-audio'">
+    <div class="row pt-4 mt-1 ps-5 pe-4 m_mid">
+        <div *ngFor="let image of filterImages;" class="play-vdo col-md-6  col-lg-4  col-xl-3 pb-4">
+            <span>
+                <img  data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop1"
+                (click)="getModelMessage(image)" class="w-100" src="{{image.plainUrl}}" 
+                style="cursor: pointer;"/>
+            </span>
+            <div class="video-text d-flex pt-3">
+                <div>
+                    <label class="me-2" *ngIf="image.userPic === '' && image.sender != '' && image.sender != null && image.sender != undefined">{{ getShortName(image.sender) }}</label>
+                    <img class="me-2 m-img" *ngIf="image.userPic !== ''" src="{{image.userPic.uri}}" />
+                </div>
+                <div>
+                    <p class="pb-0 mb-0">{{image.sender === nickName ? 'You' : image.sender}}</p>
+                    <small class="text-white">
+                        {{image.createdAt | date: "dd MMM | hh:mm a"}}                      
+                       </small>
+                </div>
+            </div>
+        </div>
+        <div
+                  class="modal fade modal-fullscreen footer-to-bottom"
+                  id="staticBackdrop1"
+                  data-bs-backdrop="static"
+                  data-bs-keyboard="false"
+                  tabindex="-1"
+                  aria-labelledby="staticBackdropLabel"
+                  aria-hidden="true"
+                  *ngIf="modelData"
+                >
+                  <div class="modal-dialog animated fadeInDown">
+                    <div class="modal-content">
+                      <div
+                        class="d-flex justify-content-between pt-3 ps-3 ps-3"
+                      >
+                        <h5
+                          class="modal-title h6 fw-light"
+                          id="staticBackdropLabel"
+                        >
+                          Design Team
+                        </h5>
+
+                        <h5
+                          class="modal-title h6 fw-light"
+                          id="staticBackdropLabel"
+                        >
+                          {{ modelData.name }}
+                        </h5>
+
+                        <div class="d-flex justify-content-end">
+                          <!-- <div class="me-3">
+                            <img width="20px" [nexaeiImageSrc]="'zoomin.png'" />
+                          </div>
+
+                          <div class="me-3">
+                            <img
+                              width="20px"
+                              [nexaeiImageSrc]="'zoomout.png'"
+                            />
+                          </div> -->
+
+                          <div class="me-3">
+                            <!-- <a href="/images/myw3schoolsimage.jpg" download>
+                              <img src="/images/myw3schoolsimage.jpg" alt="W3Schools" width="104" height="142">
+                            </a> -->
+                            <!-- <a
+                              href="{{modelData.plainUrl}}"
+                              target="_self"
+                              download
+                            > -->
+                            <img
+                              (click)="downloadImage(modelData)"
+                              crossorigin="anonymous"
+                              width="20px"
+                              [nexaeiImageSrc]="'down.png'"
+                              data-bs-dismiss="modal"
+                              style="cursor: pointer;"
+                            />
+                            <!-- </a> -->
+                          </div>
+                          <div class="me-2">
+                            <img width="1px" [nexaeiImageSrc]="'lin2.png'" />
+                          </div>
+
+                          <button
+                            type="button"
+                            class="btn-close2 pe-3"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <img
+                              width="22px"
+                              [nexaeiImageSrc]="'close_n.png'"
+                            />
+                          </button>
+                        </div>
+                      </div>
+                      <hr />
+                      <div
+                        class="modal-body d-flex justify-content-center align-items-center"
+                      >
+                        <img
+                          width="500px"
+                          [src]="modelData.plainUrl"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        <div *ngIf="filterImages.length == 0" class="media-file-link text-center">
+            <img class="mb-4 mt-5" [nexaeiImageSrc]="'media/empty-file.png'" />
+
+            <p>You don't have any Image files</p>
+        </div>
+
+        <!-- <div class="play-vdo col-md-6  col-lg-4  col-xl-3 pb-4">
+            <span>
+                <img class="w-100" [nexaeiImageSrc]="'media/rectangle1020.png'" />
+            </span>
+            <div class="video-text d-flex pt-3">
+                <div>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                </div>
+                <div>
+                    <p class="pb-0 mb-0">Ramesh Gupta</p>
+                    <small class="text-white">5 Aug | 9:30 AM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-6  col-lg-4  col-xl-3 pb-4">
+            <span>
+                <img class="w-100" [nexaeiImageSrc]="'media/rectangle1020.png'" />
+            </span>
+            <div class="video-text d-flex pt-3">
+                <div>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                </div>
+                <div>
+                    <p class="pb-0 mb-0">Ramesh Gupta</p>
+                    <small class="text-white">5 Aug | 9:30 AM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-6  col-lg-4  col-xl-3 pb-4">
+            <span>
+                <img class="w-100" [nexaeiImageSrc]="'media/rectangle1020.png'" />
+            </span>
+            <div class="video-text d-flex pt-3">
+                <div>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                </div>
+                <div>
+                    <p class="pb-0 mb-0">Ramesh Gupta</p>
+                    <small class="text-white">5 Aug | 9:30 AM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-6  col-lg-4  col-xl-3 pb-4">
+            <span>
+                <img class="w-100" [nexaeiImageSrc]="'media/rectangle1020.png'" />
+            </span>
+            <div class="video-text d-flex pt-3">
+                <div>
+                    <img style="display: none;" class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                    <label class="me-2">A</label>
+                </div>
+                <div>
+                    <p class="pb-0 mb-0">Ramesh Gupta</p>
+                    <small class="text-white">5 Aug | 9:30 AM</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="play-vdo col-md-6  col-lg-4  col-xl-3 pb-4">
+            <span>
+                <img class="w-100" [nexaeiImageSrc]="'media/rectangle1020.png'" />
+            </span>
+            <div class="video-text d-flex pt-3">
+                <div>
+                    <img class="me-2 m-img" [nexaeiImageSrc]="'Ellipse16.png'" />
+                </div>
+                <div>
+                    <p class="pb-0 mb-0">Ramesh Gupta</p>
+                    <small class="text-white">5 Aug | 9:30 AM</small>
+                </div>
+            </div>
+        </div> -->
+
+      
+        
+    </div>
+</div>

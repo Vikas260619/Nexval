@@ -1,0 +1,157 @@
+<app-sidebar-pane-calender></app-sidebar-pane-calender>
+<app-header-pane></app-header-pane>
+<div class="inner-sec_" [class]="userRole=='SUPERADMIN'?'inner-admin-sec_':'inner-sec_'">
+  <section>
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="subheader width-full">
+                  <div class="nav tabular-button col-md-4 pull-left">
+                      <a class="nav-link active" id="nav-my-tab" data-bs-toggle="tab" data-bs-target="#my-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" href="!#">My Days</a>
+                      <!-- <a class="nav-link" id="nav-team-tab" data-bs-toggle="tab" data-bs-target="#team-home" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" href="!#">Team Days</a> -->
+                  </div>
+                  <div class="col-md-8 col-xs-12 pull-left button-section">
+                      <button (click)="downloadReport()">
+                        <img [nexaeiImageSrc]="'calendar/download.png'" />
+                      </button>
+                      <button>
+                        <!-- <label (click)="showStream()"><img [nexaeiImageSrc]="'calendar/line-series.png'" /></label> -->
+
+                        <!--dropdown start-->
+                        <span id="hyper" class="line-description">
+                          <ul class="list-unstyled">
+                            <li (click)="refreshFilter()"> <img [nexaeiImageSrc]="'calendar/refresh.png'" />
+                            <h6>Filter</h6>
+                            <button (click)="showStream()" ><img [nexaeiImageSrc]="'close_n.png'"/></button></li>
+                          </ul>
+                          <ul class="list-unstyled">
+                           <p>By Date</p>
+                           <span (click)="getSelected('today')" [ngClass]="selectedElement=='today' ? 'active' : ''" >Today</span>
+                           <span (click)="getSelected('yesterday')" [ngClass]="selectedElement=='yesterday' ? 'active' : ''">Yesterday</span>
+                           <span (click)="getSelected('thisWeek')" [ngClass]="selectedElement=='thisWeek' ? 'active' : ''">This Week</span>
+                           <span (click)="getSelected('lastWeek')" [ngClass]="selectedElement=='lastWeek' ? 'active' : ''">Last Week</span>
+                           <span (click)="getSelected('thisMonth')" [ngClass]="selectedElement=='thisMonth' ? 'active' : ''">This Month</span>
+                           <span (click)="getSelected('lastMonth')" [ngClass]="selectedElement=='lastMonth' ? 'active' : ''">Last Month</span>
+                           <label><input type="checkbox" /><p>Custom Date</p></label>
+                           <li><input [matDatepicker]="startDate" placeholder="Start Date">
+                            <mat-datepicker-toggle [for]="startDate"></mat-datepicker-toggle>
+                            <mat-datepicker #startDate></mat-datepicker></li>
+                           <li><input [matDatepicker]="endDate" placeholder="End Date">
+                            <mat-datepicker-toggle [for]="endDate"></mat-datepicker-toggle>
+                            <mat-datepicker #endDate></mat-datepicker></li>
+                           
+                           <button class="btn primary-xl">Apply</button>
+                          </ul>
+                        </span>
+                      </button>
+                      <button class="special" *ngIf="!myDays">
+                        <img [nexaeiImageSrc]="'calendar/all-team.png'" />
+                        <label data-bs-toggle="dropdown" data-bs-auto-close="true" id="#countrycodevisible1">All Team</label>
+
+                        <!--dropdown start-->
+                        <span class="dropdown-menu" aria-labelledby="countrycodevisible1">
+                          <ul class="list-unstyled">
+                            <li><a href=#!> <img [nexaeiImageSrc]="'calendar/refresh.png'" /></a>
+                            <input [nexaeiBackgroundImage]="'emp-invite/search.png'" type="text" placeholder="Search" />
+                            <button>Done</button></li>
+                          </ul>
+                          <ul class="list-unstyled">
+                            <li><label class="bg-a">A</label><p>All Team</p></li>
+                            <li><label class="bg-b">A</label><p>Design</p><img class="cir-img" [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></li>
+                            <li><label class="bg-c">A</label><p>Nexaei Development</p><img class="cir-img" [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></li>
+                            <li><label class="bg-d">A</label><p>Docuchif Testing</p><img class="cir-img" [nexaeiImageSrc]="'sidebar/circle-tick.png'" /></li>
+                            <li><label class="bg-e">A</label><p>Design Testing Team</p></li>
+                          </ul>
+                        </span>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!--Calendar sec-->
+  <section>
+      <!--My days-->
+      <div class="tab-pane fade show active" id="my-home" role="tabpanel" aria-labelledby="nav-my-tab">
+          <div class="sidebar-calendar">
+         
+              <ul class="weekdays">
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+                <li>Sun</li>
+              </ul>
+              
+              <ul class="days" *ngIf="dataLoaded">  
+                <!-- <li *ngFor="let dt of dates; let i = index">
+                  <app-my-days-date-card [dt]="dt.attendance_date" [internal_card_details]="dt.interim_punch_details
+                  " [work_duration]="dt.total_work_duration
+                  " [punch_in]="dt.punch_in" [punch_in_address]="dt.punch_in_address" [punch_out]="dt.punch_out" [punch_out_address]="dt.punch_out_address" [attStatus]="dt" [punch_in_latlng]="dt.punch_in_latlng" [punch_out_latlng]="dt.punch_out_latlng"  internal_data="{{dt.interim_punch_details}}" ></app-my-days-date-card>
+                </li> -->
+                <li *ngFor='let dt of counter(cnt) ;let i = index' >
+
+                </li>
+                <li *ngFor='let dt of monthDates ;let i = index'>
+                <app-my-days-date-card *ngIf="chkDt(dt)===true"  [dt]="dt" [punch_in]="getVal(dt,'punch_in')" [punch_out]="getVal(dt,'punch_out')" [internal_card_details]="getVal(dt,'interim_punch_details')" [work_duration]="getVal(dt,'total_work_duration')" [punch_in_latlng]="getVal(dt,'punch_in_latlng')" [punch_out_latlng]="getVal(dt,'punch_out_latlng')" [punch_out_address]="getVal(dt,'punch_out_address')" ></app-my-days-date-card>
+                <app-my-days-date-card *ngIf="chkDt(dt)===false;" [dt]="dt"  ></app-my-days-date-card>
+                
+              </li>
+              </ul>
+            </div>
+          </div>
+          <!--Team Days-->
+      <div class="tab-pane fade" id="team-home" role="tabpanel" aria-labelledby="nav-team-tab">
+          <div class="sidebar-calendar">
+         
+          <ul class="weekdays">
+            <li>Mo</li>
+            <li>Tu</li>
+            <li>We</li>
+            <li>Th</li>
+            <li>Fr</li>
+            <li>Sa</li>
+            <li>Su</li>
+          </ul>
+          
+          <ul class="days">  
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li><span class="active">10</span></li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+            <li>25</li>
+            <li>26</li>
+            <li>27</li>
+            <li>28</li>
+            <li>29</li>
+            <li>30</li>
+            <li>31</li>
+          </ul>
+        </div>
+      </div>
+  </section>
+  
+  </div>
+  <app-single-map-popup></app-single-map-popup>

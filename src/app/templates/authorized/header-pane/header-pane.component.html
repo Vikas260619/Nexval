@@ -1,0 +1,203 @@
+
+<nav class="navbar navbar-expand-lg bg-color-dark" *ngIf="showHeader">
+  <div class="navbar-panel">
+    <div class="inovation-bg">
+      <div class="inovation-hq">
+        <a data-bs-toggle="dropdown" data-bs-auto-close="true" id="" (click)="goBack()">
+          {{ currentOrg !=' ' ? currentOrg :'----'
+          }}<!--<img [nexaeiImageSrc]="'header/polygon.svg'" />-->
+          <label>{{ currentOrg !=' ' ? currentRegion :'----' }}</label>
+        </a>
+        <!--<ul class="dropdown-menu open-list" aria-labelledby="innovation">
+          <h2>Region</h2>
+          <li *ngFor="let r of regionsList | async">
+            <span>
+              <a>
+                <p><img [nexaeiImageSrc]="'header/location.svg'" /></p>
+                <label>
+                  <h5>
+                    <span (click)="setRegion(r.name)" style="color: black">{{
+                      r.name
+                    }}</span>
+                  </h5>
+                </label>
+              </a>
+            </span>
+          </li>
+          <li>
+            <span>
+              <a>
+                <h4>+ Add New</h4>
+              </a>
+            </span>
+          </li>
+        </ul>-->
+      </div>
+
+      <button
+        id="header-flex"
+        class="header-drop"
+        (click)="dropHeader()"
+        type="button"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="navbar-sub-menu" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link"
+            aria-current="page"
+            >Members</a
+          >
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link acive "
+            #teams_dropdown
+            id="navbarDropdown"
+            role="button"
+            aria-expanded="false"
+            (click)="toggleTeamDropdown()"
+          >
+            Teams
+          </a>
+          <!-- <ul class="dropdown-menu open-list" aria-labelledby="navbarDropdown">
+            <span>
+              <li>
+                <span>
+                  <a>
+                    <p>s</p>
+                    <label>
+                      <h5>Lorem Ipsum</h5>
+                      <h6>Mnager : Alex Thomas</h6>
+                    </label>
+                  </a>
+                </span>
+              </li>
+            </span>
+            <li>
+              <span>
+                <a> View All </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a>
+                  <h4>+ Create New</h4>
+                </a></span
+              >
+            </li>
+          </ul> -->
+        </li>
+
+        <!-- <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            #teams_dropdown
+            id="navbarDropdown"
+            role="button"
+            aria-expanded="false"
+            >Support Group</a
+          > -->
+
+         <!-- <ul
+            class="dropdown-menu open-list open-list-team"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <span>
+                <a [routerLink]="['/dashboard/team']"> Lorem </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a [routerLink]="['/dashboard/team']">
+                  <h4>+ Lorem New</h4>
+                </a></span
+              >
+            </li>
+          </ul> -->
+        <!-- </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            #teams_dropdown
+            id="navbarDropdown"
+            role="button"
+            aria-expanded="false"
+            >Reports</a
+          > -->
+
+         <!-- <ul
+            class="dropdown-menu open-list open-list-team"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <span>
+                <a [routerLink]="['/dashboard/team']"> Lorem </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a [routerLink]="['/dashboard/team']">
+                  <h4>+ Lorem New</h4>
+                </a></span
+              >
+            </li> -->
+
+       <!-- <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            #teams_dropdown
+            id="navbarDropdown"
+            role="button"
+            aria-expanded="false"
+            >Apps</a
+          > -->
+
+         
+         
+         <!-- <ul
+            class="dropdown-menu open-list open-list-team"
+            aria-labelledby="navbarDropdown"
+          >
+            <li>
+              <span>
+                <a [routerLink]="['/dashboard/team']"> Lorem </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a [routerLink]="['/dashboard/team']">
+                  <h4>+ Lorem New</h4>
+                </a></span
+              >
+            </li>
+          </ul> -->
+        <!-- </li> -->
+      </ul>
+    </div>
+
+    <!-- <div class="corner-header">
+      <ul class="list-unstyled"> -->
+        <!--<li>
+          <a data-bs-toggle="dropdown" data-bs-auto-close="true" id="">
+            <img [nexaeiImageSrc]="'header/bot.svg'"
+          /></a>
+        </li>-->
+        <!-- <li>
+          <a> <img [nexaeiImageSrc]="'header/notification.svg'" /></a>
+        </li>
+      </ul>
+    </div> -->
+  </div>
+</nav>

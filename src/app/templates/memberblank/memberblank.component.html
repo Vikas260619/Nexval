@@ -1,0 +1,105 @@
+
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+
+<div class="inner-sec_">
+    <section>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="subheader width-full">
+                    <div class="col-md-3 pull-left">
+                        <h5>Members</h5>
+                    </div>
+                    <div class="col-md-9 col-xs-12 pull-left button-section">
+                        <button class="special special-bg">+ Add Member</button>
+                        <button class="special special-border">
+                            <span><img [nexaeiImageSrc]="'member/bulk.svg'" /></span>
+                            Builk Import
+                        </button>
+                        <button>
+                            <span><img [nexaeiImageSrc]="'member/integrate.svg'" /></span>
+                        </button>
+                        <button>
+                            <span><img [nexaeiImageSrc]="'member/automate.svg'" /></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!--tabular button-->
+            <div class="col-lg-12">
+                <div class="tabcontent width-full">
+                    <ul>
+                        <li>
+                            <a class="active" href="#">Active</a>
+                        </li>
+                        <li>
+                            <a href="#">Invited</a>
+                        </li>
+                    </ul>
+                    <div class="filter-box button-section">
+                        <button class="special-bg">
+                        <span>
+                            <img [nexaeiImageSrc]="'member/xmlid.svg'" />
+                        </span>
+                        </button>
+                        <button
+                            data-bs-toggle="dropdown" data-bs-auto-close="true" id="#countrycodevisible">
+                        <span>
+                            <img [nexaeiImageSrc]="'member/add-package.svg'" />
+                        </span>
+                        </button>
+                        <span class="dropdown-menu" aria-labelledby="countrycodevisible">
+                            <h4>Select more fields</h4>
+                            <label> <img [nexaeiImageSrc]="'member/input-field/join-date.svg'" />
+                                <p>Joining Date</p>
+                            </label>
+                            <label> <img [nexaeiImageSrc]="'member/input-field/location.svg'" />
+                                <p>Address</p>
+                            </label>
+                            <label> <img [nexaeiImageSrc]="'member/input-field/gender.svg'" />
+                                <p>Gender</p>
+                            </label>
+                            <label class='active'> <img [nexaeiImageSrc]="'member/input-field/dob.svg'" />
+                                <p>DOB</p>
+                            </label>
+                            <label> <img [nexaeiImageSrc]="'member/input-field/location.svg'" />
+                                <p>Location</p>
+                            </label>
+                            <label> <img [nexaeiImageSrc]="'member/input-field/add-custom-field.svg'" />
+                                <p>Add custom field</p>
+                            </label>
+                            <label> <img [nexaeiImageSrc]="'member/input-field/emp-id.svg'" />
+                                <p>Emp ID</p>
+                            </label>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--table section-->
+            <div class="tablesection table-empty col-lg-12 text-center">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="border-0" scope="col">Name</th>
+                            <th class="border-0" scope="col">Email Id</th>
+                            <th class="border-0" scope="col">Role</th>
+                            <th class="border-0" scope="col">Team</th>
+                        </tr>
+                    </thead>
+
+                </table>
+                <!--empty data-->
+                <div class="table-empty-content">
+                    <span>
+                        <img [nexaeiImageSrc]="'member/empty-member.png'" />
+                        <h6>Colleagues</h6>
+                        <p>You don't have any members please start<br />adding members</p>
+                        <button class="btn primary-xl mt-3"><a [routerLink]="['/dashboard/member']">+Add
+                                new</a></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

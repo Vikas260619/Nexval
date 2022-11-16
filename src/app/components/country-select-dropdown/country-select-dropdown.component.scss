@@ -1,0 +1,118 @@
+.country-select-dropdown {
+  .flag {
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    box-shadow: 0 0 1px 1px #e3e3e3;
+  }
+
+  .img-icon-down {
+    width: 7px;
+  }
+
+  .country-code {
+    font-size: 13px;
+    font-weight: 400;
+    font-family: "Poppins";
+  }
+
+  .input-search {
+    position: relative;
+    padding: 0px 15px 10px 15px;
+    display: block;
+
+    img {
+      position: absolute;
+      width: 15px;
+      top: 12px;
+      left: 25px;
+    }
+
+    input {
+      padding: 7px 7px 7px 35px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      outline: none;
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+
+  .dropdown-content-body {
+    max-height: 250px;
+    max-width: 300px;
+    overflow-y: scroll;
+
+    .country-code-span {
+      width: 2rem;
+    }
+  }
+
+  .dropdown-item {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+
+    img {
+      width: 2em;
+      padding: 4px;
+      margin: 2px;
+    }
+
+    span {
+      margin: 0 4px 0 2px;
+    }
+
+    .span-overflow {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 10rem;
+    }
+  }
+
+  //  position adjustment for content body on multi screen
+  .dropdown .dropdown-menu {
+    @media (min-width: 320px) {
+      min-width: 12.5rem;
+    }
+
+    @media (min-width: 375px) {
+      min-width: 16rem;
+    }
+
+    @media (min-width: 425px) {
+      min-width: 18rem;
+    }
+  }
+
+  .rounded-flg {
+    border-top-left-radius: 50% 50%;
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+  }
+
+  @media (max-width: 575.98px) {
+    position: relative;
+
+    .dropdown {
+      position: static;
+    }
+
+    .dropdown .dropdown-menu {
+      width: 100%;
+      -webkit-transform: translate(0, 10%) !important;
+      -o-transform: translate(0, 10%) !important;
+      transform: translate(0, 10%) !important;
+    }
+  }
+}
+
+#country_select .pointer span:first-child {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-size: 27px;
+}

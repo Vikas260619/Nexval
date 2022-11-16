@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0">
+      <div class="gardientbackground left">
+        <img class="w-100" [nexaeiImageSrc]="'org_setup/org_setup-3.png'" />
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0 res-stu bg-color-dark">
+      <div class="form-container">
+        <span class="logo col-md-12">
+          <img [nexaeiImageSrc]="'logo.png'" />
+          <p>Do you want to add another admin?</p>
+        </span>
+
+        <div class="skip-setup">
+          <button type="submit" class="btn primary-xl" disabled>
+            Yes, let's add
+          </button>
+
+          <button
+            type="submit"
+            class="btn primary-xl float-end"
+            [routerLink]="['/dashboard/logout/']"
+          >
+            No, I will do it later
+          </button>
+        </div>
+
+        <form class="">
+          <fieldset class="form_card g-3 row">
+            <div class="col-md-6">
+              <div class="input_field">
+                <span class="icon"
+                  ><img [nexaeiImageSrc]="'input_field/user.svg'"
+                /></span>
+                <input type="text" id="" placeholder="First Name" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input_field">
+                <span class="icon">
+                  <img [nexaeiImageSrc]="'input_field/user.svg'"
+                /></span>
+                <input type="text" id="" placeholder="Last Name" />
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="input_field">
+                <span class="icon">
+                  <img [nexaeiImageSrc]="'input_field/envelope.svg'"
+                /></span>
+                <input type="email" id="" placeholder="Email" />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <button type="submit" class="btn primary-xl" disabled>Add</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

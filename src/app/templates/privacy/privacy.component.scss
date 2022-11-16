@@ -1,0 +1,51 @@
+
+.privacy {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.priv-img{
+    width: 130px;
+}
+
+section.privacy ul li {
+    color: #fff;
+}
+
+section.privacy ul {
+    margin: 0;
+}
+
+section.privacy label {
+    padding-left:2rem;
+}
+
+section.privacy span {
+    padding-left: 1.5rem;
+    float: left;
+    width: 100%;
+    margin-bottom: 21px;
+    background-repeat: no-repeat;
+    background-size: 13px;
+    background-position: left;
+}
+
+section.privacy p {
+    margin: 0;
+}
+
+@media only screen and (max-width: 767px) {
+
+    section.privacy.pt-5.pb-5.bg-black p {
+        text-align: justify;
+    }
+
+    .priv-img{
+        width: 77px;
+    }
+
+    section.privacy h2.text-center.text-white.pt-5.pb-5.fw-normal {
+        padding: 26px 0 0 0!important;
+        margin: 0 !important;
+        }
+}

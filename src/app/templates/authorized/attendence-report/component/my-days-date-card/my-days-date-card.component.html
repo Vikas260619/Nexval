@@ -1,0 +1,10 @@
+
+<a class="attendance-report" (click)="goInternal(date,attStatus,workDuration)" style="cursor:pointer">
+   
+    <h6   style="cursor:pointer"><label  style="cursor:pointer">{{date | formatonlyDate}} </label><img [nexaeiImageSrc]="'calendar/tick.png'" *ngIf="attStatus=='Present'" /><img [nexaeiImageSrc]="'/crs.png'" *ngIf="attStatus=='Absent'" /></h6>
+    <label class="" [ngClass]="attStatus=='Present'? 'green' : 'red'"  >{{attStatus}}</label>
+    <span ><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>{{punchIn | formatTimestampTime }} In</label> <img [nexaeiImageSrc]="'calendar/location.png'" (click)="openSingleMapModal($event,punchInLatLong,punchInAddress)" lat_lon="punchInLatLong" *ngIf="punchInLatLong!=0 && punchIn!='0001-01-01T00:00:00'" /></span>
+    <span><img [nexaeiImageSrc]="'calendar/watch.png'" /><label>{{punchOut | formatTimestampTime }} Out</label> <img [nexaeiImageSrc]="'calendar/location.png'" (click)="openSingleMapModal($event,punchOutLatLong,punchOutAddress)" lat_lon="punchOutLatLong" *ngIf="punchOutLatLong!=0 && punchOut!='0001-01-01T00:00:00'" /></span>
+    
+    <p>Total: {{workDuration|minuteToHour}} hr  </p>
+</a>

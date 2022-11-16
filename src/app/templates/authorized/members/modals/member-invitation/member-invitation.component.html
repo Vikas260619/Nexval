@@ -1,0 +1,74 @@
+<div
+  #invite_member_modal
+  class="modal fade"
+  id="invite-member"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content org_setup_skip_model">
+      <div class="modal-header border-0">
+        <button
+          type="button"
+          class="btn-close-model"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeInvitationSendModal()"
+        >
+          X
+        </button>
+      </div>
+      <div class="modal-body team-colab pt-0">
+        <h5 class="text-center">Invite Members in  {{
+          selectedTeamName && selectedTeamName.length > 12
+            ? selectedTeamName.substr(0, 12) + "..."
+            : selectedTeamName
+        }}</h5>
+       
+        <form class="" [formGroup]="inviteMember" (ngSubmit)="onSubmit()">
+          <fieldset class="form_card">
+            <div class="col-md-12 input_field_add">
+              <app-autocomplete
+                (hasError)="changeError($event)"
+                (showButton)="buttonVisible($event)"
+                (sameUser)="sameUserCheck($event)"
+                (inList)="alreadyInList($event)"
+              ></app-autocomplete>
+            </div>
+            <div class="col-md-12 float-start pb-4">
+              <p *ngIf="sameUser == true" [ngClass]="{ error_cntnt: sameUser }">
+                Cannot send invitation to youself
+              </p>
+              <p *ngIf="inList == true" [ngClass]="{ error_cntnt: inList }">
+                User already in list
+              </p>
+              <p *ngIf="errMsg" [ngClass]="{ error_cntnt: errMsg }">
+                This is not an Email id
+              </p>
+              <p *ngIf="serverErrorMessage" class="error_cntnt">
+                {{ serverErrorMessage }}
+              </p>
+              <button
+                type="submit"
+                class="btn primary-xl primary-xl-modal"
+                [disabled]="showButton"
+              >
+                Invite
+              </button>
+            </div>
+
+            <!-- <div class="col-md-12 mt-4 float-start">
+              <button type="submit" class="btn copy-link">
+                <img [nexaeiImageSrc]="'member/input-field/copy.svg'" /> Copy
+                Link to Invite
+              </button>
+            </div> -->
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

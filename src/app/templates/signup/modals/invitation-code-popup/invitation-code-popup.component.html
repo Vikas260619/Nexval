@@ -1,0 +1,78 @@
+<div class="emv-invittion">
+  <div
+    class="modal fade" data-bs-backdrop="static" 
+    
+    aria-hidden="true"
+    #inv_code
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content pt-2 pb-2">
+        <div class="modal-header border-0 d-block">
+          <div>
+            <h5 class="modal-title text-center w-100" id="exampleModalLabel">
+              Invitation Code
+            </h5>
+
+            <div class="d-flex justify-content-center">
+              <small class="text-white text-center">Enter valid invitation code to continue</small> </div>
+          </div>
+        </div>
+        <form [formGroup]="invForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body border-0 d-flex justify-content-center">
+          <div class="col-md-7 position-relative">
+            <!-- <span *ngIf="isServerError" class="d-block invalid-feedback">{{
+                serverErrorMessage
+              }}</span> -->
+            <div class="bg-dark-sec col-md-12 f-control p-3 d-flex "  [ngClass]="{
+                error_input:
+                invForm.controls.invCode?.dirty &&
+                invForm.controls.invCode?.errors?.required
+              }">
+              <div >
+                <img
+                  class="me-2 pt-1"
+                  width="15px"
+                  [nexaeiImageSrc]="'invite.png'"
+                />
+              </div>
+              <input
+                type="text"
+                id=""
+                aria-describedby=""
+                placeholder="Enter valid invitation code"
+                class="form-control bg-dark-sec border-0 text-white"
+                [formControlName]="'invCode'"
+               
+              />
+            </div>
+            <p
+                  class="error_cntnt-org"
+                  *ngIf="
+                  invForm.controls.invCode?.dirty &&
+                  invForm.controls.invCode?.errors?.required
+                  "
+                >
+                  Invitation Code Required
+                </p>
+                <p *ngIf="serverError" class="error_cntnt-org">{{
+                    serverErrorMessage
+                  }}</p>
+                
+            <!-- <p _ngcontent-puh-c49="" class="error_cntnt-org">Email required</p> -->
+
+            <div class="d-flex justify-content-center mb-4">
+              <button type="button" (click)="onCancel()" class="btn copy_btn mt-4 w-50 me-2">
+                Cancel
+              </button>
+
+              <button type="submit" class="btn primary-xl mt-4 w-50">
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

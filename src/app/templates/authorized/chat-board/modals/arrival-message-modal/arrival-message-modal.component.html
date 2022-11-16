@@ -1,0 +1,48 @@
+<div class="emv-invittion">
+    <div 
+    #arrival_message_modal
+    class="modal fade" 
+    id="exampleModal" 
+    tabindex="-1" 
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-lg-w  modal-dialog-centered">
+        <div class="modal-content pt-3 pb-3 border border-secondary">
+            <div class="modal-header border-0 d-flex justify-content-between">
+    
+    
+                <a class="col-2 reset" href=""><img width="20spx"
+                    [nexaeiImageSrc]="'reset.png'" /></a>
+    
+               <div>  <h5 class="text-center" >Arrival Message
+                </h5>
+             <p class="text-center fs-12">Set up a message to auto send it in your team colabs once you check in</p>
+    
+            </div>
+                
+                <button type="button" class="btn-close btn-close-m" data-bs-dismiss="modal"
+                    aria-label="Close" (click)="getArrivalMessage()"></button>
+            </div>
+    
+            
+            <div class="modal-body border-0 d-flex justify-content-center pt-4">
+                <div class="col-lg-8 col-sm-9 position-relative">
+                    <div class="bg-dark-sec col-md-12 f-control p-3 mb-2">
+                       
+                        <input type="text" id="" aria-describedby=""
+                           (keypress)="alphabateOnly($event)"                  
+                                 placeholder="Add message"
+                            class="form-control bg-dark-sec border-0 text-white" [(ngModel)]="arrivalMessages" (ngModelChange)="changeInput()" maxlength="30"/>
+                    </div>
+                    <p *ngIf="(alphabateValidator && this.removeValidator) || (this.arrivalMessages != '' && !this.removeValidator && alphabateValidator)" style="color: red">only alphabates, spaces and 30 characters are allowed</p>
+    
+                    <div class="d-flex justify-content-center"><button type="submit" class="btn primary-xl  mt-5" (click)="addArrivalMessage()" data-bs-dismiss="modal"
+                      aria-label="Close">Save</button></div>          
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>

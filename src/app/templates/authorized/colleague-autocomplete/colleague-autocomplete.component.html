@@ -1,0 +1,51 @@
+<mat-form-field class="example-chip-list" appearance="fill">
+  <span class="icon">
+    <img [nexaeiImageSrc]="'input_field/envelope.svg'"
+  /></span>
+  <mat-chip-list #chipList aria-label="Email selection">
+    <mat-chip *ngFor="let e of emails; let i = index" (removed)="remove(e)">
+      <span
+        class="selected_users"
+        [class]="{
+          green: i % 2 == 0,
+          pink: i % 3 == 0,
+          blue: i % 5 == 0,
+          yellow: i % 7 == 0
+        }"
+        >{{ e ? e.charAt(0) : "" }}</span
+      >{{ e }}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input
+      placeholder="Invite by Email Address"
+      #EmailInput
+      [formControl]="emailCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+      (change)="handleEmptyInput($event)"
+    />
+
+    <mat-autocomplete
+      [matAutocompletDisabled]="!showDrop"
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <!-- <mat-option
+        style="
+          width: 2000px;
+          background-color: #000;
+          font-size: 14px;
+          color: #fff;
+        "
+        *ngFor="let em of filteredEmails | async"
+        [value]="email"
+      >
+        {{ em }}
+      </mat-option> -->
+    </mat-autocomplete>
+  </mat-chip-list>
+</mat-form-field>

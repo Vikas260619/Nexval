@@ -1,0 +1,80 @@
+<div class="emv-invittion">
+  <div
+    class="modal fade"
+    #user_attendence_modal
+    id="exampleModalmap"
+    tabindex="-1"
+    aria-labelledby="exampleModalmap"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <div class="d-flex">
+            <div class="position-relative">
+              <div class="online-status online"></div>
+              <img
+                class="me-3 c-img border-green"
+                [nexaeiImageSrc]="'Ellipse16.png'"
+              />
+            </div>
+            <div>
+              <p class="pb-0 mb-0 pt-3">
+                {{ fullName == fullName1 ? "You" : fullName }}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body location">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex">
+                <div class="time">In : {{ inTime }}</div>
+
+                <div class="ps-3 pt-1">
+                  <p class="fw-light">{{ inDate }}</p>
+                </div>
+              </div>
+
+              <p class="text-white fw-light address">
+                {{ addIn }}
+              </p>
+              <agm-map [latitude]="18.585" [longitude]="73.7603">
+                <agm-marker
+                  [latitude]="18.585"
+                  [longitude]="73.7603"
+                ></agm-marker>
+              </agm-map>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex">
+                <div class="time-gray">Out : {{ outTime }}</div>
+
+                <div class="ps-3 pt-1">
+                  <p class="fw-light">{{ outDate }}</p>
+                </div>
+              </div>
+
+              <p class="text-white fw-light address">
+                {{ addOut }}
+              </p>
+              <agm-map [latitude]="18.585" [longitude]="73.7603">
+                <agm-marker
+                  [latitude]="18.585"
+                  [longitude]="73.7603"
+                ></agm-marker>
+              </agm-map>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

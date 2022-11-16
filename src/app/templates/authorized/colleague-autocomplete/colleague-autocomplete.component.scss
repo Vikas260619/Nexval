@@ -1,0 +1,122 @@
+.mat-option{
+    word-wrap:break-word !important;
+    white-space:normal !important;
+    font-family: "Times New Roman", Times, serif;
+  }
+  
+  .mat-option-text{
+    line-height:initial !important;
+  }
+  ::ng-deep .mat-select-content{
+    width:2000px!important;
+    font-size: 10px!important;   
+}
+
+span.icon {
+  top: 23px;
+  /* width: 8px; */
+  float: left;
+  margin: 8px 7px 0 0;
+}
+
+span.icon img {
+  width: 18px;
+}
+
+mat-form-field.mat-form-field.example-chip-list.ng-tns-c99-0.mat-primary.ng-star-inserted.mat-form-field-type-mat-chip-list.mat-form-field-appearance-fill.mat-form-field-can-float.mat-form-field-should-float {
+  width: 100%!important;
+}
+
+input.mat-chip-input {
+  padding: 9px 9px;
+  font-size: 13px;
+  color: #fff;
+}
+
+input.mat-chip-input::placeholder {
+  color: rgb(110, 110, 110) !important;
+}
+
+input.mat-chip-input:active, input.mat-chip-input:focus, input.mat-chip-input:focus-visible{
+border: none !important;
+box-shadow: none !important;
+}
+
+
+.mat-form-field-flex.ng-tns-c99-0:active {
+  border: none !important;
+}
+
+.mat-form-field-flex.ng-tns-c99-0:focus {
+  border: none !important;
+}
+
+.mat-chip.mat-standard-chip {
+  background-color: #272727;
+  color: #fff;
+  opacity: 1;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+mat-icon.mat-icon.notranslate.material-icons.mat-icon-no-color:after {
+  content: "✖";
+  width: 10px;
+  height: 10px;
+  float: right;
+  color: #fff;
+  top: 7px;
+  position: absolute;
+  font-size: 13px;
+  right: 11px;
+}
+
+.mat-standard-chip .mat-chip-remove.mat-icon, .mat-standard-chip .mat-chip-remove .mat-icon {
+  color: #272727 !important;
+}
+
+span.selected_users {
+  width: 23px;
+  height: 23px;
+  font-size: 10px;
+  border-radius: 50px;
+  margin-left: -6px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-right: 7px;
+}
+
+.pink{
+  background: #aa0280;
+}
+.blue{
+  background: #020494;
+}
+.green{
+  background: #175c01;
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 9999!important;
+}
+
+.mat-form-field {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.error_cntnt {
+  font-size: 12px;
+  bottom: auto;
+  margin-top: 8px;
+  position: inherit;
+}
+
+
+
+

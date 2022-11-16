@@ -1,0 +1,231 @@
+<app-sidebar></app-sidebar>
+<app-header></app-header>
+
+<div class="mid-sec emv-invittion">
+    <section>
+        <div class="row">
+            <div class="col-md-12 pt-3 ps-5 pe-4 pb-2">
+                <div class="row justify-content-between pt-1">
+                    <div class="col-2 d-flex">
+
+                       <a href="#"> <img class="left-arow"[nexaeiImageSrc]="'emp-invite/arrow.png'" /> </a>
+                        <div class="me-3"><div class="profilepic">D</div></div>
+                        <h4 class="text-white fw-normal pt-2">Design</h4>
+                    </div>
+
+                    <div class="col-md-4 d-flex justify-content-end pt-1">
+                        <a href="#" class="me-3"><img width="22px" [nexaeiImageSrc]="'emp-invite/search.png'" /></a>
+                        <a href="#" class="me-3"><img width="22px" [nexaeiImageSrc]="'emp-invite/phone.png'" /></a>
+                        <a href="#" class="me-3"><img width="22px" [nexaeiImageSrc]="'emp-invite/video.png'" /></a>
+                        <div class="dropdown">
+                            <a href="#" class="me-3" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><img width="15px" [nexaeiImageSrc]="'dot.png'" /></a>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><img class="me-2" width="15px" [nexaeiImageSrc]="'emp-invite/plus.png'" /> Add members</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#"><img class="me-2" width="20px" [nexaeiImageSrc]="'emp-invite/massage.png'" /> Arrival Message</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#"><img class="me-2" width="20px" [nexaeiImageSrc]="'emp-invite/away.png'" /> Away Message</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#"><img class="me-2" width="20px" [nexaeiImageSrc]="'emp-invite/settings.png'" /> Colab Settings</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content pt-2 pb-2">
+                                    <div class="modal-header border-0">
+                                        <h5 class="modal-title text-center w-100">Add Members</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body border-0 d-flex justify-content-center pt-5">
+                                        <div class="col-md-8 position-relative">
+                                            <div class="bg-dark-sec col-md-12 f-control p-3 d-flex">
+                                                <div><img class="me-2 pt-1" width="14px" [nexaeiImageSrc]="'emp-invite/frame.png'" /></div>
+
+                                                <div>
+                                                    <div class="profile d-flex align-items-center ms-2">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <img class="me-3 c-img border-0" [nexaeiImageSrc]="'Ellipse16.png'" />
+                                                            </div>
+                                                            <div class="pt-2 mt-1">
+                                                                <p class="pb-0 mb-0">Amit Kumar</p>
+                                                            </div>
+
+                                                            <a href="#"><img class="ms-2 pt-2 mt-1" [nexaeiImageSrc]="'collab/crose.png'" /></a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile d-flex align-items-center ms-2">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <img class="me-3 c-img border-0" [nexaeiImageSrc]="'Ellipse16.png'" />
+                                                            </div>
+                                                            <div class="pt-2 mt-1">
+                                                                <p class="pb-0 mb-0">Manish Kumar</p>
+                                                            </div>
+
+                                                            <a href="#"><img class="ms-2 pt-2 mt-1" [nexaeiImageSrc]="'collab/crose.png'" /></a>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="profile d-flex align-items-center ms-2">
+                                                        <div class="d-flex">
+                                                            <div class="me-3"><div class="profilepic_p">A</div></div>
+                                                            <div class="pt-2 mt-1">
+                                                                <p class="pb-0 mb-0">amit.kuamr@website.com</p>
+                                                            </div>
+
+                                                            <a href="#"><img class="ms-2 pt-2 mt-1" [nexaeiImageSrc]="'collab/crose.png'" /></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="profile_dropdown bg-dark-sec pb-0 d-none">
+                                                <div class="d-flex pb-3">
+                                                    <div><img class="me-3" [nexaeiImageSrc]="'Ellipse16.png'" /></div>
+
+                                                    <p class="pt-2 mt-1">Amit Kumar</p>
+                                                </div>
+
+                                                <div class="d-flex pb-3">
+                                                    <div><img class="me-3" [nexaeiImageSrc]="'Ellipse16.png'" /></div>
+
+                                                    <p class="pt-2 mt-1">Amita kumar</p>
+                                                </div>
+
+                                                <div class="d-flex pb-3">
+                                                    <div><img class="me-3" [nexaeiImageSrc]="'Ellipse16.png'" /></div>
+
+                                                    <p class="pt-2 mt-1">Amita kumar</p>
+                                                </div>
+
+                                                <div class="d-flex pb-3">
+                                                    <p class="pt-2 mt-1">+ Invite amit.kumar</p>
+                                                </div>
+                                            </div>
+
+                                            <button type="button" class="btn primary-xl mt-4" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Invite</button>
+
+                                            <div class="d-flex justify-content-center">
+                                                <button type="submit" class="btn copy_btn mt-4 col-7"><img class="me-2" width="15px" [nexaeiImageSrc]="'emp-invite/copy.png'" /> Copy Link to Invite</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content pt-2 pb-2 border border-light">
+                                    <div class="modal-header border-0">
+                                        <div class="d-flex justify-content-center w-100"><img width="120px" [nexaeiImageSrc]="'logo.png'" /></div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <p class="text-center">Update your name and password</p>
+                                    <div class="modal-body border-0 d-flex justify-content-center pt-1">
+                                        <div class="col-md-7">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-md-6 pe-1">
+                                                        <div class="bg-dark-sec col-md-12 border-r p-3 d-flex">
+                                                            <div><img class="me-2 pt-1" width="14px" [nexaeiImageSrc]="'emp-invite/frame.png'" /></div>
+                                                            <input type="text" id="" aria-describedby="" placeholder="First Name" class="form-control bg-dark-sec border-0 text-white" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 ps-1">
+                                                        <div class="bg-dark-sec col-md-12 border-r p-3 d-flex">
+                                                            <div><img class="me-2 pt-1" width="14px" [nexaeiImageSrc]="'emp-invite/frame.png'" /></div>
+                                                            <input type="text" id="" aria-describedby="" placeholder="Last Name" class="form-control bg-dark-sec border-0 text-white" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12 pt-2">
+                                                        <div class="bg-dark-sec col-md-12 border-r p-3 d-flex error_input">
+                                                            <div><img class="me-2 pt-1" width="18px" [nexaeiImageSrc]="'emp-invite/mail.png'" /></div>
+                                                            <input type="email" id="" aria-describedby="" placeholder="Email" class="form-control bg-dark-sec border-0 text-white" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-12 pt-2">
+                                                        <div class="bg-dark-sec col-md-12 border-r p-3 d-flex">
+                                                            <div><img class="me-2 pt-1" width="15px" [nexaeiImageSrc]="'emp-invite/password.png'" /></div>
+                                                            <input type="password" id="" aria-describedby="" placeholder="New Password" class="form-control bg-dark-sec border-0 text-white" />
+                                                            <div><img class="me-2 pt-1" width="20px" [nexaeiImageSrc]="'emp-invite/show.png'" /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row pb-3">
+                                                    <div class="col-md-12 pt-2">
+                                                        <div class="bg-dark-sec col-md-12 border-r p-3 d-flex">
+                                                            <div><img class="me-2 pt-1" width="15px" [nexaeiImageSrc]="'emp-invite/password.png'" /></div>
+                                                            <input type="password" id="" aria-describedby="" placeholder="Confirm New Password" class="form-control bg-dark-sec border-0 text-white" />
+                                                            <div><img class="me-2 pt-1" width="20px" [nexaeiImageSrc]="'emp-invite/show.png'" /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <small class="text-white">Use minimum 8 characters with a mix of letters (uppercase, lowercase) Numbers & Symbols</small>
+
+                                                <div class="form-check pt-3">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"  />
+                                                    <label class="form-check-label check_emv" for="flexCheckChecked"> You agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions </a> </label>
+                                                </div>
+
+                                                <button type="button" class="btn primary-xl mt-4" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Continue</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+        </div>
+    </section>
+
+    <div class="row pt-1 ps-2 gray_bg">
+        <div class="col-md-12 pt-2 d-flex mt-5">
+            <div class="col-xl-9 col-md-8 chat_btm">
+                <div class="text-center col-12 text-secondary">This group is created by You on 26 Feb 16:46 PM</div>
+                <div class="text-center col-12 text-secondary">Add members in this team to start colab</div>
+
+                <div class="d-flex pt-2 pb-2">
+                    <h3 class="pt-2">T</h3>
+
+                    <div class="bg-dark-sec ms-3 col-md-10 f-control p-2 d-flex justify-content-between">
+                        <input type="text" class="form-control bg-dark-sec border-0" id="" aria-describedby="" placeholder="Write here..." />
+
+                        <div class="col-md-4 d-flex justify-content-end pt-1">
+                            <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'emp-invite/Group1384.png'" /></a>
+                            <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'emp-invite/Vector.png'" /></a>
+                            <a href="#" class="me-3"><img width="20px" [nexaeiImageSrc]="'emp-invite/smile.png'" /></a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="ms-3 mt-1 pt-1"><img width="40px" [nexaeiImageSrc]="'emp-invite/send.png'" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

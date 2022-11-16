@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0">
+      <div class="gardientbackground">
+        <img class="w-100" [nexaeiImageSrc]="'org_setup/org_setup-2.png'" />
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 p-0 res-stu bg-color-dark">
+      <div class="form-container">
+        <span class="logo col-md-12">
+          <img [nexaeiImageSrc]="'logo.png'" />
+          <h1 style="visibility: hidden">Setup Your Organization</h1>
+          <p>Choose your colab activity</p>
+        </span>
+
+        <form [formGroup]="registerFormFour" (ngSubmit)="onSubmit()">
+          <fieldset class="form_card">
+            <div class="choose_indus">
+              <div *ngFor="let c of colab">
+                <span
+                  [class]="chkAddonsArray.indexOf(c.id) >= 0 ? 'active' : ''"
+                  (click)="checkColab(c.id)"
+                >
+                  <label
+                    for="selected-colab-{{ c.id }}"
+                    class="av-selected-label"
+                  >
+                    <span class="icon"></span>
+                  </label>
+                  <img [nexaeiImageSrc]="'org_setup/flow/choose_icon_9.png'" />
+                  <p>{{ c.name }}</p>
+                </span>
+              </div>
+              <div class="col-md-12 mt-4 mb-5 float-start">
+                <button
+                  type="submit"
+                  class="btn primary-xl mt-4 mb-5"
+                  [disabled]="!showButton"
+                >
+                  Let's Start
+                </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

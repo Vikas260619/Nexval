@@ -1,0 +1,45 @@
+<div *ngIf="!editMode" (click)="editMode = true;setValue()" class="cell" >
+  {{ data && data.length>50 ? data.substr(0,45)+'...' : data   }}
+  <span style="color:#ffffff" *ngIf="isSubmitted">{{ defaultText}}</span>      
+  <a class="ms-3 pt-2" *ngIf="showEdit && userRole=='SUPERADMIN'" ><img width="16px" [nexaeiImageSrc]="'collab/icon1.png'"/></a>
+ <!-- <span>{{ defaultText}}</span> -->
+     
+</div>
+<!-- <input
+  *ngIf="editMode"
+  (focusout)="onFocusOut()"
+  (keydown.enter)="$event.target.blur()"
+  [(ngModel)]="data"
+  class="data_name"
+  appAutofocus
+  type="text"
+  (keydown.enter)="$event.target.blur()"
+  (focusout)="editMode = false"
+/> -->
+
+<form [formGroup]="formInline" (ngSubmit)="onSubmit()">
+  <input
+  [(ngModel)]="data"
+  appAutofocus
+  type="text"
+  *ngIf="editMode"
+  [formControlName]="'editInline'"
+  aria-describedby=""
+  placeholder=""
+  class="text-white data_name"
+/>
+<a *ngIf="editMode" (click)="reset()" class="icon-x" style="cursor:pointer"><img class="me-2 ms-2"width="20px" [nexaeiImageSrc]="'crose.png'"/></a>
+<a *ngIf="editMode" (click)="onSubmit()" style="cursor:pointer" ><img class=""width="20px" [nexaeiImageSrc]="'sucess.png'"/></a>
+<P
+                    class="error_cntnt_new pt-1 align"
+                    *ngIf=" showMsg &&
+                      forcedFormControl.editInline?.dirty &&
+                      forcedFormControl.editInline?.errors?.required && editMode
+                    "
+                    >Team {{fieldName}} cannot be blank. Please provide a proper team {{fieldName}}</P
+                  >
+</form>
+
+<!-- <a  *ngIf="editMode" (click)="onCancel()" class="icon-x" style="cursor:pointer"><img class="me-2 ms-2"width="20px" [nexaeiImageSrc]="'crose.png'"/></a>
+<a  *ngIf="editMode" (click)="onFocusOut()" style="cursor:pointer" ><img class=""width="20px" [nexaeiImageSrc]="'sucess.png'"/></a> -->
+           

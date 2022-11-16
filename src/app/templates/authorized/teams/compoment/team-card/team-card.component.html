@@ -1,0 +1,42 @@
+<ul id="CollegueDes2" class="sidebar-nav support-group m-0 padding-adjust">
+  <li class="collaspe-view pb-3 list-unstyled">
+    <span>Teams</span><label (click)="openTeamCreateModal()" *ngIf="userRole=='SUPERADMIN'" >+</label>
+  </li>
+
+  <li
+    class="list-unstyled user-status"
+    
+    [class]="{ active: currentTeam === team.id }"
+    *ngFor="let team of teamListData"
+  >
+    <h4  class="light-bue-border" style="cursor: pointer!important" (click)="selectTeamCircle(team.id,team.name,team.desc,team.sendbird_team_details['application_id'],team.sendbird_team_details['channel_url'])">
+      <label class="light-blue" style="cursor: pointer!important">{{ team.name.charAt(0).toUpperCase() }}</label
+      ><img style="display: none" [nexaeiImageSrc]="'member/user.png'" />
+    </h4>
+
+    <span>
+      <h5
+        id="{{ team.id }}"
+        userInfo="{{team.usercount}}"
+        application_id="{{ team.sendbird_team_details['application_id'] }}"
+        channel_url="{{ team.sendbird_team_details['channel_url'] }}"
+        name="{{ team.name }}"
+        desc="{{team.desc}}"
+        (click)="selectTeam($event)"
+      >
+        {{ excerpt(team.name) }}
+      </h5>
+    </span>
+  </li>
+</ul>
+
+<div
+  (click)="teamStream()"
+  id="IconCollegue2"
+  class="tgle-icon  w-100 pt-2 pb-2 text-center"
+  [class]="teamListData && teamListData.length < 4 ? 'disabled' : ''"
+>
+  <span></span>
+
+  <label> <img [nexaeiImageSrc]="'sidebar/down-arrow.png'" /> </label>
+</div>
